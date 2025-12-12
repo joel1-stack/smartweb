@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - Smart Accountants</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo h1 {
+            color: #210F37;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #A55B4B;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #210F37;
+        }
+
+        .nav-links a.active {
+            color: #210F37;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #A55B4B;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #210F37;
+            background: none;
+            border: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(33, 15, 55, 0.85), rgba(79, 28, 81, 0.85)),
+                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 140px 0 60px;
+            text-align: center;
+            margin-top: 70px;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: #210F37;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .projects-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background-color: #e9ecef;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #210F37;
+            color: white;
+        }
+
+        /* Projects Grid - REDUCED SIZE */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 180px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-icon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33, 15, 55, 0.8) 0%, rgba(79, 28, 81, 0.8) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .project-content {
+            padding: 22px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-category {
+            display: inline-block;
+            background-color: #DCA06D;
+            color: #210F37;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-content h3 {
+            color: #210F37;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .project-details {
+            margin-bottom: 18px;
+        }
+
+        .detail-item {
+            display: flex;
+            margin-bottom: 8px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 110px;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .outcome {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .outcome h4 {
+            color: #210F37;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .outcome p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
+        }
+
+        .stats-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #DCA06D;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: white;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 80px;
+            border-top: 5px solid #210F37;
+        }
+
+        .cta-section h2 {
+            color: #210F37;
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(33, 15, 55, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(33, 15, 55, 0.4);
+            background: white;
+            color: #210F37;
+            border-color: #210F37;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #210F37;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo span {
+            color: #DCA06D;
+        }
+
+        .footer-logo p {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            color: #DCA06D;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: #DCA06D;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            color: #ccc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #DCA06D;
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #DCA06D;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #eee;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .page-header {
+                padding: 120px 0 50px;
+                margin-top: 70px;
+                min-height: 35vh;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .section-title h2,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .project-image {
+                height: 160px;
+            }
+
+            .project-content {
+                padding: 18px;
+            }
+
+            .project-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .detail-label {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
+                    <h1>Smart<span>Accountants</span></h1>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Projects & Case Studies</h1>
+            <p>Real accounting solutions delivered for businesses across Kenya</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio of Work</h2>
+                <p>Successful projects and case studies demonstrating our expertise in accounting solutions</p>
+            </div>
+
+            <!-- Projects Filter -->
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="sme">SME Projects</button>
+                <button class="filter-btn" data-filter="tax">Tax Compliance</button>
+                <button class="filter-btn" data-filter="payroll">Payroll</button>
+                <button class="filter-btn" data-filter="analysis">Financial Analysis</button>
+                <button class="filter-btn" data-filter="audit">Audit</button>
+            </div>
+
+            <!-- Projects Grid with Online Images -->
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="sme">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="SME Accounting System Setup">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">SME Setup</span>
+                        <h3>SME Full Accounting System Setup</h3>
+                        <p>Complete accounting system implementation for small and medium enterprises to streamline
+                            financial operations.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">Small Medium Enterprise</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">2 Weeks</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">System Setup, Training</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Improved accuracy and real-time financial visibility for the client, enabling better
+                                decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-category="tax">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Tax Compliance Services">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Tax Compliance</span>
+                        <h3>Tax Compliance & Filing for Multiple Clients</h3>
+                        <p>Comprehensive tax computation and filing services for various business types ensuring full
+                            compliance.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">SMEs & Limited Companies</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">Ongoing</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">Tax Computation, Filing</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Zero penalties for clients, improved compliance, and better tax planning strategies
+                                implemented.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-category="payroll">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Payroll Management Services">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Payroll & Bookkeeping</span>
+                        <h3>Monthly Bookkeeping & Payroll Processing</h3>
+                        <p>Regular bookkeeping and payroll management for restaurants and retail businesses.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">Restaurants & Retail</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">Monthly Retainer</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">Bookkeeping, Payroll</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Better cost control and clearer financial reporting, leading to improved operational
+                                efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-category="analysis">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Financial Analysis Services">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Financial Analysis</span>
+                        <h3>Financial Health & Liquidity Reporting</h3>
+                        <p>In-depth financial analysis for manufacturing and service firms to assess performance and
+                            stability.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">Manufacturing & Service</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">1 Month</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">Financial Analysis, Reporting</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Increased efficiency and improved financial stability through targeted cost reduction
+                                strategies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-category="audit">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Audit Services">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Audit Services</span>
+                        <h3>Audit of Financial Transactions</h3>
+                        <p>Comprehensive audit of financial transactions for growing SMEs to ensure accuracy and detect
+                            discrepancies.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">Growing SMEs</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">3 Weeks</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">Transaction Audit, Reconciliation</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Strengthened accountability and reduced fraud risk through corrected accounting errors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-category="sme">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Accounting Software Implementation">
+                        <div class="project-icon-overlay">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">QuickBooks Implementation</span>
+                        <h3>Accounting Software Implementation</h3>
+                        <p>QuickBooks setup and staff training for multiple businesses to modernize their accounting
+                            processes.</p>
+
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Client Type:</span>
+                                <span class="detail-value">Various Businesses</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">1-2 Weeks Each</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Services:</span>
+                                <span class="detail-value">Software Setup, Training</span>
+                            </div>
+                        </div>
+
+                        <div class="outcome">
+                            <h4>Outcome:</h4>
+                            <p>Modernized accounting processes, reduced manual errors, and improved reporting
+                                efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Projects Completed</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p>Satisfied Clients</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Tax Compliance Rate</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Contact us today to discuss how we can help streamline your accounting processes and improve your
+                financial management for sustainable business growth.</p>
+            <a href="contact.html" class="cta-button">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
+                    <h3>Smart<span>Accountants</span></h3>
+                    <p>For Real Accounting Solutions</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html">Bookkeeping</a></li>
+                        <li><a href="services.html">Tax Filing</a></li>
+                        <li><a href="services.html">Financial Reporting</a></li>
+                        <li><a href="services.html">Payroll Management</a></li>
+                        <li><a href="services.html">QuickBooks Setup</a></li>
+                        <li><a href="services.html">Financial Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
+                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Smart Accountants. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            menuToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Project Filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    // Filter project cards
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            const cardCategory = card.getAttribute('data-category');
+                            if (cardCategory === filterValue) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Animate stats counter
+            const statItems = document.querySelectorAll('.stat-item h3');
+            const statsSection = document.querySelector('.stats-section');
+
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+                    }
+                }, 20);
+            }
+
+            // Check if stats section is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+                );
+            }
+
+            let animated = false;
+
+            function checkStatsAnimation() {
+                if (isInViewport(statsSection) && !animated) {
+                    animated = true;
+
+                    // Animate each stat
+                    setTimeout(() => animateCounter(statItems[0], 50), 0);
+                    setTimeout(() => animateCounter(statItems[1], 30), 200);
+                    setTimeout(() => animateCounter(statItems[2], 100), 400);
+                    setTimeout(() => animateCounter(statItems[3], 5), 600);
+                }
+            }
+
+            // Check on load and scroll
+            window.addEventListener('scroll', checkStatsAnimation);
+            checkStatsAnimation(); // Check on initial load
+        });
+    </script>
+</body>
+
+</html>

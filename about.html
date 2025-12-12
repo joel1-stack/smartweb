@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Smart Accountants</title>
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: #210F37;
+            font-size: 24px;
+        }
+
+        .logo span {
+            color: #A55B4B;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #210F37;
+        }
+
+        .nav-links a.active {
+            color: #210F37;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            color: white;
+            padding: 140px 0 60px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* About Content */
+        .about-content {
+            padding: 80px 0;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-text h2 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 3px;
+            background-color: #A55B4B;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .mission-card,
+        .vision-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover,
+        .vision-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card h3,
+        .vision-card h3 {
+            color: #210F37;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .mission-card p,
+        .vision-card p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .mission-icon,
+        .vision-icon {
+            font-size: 50px;
+            color: #4F1C51;
+            margin-bottom: 20px;
+        }
+
+        /* Core Values - COMPACT STYLING */
+        .core-values {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .value-item {
+            background-color: white;
+            padding: 22px 18px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            background-color: #DCA06D;
+            color: #210F37;
+            width: 55px;
+            height: 55px;
+            line-height: 55px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .value-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background-color: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 80px;
+        }
+
+        .why-choose h2 {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .reasons-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .reason {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .reason i {
+            color: #A55B4B;
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .reason h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .reason p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer - UPDATED TO MATCH CONTACT & TEAM PAGES */
+        footer {
+            background-color: #210F37;
+            color: white;
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo span {
+            color: #DCA06D;
+        }
+
+        .footer-logo p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            color: #DCA06D;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: #DCA06D;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            color: #ccc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #DCA06D;
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background-color: #DCA06D;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+
+            .about-section,
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .reasons-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-image {
+                height: 350px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .about-text h2,
+            .section-title h2,
+            .why-choose h2 {
+                font-size: 30px;
+            }
+
+            .why-choose {
+                padding: 40px 20px;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .footer-links li,
+            .footer-services li {
+                margin-bottom: 8px;
+            }
+
+            .footer-contact p {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-card,
+            .vision-card {
+                padding: 30px 20px;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <!-- Your local logo image -->
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
+                    <h1>Smart<span>Accountants</span></h1>
+                </div>
+
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Smart Accountants</h1>
+            <p>Professional accounting and financial consultancy dedicated to helping businesses stay compliant,
+                profitable, and well-managed.</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <!-- About Us Section with Online Image -->
+            <div class="about-section">
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <p>Smart Accountants is a professional accounting and financial consultancy firm dedicated to
+                        helping businesses stay compliant, profitable, and well-managed. We provide accurate, reliable,
+                        and timely accounting solutions tailored for SMEs, startups, corporates, and organizations
+                        across Kenya.</p>
+                    <p>As a modern firm, we combine expertise, technology, and strong ethical standards to deliver
+                        financial clarity and support informed decision-making. Our mission is simple: to empower
+                        businesses with smart financial systems that promote growth, accountability, and sustainability.
+                    </p>
+                    <p>With years of experience in the Kenyan market, we understand the unique challenges and
+                        opportunities facing businesses today. We pride ourselves on building long-term relationships
+                        with our clients, becoming trusted advisors who contribute to their success.</p>
+                </div>
+                <div class="about-image">
+                    <!-- Professional online image for accounting firm -->
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Modern accounting office with professionals working">
+                </div>
+            </div>
+
+            <!-- Mission & Vision with Icons -->
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To deliver timely, accurate, and transparent financial services through integrity,
+                        professionalism, and the use of modern accounting technology.</p>
+                </div>
+
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading provider of innovative and dependable accounting solutions that drive business
+                        excellence in Kenya and beyond.</p>
+                </div>
+            </div>
+
+            <!-- Core Values - COMPACT DESIGN -->
+            <div class="core-values">
+                <div class="section-title">
+                    <h2>Our Core Values</h2>
+                    <p>The principles that guide our work and relationships with clients</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Integrity</h4>
+                        <p>We uphold honesty and transparency in all engagements.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <h4>Accuracy</h4>
+                        <p>We ensure every financial detail is correct and reliable.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Professionalism</h4>
+                        <p>We follow ethical and international accounting standards.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>Confidentiality</h4>
+                        <p>We protect client information with utmost care.</p>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Efficiency</h4>
+                        <p>We deliver results on time and with excellence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="why-choose">
+                <h2>Why Choose Smart Accountants?</h2>
+
+                <div class="reasons-list">
+                    <div class="reason">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Accurate & Reliable</h4>
+                            <p>We provide precise financial information you can trust for informed decision-making.</p>
+                        </div>
+                    </div>
+
+                    <div class="reason">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <h4>Experienced & Qualified</h4>
+                            <p>Handled accounting for organizations across multiple industries with proven expertise.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="reason">
+                        <i class="fas fa-laptop-code"></i>
+                        <div>
+                            <h4>Technology-Driven</h4>
+                            <p>We use modern tools like QuickBooks, Excel, and digital reconciliation systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="reason">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>
+                            <h4>Affordable & Flexible</h4>
+                            <p>Packages tailored to your business size and budget with flexible engagement options.</p>
+                        </div>
+                    </div>
+
+                    <div class="reason">
+                        <i class="fas fa-user-secret"></i>
+                        <div>
+                            <h4>100% Confidential</h4>
+                            <p>Your financial information remains secure with our strict confidentiality protocols.</p>
+                        </div>
+                    </div>
+
+                    <div class="reason">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4>Dedicated Support</h4>
+                            <p>We provide ongoing support and are always available to answer your questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - UPDATED TO MATCH CONTACT & TEAM PAGES -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
+                    <h3>Smart<span>Accountants</span></h3>
+                    <p>For Real Accounting Solutions</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html">Bookkeeping</a></li>
+                        <li><a href="services.html">Tax Filing</a></li>
+                        <li><a href="services.html">Financial Reporting</a></li>
+                        <li><a href="services.html">Payroll Management</a></li>
+                        <li><a href="services.html">QuickBooks Setup</a></li>
+                        <li><a href="services.html">Financial Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
+                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Smart Accountants. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            menuToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+
+                // Change menu icon
+                const icon = menuToggle.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

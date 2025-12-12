@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Smart Accountants</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            min-height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo h1 {
+            color: #210F37;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #A55B4B;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #210F37;
+        }
+
+        .nav-links a.active {
+            color: #210F37;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #A55B4B;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #210F37;
+            background: none;
+            border: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(33, 15, 55, 0.85), rgba(79, 28, 81, 0.85)),
+                url('https://images.unsplash.com/photo-1551836026-d5c2c5af78e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: white;
+            padding: 140px 0 60px;
+            text-align: center;
+            margin-top: 70px;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: #210F37;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* CEO Profile - UPDATED WITH PROFESSIONAL DESIGN */
+        .ceo-profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 80px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #A55B4B;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ceo-profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #210F37, #4F1C51);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            opacity: 0.1;
+        }
+
+        .ceo-image {
+            text-align: center;
+        }
+
+        .ceo-img-container {
+            width: 100%;
+            max-width: 400px;
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            position: relative;
+            border: 8px solid white;
+        }
+
+        .ceo-img-container::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, #A55B4B, #210F37);
+            z-index: -1;
+            border-radius: 12px;
+        }
+
+        .ceo-img-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .ceo-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ceo-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .ceo-info h3 {
+            color: #210F37;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .ceo-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #A55B4B;
+        }
+
+        .ceo-title {
+            color: #4F1C51;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .ceo-bio {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .ceo-bio p {
+            margin-bottom: 15px;
+        }
+
+        .ceo-bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ceo-qualifications {
+            margin-bottom: 25px;
+        }
+
+        .ceo-qualifications h4 {
+            color: #210F37;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .qualifications-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .qualifications-list li {
+            color: #666;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .qualifications-list li:before {
+            content: "✓";
+            color: #A55B4B;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 24px;
+            height: 24px;
+            background-color: #f9f5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ceo-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: #210F37;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #210F37;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .contact-btn:hover {
+            color: #210F37;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover::before {
+            left: 0;
+        }
+
+        .contact-btn.secondary {
+            background-color: #A55B4B;
+            border-color: #A55B4B;
+        }
+
+        /* Team Grid - COMPACT DESIGN */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #eee;
+            height: 100%;
+            position: relative;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #210F37, #A55B4B);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            border-color: #A55B4B;
+        }
+
+        .member-image {
+            height: 160px;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A55B4B;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            opacity: 0.05;
+        }
+
+        .member-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #210F37, #A55B4B);
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h4 {
+            color: #210F37;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .member-role {
+            color: #4F1C51;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .member-bio {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background-color: #f0f0f0;
+            color: #210F37;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .team-member:hover .skill-tag {
+            background-color: #DCA06D;
+            color: white;
+            border-color: #DCA06D;
+        }
+
+        /* Team Values - COMPACT */
+        .team-values {
+            background-color: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 80px;
+            border-top: 5px solid #210F37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            opacity: 0.03;
+        }
+
+        .team-values .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-values h2 {
+            text-align: center;
+            color: #210F37;
+            font-size: 2.3rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #A55B4B;
+        }
+
+        .value-icon {
+            background-color: #f9f5ff;
+            color: #A55B4B;
+            width: 65px;
+            height: 65px;
+            line-height: 65px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            font-size: 26px;
+            transition: all 0.3s;
+        }
+
+        .value-item:hover .value-icon {
+            background-color: #210F37;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .value-item h4 {
+            color: #210F37;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section - COMPACT */
+        .cta-section {
+            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #DCA06D;
+            color: #210F37;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: #210F37;
+            border-color: #DCA06D;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Footer - COMPACT */
+        footer {
+            background-color: #210F37;
+            color: white;
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo span {
+            color: #DCA06D;
+        }
+
+        .footer-logo p {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer-links h4,
+        .footer-services h4,
+        .footer-contact h4 {
+            color: #DCA06D;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a,
+        .footer-services a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover {
+            color: #DCA06D;
+            transform: translateX(5px);
+        }
+
+        .footer-contact p {
+            color: #ccc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #DCA06D;
+            margin-top: 3px;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .social-links a:hover {
+            background-color: #DCA06D;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .ceo-img-container {
+                max-width: 350px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .ceo-profile {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .qualifications-list {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ceo-img-container {
+                max-width: 400px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #eee;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .page-header {
+                padding: 120px 0 50px;
+                margin-top: 70px;
+                min-height: 35vh;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .section-title h2,
+            .team-values h2,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .ceo-info h3 {
+                font-size: 1.8rem;
+            }
+
+            .ceo-title {
+                font-size: 1.1rem;
+            }
+
+            .ceo-profile {
+                padding: 30px 20px;
+            }
+
+            .ceo-img-container {
+                max-width: 350px;
+                height: 350px;
+            }
+
+            .team-values {
+                padding: 40px 20px;
+            }
+
+            .cta-section {
+                padding: 50px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .ceo-contact {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .contact-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .ceo-img-container {
+                max-width: 300px;
+                height: 300px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
+                    <h1>Smart<span>Accountants</span></h1>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="team.html" class="active">Our Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Meet Our Team</h1>
+            <p>Experienced professionals dedicated to providing exceptional accounting solutions</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Leadership & Expertise</h2>
+                <p>Our team brings together years of experience and specialized knowledge in accounting and finance</p>
+            </div>
+
+            <!-- CEO Profile - UPDATED WITH PROFESSIONAL DESIGN -->
+            <div class="ceo-profile">
+                <div class="ceo-image">
+                    <div class="ceo-img-container">
+                        <img src="images/team/ceo-photo.jpg" alt="Oduory Sephat Makokha - CEO Smart Accountants">
+                    </div>
+                </div>
+
+                <div class="ceo-info">
+                    <h3>Oduory Sephat Makokha</h3>
+                    <div class="ceo-title">CEO, Smart Accountants | Accounting & Finance Professional | Taxation &
+                        Compliance Specialist</div>
+
+                    <div class="ceo-bio">
+                        <p>I am an experienced Accounting and Finance professional and the CEO of Smart Accountants, a
+                            firm dedicated to delivering accurate, reliable, and transparent financial solutions to
+                            businesses. I have a strong background in financial reporting, taxation, compliance, and
+                            strategic financial management.</p>
+                        <p>Over the years, I have prepared financial statements, managed tax returns, streamlined
+                            accounting systems, and improved internal controls for multiple organizations. My experience
+                            spans corporate finance, payroll, accounts reconciliation, budgeting, cost control, and
+                            performance analysis.</p>
+                        <p>I am committed to accountability, integrity, and helping businesses make informed financial
+                            decisions. With advanced proficiency in accounting software and a passion for clean
+                            financial structures, I ensure that every client receives professional, timely, and
+                            compliant financial services.</p>
+                    </div>
+
+                    <div class="ceo-qualifications">
+                        <h4>Key Qualifications & Expertise:</h4>
+                        <ul class="qualifications-list">
+                            <li>Financial Reporting & Analysis</li>
+                            <li>Taxation & Compliance Management</li>
+                            <li>Accounting Systems Implementation</li>
+                            <li>Payroll & Statutory Deductions</li>
+                            <li>Budgeting & Financial Forecasting</li>
+                            <li>QuickBooks & Accounting Software</li>
+                            <li>Internal Controls & Audit</li>
+                            <li>Business Financial Advisory</li>
+                        </ul>
+                    </div>
+
+                    <div class="ceo-contact">
+                        <a href="contact.html" class="contact-btn">Contact CEO</a>
+                        <a href="projects.html" class="contact-btn secondary">View Projects</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Members - COMPACT CARDS -->
+            <div class="section-title">
+                <h2>Our Professional Team</h2>
+                <p>Meet the experts who deliver exceptional accounting services to our clients</p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Tax Specialist</h4>
+                        <div class="member-role">Tax Compliance Manager</div>
+                        <div class="member-bio">
+                            Expert in tax computation, filing, and compliance for businesses of all sizes. Ensures
+                            clients meet all statutory requirements with 100% accuracy and timely submissions.
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">VAT</span>
+                            <span class="skill-tag">Income Tax</span>
+                            <span class="skill-tag">PAYE</span>
+                            <span class="skill-tag">Compliance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Financial Analyst</h4>
+                        <div class="member-role">Reporting & Analysis Lead</div>
+                        <div class="member-bio">
+                            Specializes in financial reporting, analysis, and business performance evaluation to drive
+                            informed decision-making and strategic planning.
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">Financial Reports</span>
+                            <span class="skill-tag">Analysis</span>
+                            <span class="skill-tag">Budgeting</span>
+                            <span class="skill-tag">Forecasting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="member-info">
+                        <h4>Operations Manager</h4>
+                        <div class="member-role">Bookkeeping & Payroll Lead</div>
+                        <div class="member-bio">
+                            Manages day-to-day accounting operations including bookkeeping, payroll processing, and
+                            accounts reconciliation with precision and efficiency.
+                        </div>
+                        <div class="member-skills">
+                            <span class="skill-tag">Bookkeeping</span>
+                            <span class="skill-tag">Payroll</span>
+                            <span class="skill-tag">Reconciliation</span>
+                            <span class="skill-tag">QuickBooks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Values -->
+            <div class="team-values">
+                <div class="container">
+                    <h2>Our Team Values</h2>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Collaboration</h4>
+                            <p>We work together as a cohesive unit to deliver the best solutions for our clients,
+                                combining our diverse expertise for optimal results.</p>
+                        </div>
+
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Innovation</h4>
+                            <p>We continuously improve our processes and embrace new technologies to provide
+                                cutting-edge accounting solutions.</p>
+                        </div>
+
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Continuous Learning</h4>
+                            <p>We stay updated with the latest accounting standards, regulations, and industry best
+                                practices through ongoing education.</p>
+                        </div>
+
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4>Client Focus</h4>
+                            <p>We put our clients' needs first, building long-term relationships based on trust,
+                                reliability, and exceptional service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Work With Our Expert Team</h2>
+            <p>Partner with our experienced professionals to get the accounting support your business needs for growth
+                and success.</p>
+            <a href="contact.html" class="cta-button">Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
+                    <h3>Smart<span>Accountants</span></h3>
+                    <p>For Real Accounting Solutions</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html">Bookkeeping</a></li>
+                        <li><a href="services.html">Tax Filing</a></li>
+                        <li><a href="services.html">Financial Reporting</a></li>
+                        <li><a href="services.html">Payroll Management</a></li>
+                        <li><a href="services.html">QuickBooks Setup</a></li>
+                        <li><a href="services.html">Financial Analysis</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
+                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Smart Accountants. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            // Mobile Menu Toggle
+            menuToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Only handle internal page anchors
+                    if (href.startsWith('#') && href.length > 1) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

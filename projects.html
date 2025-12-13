@@ -366,6 +366,50 @@
             opacity: 0.9;
         }
 
+        /* Demo Video Section */
+        .demo-video {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+
+        .video-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .video-text h2 {
+            color: #210F37;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .video-text p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         /* CTA Section */
         .cta-section {
             background-color: white;
@@ -641,6 +685,15 @@
 
             .stat-item h3 {
                 font-size: 2rem;
+            }
+
+            .video-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .video-text {
+                text-align: center;
             }
         }
 
@@ -1001,6 +1054,24 @@
         </div>
     </section>
 
+    <!-- Services Demo Video -->
+    <section class="demo-video">
+        <div class="container">
+            <div class="video-content">
+                <div class="video-text">
+                    <h2>See Our Services in Action</h2>
+                    <p>Watch how we deliver professional accounting solutions</p>
+                </div>
+                <div class="video-container">
+                    <video controls autoplay muted>
+                        <source src="images/video/Smart_Accountants_-_Professional_Account.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -1020,10 +1091,8 @@
                     <h3>Smart<span>Accountants</span></h3>
                     <p>For Real Accounting Solutions</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
 
@@ -1163,6 +1232,14 @@
             // Check on load and scroll
             window.addEventListener('scroll', checkStatsAnimation);
             checkStatsAnimation(); // Check on initial load
+
+            // Video autoplay handling
+            const video = document.querySelector('.video-container video');
+            if (video) {
+                video.addEventListener('loadeddata', function() {
+                    console.log('Video loaded successfully');
+                });
+            }
         });
     </script>
 </body>

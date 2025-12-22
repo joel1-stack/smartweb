@@ -20,9 +20,11 @@
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        /* Background with vibrant green accounting theme */
+        /* Background with purple accounting theme */
         body::before {
             content: '';
             position: fixed;
@@ -48,7 +50,7 @@
 
         /* Animated Gradient Header */
         .animated-header {
-            background: linear-gradient(-45deg, #8A4FFF, #4CAF50, #2196F3, #A55B4B);
+            background: linear-gradient(-45deg, #6B2C91, #8A4FFF, #9C27B0, #6A1B9A);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -96,7 +98,7 @@
             height: 50px;
             object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.3);
+            box-shadow: 0 4px 8px rgba(107, 44, 145, 0.3);
             transition: transform 0.3s;
         }
 
@@ -105,7 +107,7 @@
         }
 
         .logo h1 {
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 24px;
@@ -113,7 +115,7 @@
         }
 
         .logo span {
-            color: #A55B4B;
+            color: #9C27B0;
         }
 
         .nav-links {
@@ -143,7 +145,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             transition: width 0.3s ease;
         }
 
@@ -153,7 +155,7 @@
         }
 
         .nav-links a:hover {
-            color: #8A4FFF;
+            color: #6B2C91;
         }
 
         .nav-links a.active {
@@ -166,7 +168,7 @@
             cursor: pointer;
             background: none;
             border: none;
-            color: #210F37;
+            color: #6B2C91;
             transition: transform 0.3s;
         }
 
@@ -174,35 +176,52 @@
             transform: scale(1.1);
         }
 
-        /* Marquee Banner */
+        /* Typing Marquee Banner */
         .marquee-banner {
-            background: linear-gradient(45deg, #210F37, #4CAF50);
+            background: linear-gradient(45deg, #4A148C, #6B2C91);
             color: white;
-            padding: 15px 0;
+            padding: 20px 0;
             margin-top: 80px;
             overflow: hidden;
             white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(107, 44, 145, 0.3);
             position: relative;
         }
 
         .marquee-content {
             display: inline-block;
-            animation: marquee 30s linear infinite;
+            white-space: nowrap;
             padding-left: 100%;
+            animation: marquee 40s linear infinite;
         }
 
-        .marquee-content span {
-            margin: 0 40px;
-            font-weight: 600;
-            font-size: 16px;
+        .typing-marquee-letter {
             display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 2px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: glowPulse 2s infinite alternate;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
-        .marquee-content i {
+        .typing-marquee-space {
+            display: inline-block;
+            width: 15px;
+        }
+
+        .marquee-icon {
             color: #DCA06D;
-            margin-right: 10px;
+            margin: 0 15px;
+            font-size: 20px;
             animation: pulse 2s infinite;
+        }
+
+        .marquee-divider {
+            color: #DCA06D;
+            margin: 0 20px;
+            font-weight: bold;
         }
 
         @keyframes marquee {
@@ -215,9 +234,35 @@
             }
         }
 
+        @keyframes glowPulse {
+            0% {
+                opacity: 0.7;
+                transform: translateY(0);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(-2px);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
         /* Page Header with Typing Effect */
         .page-header {
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(76, 175, 80, 0.9)),
+            background: linear-gradient(135deg, rgba(74, 20, 140, 0.9), rgba(107, 44, 145, 0.9)),
                 url('https://images.unsplash.com/photo-1551836026-d5c2c5af78e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -327,7 +372,7 @@
         /* Floating Elements */
         .floating-element {
             position: absolute;
-            background: rgba(138, 79, 255, 0.1);
+            background: rgba(107, 44, 145, 0.1);
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
             z-index: -1;
@@ -358,7 +403,7 @@
         }
 
         .section-title h2 {
-            color: #210F37;
+            color: #4A148C;
             font-size: 2.8rem;
             margin-bottom: 15px;
             font-weight: 700;
@@ -374,7 +419,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             border-radius: 2px;
         }
 
@@ -399,7 +444,7 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            border-left: 5px solid #4CAF50;
+            border-left: 5px solid #8A4FFF;
         }
 
         .ceo-profile::before {
@@ -409,7 +454,7 @@
             right: 0;
             width: 150px;
             height: 150px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             clip-path: polygon(0 0, 100% 0, 100% 100%);
             opacity: 0.1;
         }
@@ -439,14 +484,14 @@
             left: -10px;
             right: -10px;
             bottom: -10px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             z-index: -1;
             border-radius: 20px;
         }
 
         .ceo-img-container:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(138, 79, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(107, 44, 145, 0.2);
         }
 
         .ceo-img-container img {
@@ -461,7 +506,7 @@
         }
 
         .ceo-info h3 {
-            color: #210F37;
+            color: #4A148C;
             font-size: 2.5rem;
             margin-bottom: 15px;
             font-weight: 700;
@@ -476,11 +521,11 @@
             left: 0;
             width: 80px;
             height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .ceo-title {
-            color: #4CAF50;
+            color: #8A4FFF;
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 30px;
@@ -509,7 +554,7 @@
         }
 
         .ceo-qualifications h4 {
-            color: #210F37;
+            color: #4A148C;
             margin-bottom: 20px;
             font-size: 1.4rem;
             font-weight: 700;
@@ -524,7 +569,7 @@
             left: 0;
             width: 50px;
             height: 3px;
-            background: #4CAF50;
+            background: #8A4FFF;
         }
 
         .qualifications-list {
@@ -545,14 +590,14 @@
 
         .qualifications-list li:before {
             content: "✓";
-            color: #4CAF50;
+            color: #8A4FFF;
             position: absolute;
             left: 0;
             font-weight: bold;
             font-size: 1.2rem;
             width: 28px;
             height: 28px;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.1), rgba(76, 175, 80, 0.1));
+            background: linear-gradient(45deg, rgba(107, 44, 145, 0.1), rgba(138, 79, 255, 0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -570,7 +615,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
@@ -589,14 +634,14 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #4CAF50, #8A4FFF);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             transition: left 0.3s;
             z-index: -1;
         }
 
         .contact-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(138, 79, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(107, 44, 145, 0.3);
             border-color: white;
         }
 
@@ -605,7 +650,7 @@
         }
 
         .contact-btn.secondary {
-            background: linear-gradient(45deg, #4CAF50, #8A4FFF);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         /* Team Grid */
@@ -630,7 +675,7 @@
 
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(107, 44, 145, 0.15);
             border-color: #8A4FFF;
         }
 
@@ -641,13 +686,13 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             z-index: 1;
         }
 
         .member-image {
             height: 180px;
-            background: linear-gradient(135deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(135deg, #6B2C91, #8A4FFF);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -673,7 +718,7 @@
         }
 
         .member-info h4 {
-            color: #210F37;
+            color: #4A148C;
             font-size: 1.5rem;
             margin-bottom: 10px;
             font-weight: 700;
@@ -689,11 +734,11 @@
             transform: translateX(-50%);
             width: 40px;
             height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .member-role {
-            color: #4CAF50;
+            color: #8A4FFF;
             font-weight: 600;
             margin-bottom: 15px;
             font-size: 1.1rem;
@@ -714,8 +759,8 @@
         }
 
         .skill-tag {
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.1), rgba(76, 175, 80, 0.1));
-            color: #210F37;
+            background: linear-gradient(45deg, rgba(107, 44, 145, 0.1), rgba(138, 79, 255, 0.1));
+            color: #4A148C;
             padding: 8px 15px;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -725,7 +770,7 @@
         }
 
         .team-member:hover .skill-tag {
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             color: white;
             border-color: white;
         }
@@ -733,7 +778,7 @@
         /* CEO Video Section - Fixed Positioning */
         .ceo-video-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, #f8f9ff, #e8f5e9);
+            background: linear-gradient(135deg, #f8f9ff, #f3e5f5);
             position: relative;
             overflow: hidden;
         }
@@ -745,7 +790,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .video-content {
@@ -756,7 +801,7 @@
         }
 
         .video-text h2 {
-            color: #210F37;
+            color: #4A148C;
             font-size: 2.5rem;
             margin-bottom: 20px;
             font-weight: 700;
@@ -771,7 +816,7 @@
             bottom: -10px;
             width: 80px;
             height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .video-text p {
@@ -790,11 +835,12 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            border: 3px solid #8A4FFF;
         }
 
         .video-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(138, 79, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(107, 44, 145, 0.2);
         }
 
         .video-container iframe,
@@ -825,7 +871,7 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .team-values .container {
@@ -835,7 +881,7 @@
 
         .team-values h2 {
             text-align: center;
-            color: #210F37;
+            color: #4A148C;
             font-size: 2.8rem;
             margin-bottom: 50px;
             font-weight: 700;
@@ -850,7 +896,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .values-grid {
@@ -878,13 +924,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(76, 175, 80, 0.05));
+            background: linear-gradient(45deg, rgba(107, 44, 145, 0.05), rgba(138, 79, 255, 0.05));
             z-index: -1;
         }
 
         .value-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(138, 79, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(107, 44, 145, 0.15);
             border-color: #8A4FFF;
         }
 
@@ -894,7 +940,7 @@
             height: 80px;
             width: 80px;
             line-height: 80px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             color: white;
             border-radius: 50%;
             margin: 0 auto 25px;
@@ -906,11 +952,11 @@
 
         .value-item:hover .value-icon {
             transform: rotate(360deg);
-            background: linear-gradient(45deg, #4CAF50, #8A4FFF);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .value-item h4 {
-            color: #210F37;
+            color: #4A148C;
             margin-bottom: 15px;
             font-size: 1.4rem;
             font-weight: 700;
@@ -924,7 +970,7 @@
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #210F37, #0A1929),
+            background: linear-gradient(135deg, #4A148C, #311B92),
                 url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -945,7 +991,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.2), rgba(76, 175, 80, 0.2));
+            background: linear-gradient(45deg, rgba(107, 44, 145, 0.2), rgba(138, 79, 255, 0.2));
             z-index: 0;
         }
 
@@ -971,7 +1017,7 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(45deg, #DCA06D, #4CAF50);
+            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
             color: white;
             padding: 18px 40px;
             border-radius: 50px;
@@ -988,13 +1034,13 @@
         .cta-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #4CAF50, #DCA06D);
+            background: linear-gradient(45deg, #8A4FFF, #DCA06D);
             border-color: white;
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #210F37, #0A1929);
+            background: linear-gradient(135deg, #4A148C, #311B92);
             color: white;
             padding: 70px 0 30px;
             position: relative;
@@ -1008,7 +1054,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .footer-content {
@@ -1072,7 +1118,7 @@
             bottom: -5px;
             width: 40px;
             height: 2px;
-            background: #4CAF50;
+            background: #8A4FFF;
         }
 
         .footer-links ul,
@@ -1098,7 +1144,7 @@
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: #4CAF50;
+            color: #8A4FFF;
             padding-left: 10px;
         }
 
@@ -1112,7 +1158,7 @@
         }
 
         .footer-contact p:hover {
-            color: #4CAF50;
+            color: #8A4FFF;
         }
 
         .footer-contact i {
@@ -1151,7 +1197,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 0;
@@ -1164,7 +1210,7 @@
 
         .social-links a:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(107, 44, 145, 0.3);
         }
 
         .social-links a:hover::before {
@@ -1315,6 +1361,17 @@
                 left: 50%;
                 transform: translateX(-50%);
             }
+
+            /* Responsive marquee */
+            .typing-marquee-letter {
+                font-size: 14px;
+                margin: 0 1px;
+            }
+
+            .marquee-icon {
+                font-size: 16px;
+                margin: 0 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1356,9 +1413,8 @@
                 gap: 30px;
             }
 
-            .marquee-content span {
-                font-size: 14px;
-                margin: 0 20px;
+            .typing-marquee-letter {
+                font-size: 12px;
             }
         }
     </style>
@@ -1390,18 +1446,9 @@
         </div>
     </header>
 
-    <!-- Marquee Banner -->
+    <!-- Typing Marquee Banner -->
     <div class="marquee-banner">
-        <div class="marquee-content">
-            <span><i class="fas fa-user-tie"></i> MEET OUR EXPERT TEAM</span>
-            <span><i class="fas fa-graduation-cap"></i> PROFESSIONAL ACCOUNTANTS</span>
-            <span><i class="fas fa-trophy"></i> AWARD-WINNING EXPERTS</span>
-            <span><i class="fas fa-chart-line"></i> FINANCIAL SPECIALISTS</span>
-            <span><i class="fas fa-handshake"></i> TRUSTED ADVISORS</span>
-            <span><i class="fas fa-certificate"></i> CERTIFIED PROFESSIONALS</span>
-            <span><i class="fas fa-users"></i> COLLABORATIVE TEAM</span>
-            <span><i class="fas fa-star"></i> 5+ YEARS EXPERIENCE</span>
-        </div>
+        <div class="marquee-content" id="typingMarquee"></div>
     </div>
 
     <!-- Page Header -->
@@ -1711,7 +1758,7 @@
             const navLinks = document.getElementById('navLinks');
             const typedText = document.getElementById('typedText');
             const cursor = document.getElementById('cursor');
-            const marqueeContent = document.querySelector('.marquee-content');
+            const typingMarquee = document.getElementById('typingMarquee');
             const video = document.querySelector('.video-container video');
 
             // Mobile Menu Toggle
@@ -1737,7 +1784,7 @@
                 });
             });
 
-            // Typing Effect
+            // Typing Effect for Header
             const texts = [
                 "Professional Accounting Team",
                 "Expert Financial Advisors",
@@ -1786,14 +1833,50 @@
             }
             blinkCursor();
 
-            // Marquee hover effect
-            marqueeContent.addEventListener('mouseenter', () => {
-                marqueeContent.style.animationPlayState = 'paused';
-            });
+            // Typing Marquee Effect
+            const marqueeTexts = [
+                "✧ MEET OUR EXPERT TEAM ✧",
+                "✧ PROFESSIONAL ACCOUNTANTS ✧",
+                "✧ AWARD-WINNING EXPERTS ✧",
+                "✧ FINANCIAL SPECIALISTS ✧",
+                "✧ TRUSTED ADVISORS ✧",
+                "✧ CERTIFIED PROFESSIONALS ✧",
+                "✧ COLLABORATIVE TEAM ✧",
+                "✧ 5+ YEARS EXPERIENCE ✧",
+                "✧ SMART ACCOUNTANTS TEAM ✧",
+                "✧ CONTACT: 0748 836 208 ✧",
+                "✧ EMAIL: SMARTCOUNTINGS@GMAIL.COM ✧"
+            ];
 
-            marqueeContent.addEventListener('mouseleave', () => {
-                marqueeContent.style.animationPlayState = 'running';
-            });
+            // Create marquee with individual letters for typing effect
+            function createTypingMarquee() {
+                typingMarquee.innerHTML = '';
+
+                marqueeTexts.forEach((text, index) => {
+                    // Add text with individual letters
+                    for (let i = 0; i < text.length; i++) {
+                        const letterSpan = document.createElement('span');
+                        letterSpan.className = 'typing-marquee-letter';
+                        letterSpan.textContent = text[i];
+                        letterSpan.style.animationDelay = `${i * 0.05}s`;
+                        typingMarquee.appendChild(letterSpan);
+                    }
+
+                    // Add separator between texts (not after the last one)
+                    if (index < marqueeTexts.length - 1) {
+                        const separator = document.createElement('span');
+                        separator.className = 'marquee-divider';
+                        separator.innerHTML = ' ••• ';
+                        typingMarquee.appendChild(separator);
+                    }
+                });
+
+                // Duplicate content for seamless loop
+                const clone = typingMarquee.cloneNode(true);
+                typingMarquee.appendChild(clone);
+            }
+
+            createTypingMarquee();
 
             // Video controls
             if (video) {

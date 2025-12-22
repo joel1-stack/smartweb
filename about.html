@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        /* Background with vibrant green accounting theme */
+        /* Background with vibrant purple accounting theme */
         body::before {
             content: '';
             position: fixed;
@@ -50,7 +50,7 @@
 
         /* Animated Gradient Header */
         .animated-header {
-            background: linear-gradient(-45deg, #8A4FFF, #4CAF50, #2196F3, #A55B4B);
+            background: linear-gradient(-45deg, #8A4FFF, #6B2C91, #2196F3, #A55B4B);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
@@ -107,7 +107,7 @@
         }
 
         .logo h1 {
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 24px;
@@ -145,7 +145,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             transition: width 0.3s ease;
         }
 
@@ -176,36 +176,33 @@
             transform: scale(1.1);
         }
 
-        /* Marquee Banner */
+        /* Marquee Banner with Letter-by-Letter Typing Effect */
         .marquee-banner {
-            background: linear-gradient(45deg, #210F37, #4CAF50);
+            background: linear-gradient(45deg, #210F37, #6B2C91);
             color: white;
             padding: 15px 0;
             margin-top: 80px;
             overflow: hidden;
             white-space: nowrap;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
         }
 
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
+        .typing-marquee {
+            position: absolute;
+            white-space: nowrap;
+            animation: typingMarquee 60s linear infinite;
             padding-left: 100%;
         }
 
-        .marquee-content span {
-            margin: 0 40px;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-        }
-
-        .marquee-content i {
-            color: #DCA06D;
-            margin-right: 10px;
-        }
-
-        @keyframes marquee {
+        @keyframes typingMarquee {
             0% {
                 transform: translateX(0);
             }
@@ -215,9 +212,26 @@
             }
         }
 
+        .letter {
+            display: inline-block;
+            animation: letterGlow 2s infinite alternate;
+        }
+
+        @keyframes letterGlow {
+            0% {
+                opacity: 0.8;
+                text-shadow: 0 0 5px rgba(220, 160, 109, 0.5);
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(220, 160, 109, 1), 0 0 20px rgba(220, 160, 109, 0.5);
+            }
+        }
+
         /* Page Header with Typing Effect */
         .page-header {
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(76, 175, 80, 0.9));
+            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(107, 44, 145, 0.9));
             color: white;
             padding: 120px 0 80px;
             text-align: center;
@@ -344,7 +358,7 @@
             bottom: -10px;
             width: 80px;
             height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             border-radius: 2px;
         }
 
@@ -401,7 +415,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.1), rgba(76, 175, 80, 0.1));
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.1), rgba(107, 44, 145, 0.1));
             pointer-events: none;
         }
 
@@ -433,7 +447,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .mission-card:hover,
@@ -462,7 +476,7 @@
             font-size: 60px;
             margin-bottom: 25px;
             display: inline-block;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: pulse 2s infinite;
@@ -528,7 +542,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(76, 175, 80, 0.05));
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
             z-index: -1;
         }
 
@@ -538,7 +552,7 @@
         }
 
         .value-icon {
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             color: white;
             width: 70px;
             height: 70px;
@@ -554,7 +568,7 @@
 
         .value-item:hover .value-icon {
             transform: rotate(360deg);
-            background: linear-gradient(45deg, #4CAF50, #8A4FFF);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .value-item h4 {
@@ -588,7 +602,7 @@
             left: 0;
             width: 5px;
             height: 100%;
-            background: linear-gradient(to bottom, #8A4FFF, #4CAF50);
+            background: linear-gradient(to bottom, #8A4FFF, #6B2C91);
         }
 
         .why-choose h2 {
@@ -615,12 +629,12 @@
         }
 
         .reason:hover {
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(76, 175, 80, 0.05));
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
             transform: translateX(10px);
         }
 
         .reason i {
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 28px;
@@ -663,7 +677,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .footer-content {
@@ -727,7 +741,7 @@
             bottom: -5px;
             width: 40px;
             height: 2px;
-            background: #4CAF50;
+            background: #6B2C91;
         }
 
         .footer-links ul,
@@ -753,7 +767,7 @@
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: #4CAF50;
+            color: #6B2C91;
             padding-left: 10px;
         }
 
@@ -767,7 +781,7 @@
         }
 
         .footer-contact p:hover {
-            color: #4CAF50;
+            color: #6B2C91;
         }
 
         .footer-contact i {
@@ -806,7 +820,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             opacity: 0;
             transition: opacity 0.3s;
             z-index: 0;
@@ -939,6 +953,11 @@
                 font-size: 20px;
             }
 
+            .marquee-banner {
+                font-size: 16px;
+                height: 50px;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -970,9 +989,9 @@
                 padding: 20px;
             }
 
-            .marquee-content span {
+            .marquee-banner {
                 font-size: 14px;
-                margin: 0 20px;
+                height: 45px;
             }
         }
     </style>
@@ -1005,17 +1024,54 @@
         </div>
     </header>
 
-    <!-- Marquee Banner -->
+    <!-- Marquee Banner with Letter-by-Letter Typing Effect -->
     <div class="marquee-banner">
-        <div class="marquee-content">
-            <span><i class="fas fa-check-circle"></i> ACCURATE & RELIABLE ACCOUNTING</span>
-            <span><i class="fas fa-bolt"></i> FAST & EFFICIENT SERVICE</span>
-            <span><i class="fas fa-shield-alt"></i> 100% CONFIDENTIAL & SECURE</span>
-            <span><i class="fas fa-chart-line"></i> FINANCIAL CLARITY & GROWTH</span>
-            <span><i class="fas fa-users"></i> CLIENT-FOCUSED SOLUTIONS</span>
-            <span><i class="fas fa-laptop-code"></i> MODERN TECHNOLOGY DRIVEN</span>
-            <span><i class="fas fa-handshake"></i> TRUSTED BY 50+ BUSINESSES</span>
-            <span><i class="fas fa-trophy"></i> AWARD-WINNING SERVICE QUALITY</span>
+        <div class="typing-marquee" id="typingMarquee">
+            <span class="letter">S</span><span class="letter">M</span><span class="letter">A</span><span
+                class="letter">R</span><span class="letter">T</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
+                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">A</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">S</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">F</span><span class="letter">O</span><span class="letter">R</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">R</span><span class="letter">E</span><span class="letter">A</span><span
+                class="letter">L</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
+                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">I</span><span class="letter">N</span><span
+                class="letter">G</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">S</span><span class="letter">O</span><span class="letter">L</span><span
+                class="letter">U</span><span class="letter">T</span><span class="letter">I</span><span
+                class="letter">O</span><span class="letter">N</span><span class="letter">S</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">📞</span>
+            <span class="letter">0</span><span class="letter">7</span><span class="letter">4</span><span
+                class="letter">8</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">8</span><span class="letter">3</span><span class="letter">6</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">2</span><span class="letter">0</span><span class="letter">8</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">✉</span>
+            <span class="letter">s</span><span class="letter">m</span><span class="letter">a</span><span
+                class="letter">r</span><span class="letter">t</span><span class="letter">c</span><span
+                class="letter">o</span><span class="letter">u</span><span class="letter">n</span><span
+                class="letter">t</span><span class="letter">i</span><span class="letter">n</span><span
+                class="letter">g</span><span class="letter">s</span><span class="letter">@</span><span
+                class="letter">g</span><span class="letter">m</span><span class="letter">a</span><span
+                class="letter">i</span><span class="letter">l</span><span class="letter">.</span><span
+                class="letter">c</span><span class="letter">o</span><span class="letter">m</span>
         </div>
     </div>
 
@@ -1275,6 +1331,7 @@
             const navLinks = document.getElementById('navLinks');
             const typedText = document.getElementById('typedText');
             const cursor = document.getElementById('cursor');
+            const typingMarquee = document.getElementById('typingMarquee');
 
             // Mobile Menu Toggle
             menuToggle.addEventListener('click', function () {
@@ -1296,6 +1353,32 @@
                     const icon = menuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                });
+            });
+
+            // Marquee letter-by-letter animation
+            function initMarqueeAnimation() {
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach((letter, index) => {
+                    letter.style.animationDelay = `${index * 0.05}s`;
+                });
+            }
+            initMarqueeAnimation();
+
+            // Marquee hover effect
+            typingMarquee.addEventListener('mouseenter', () => {
+                typingMarquee.style.animationPlayState = 'paused';
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach(letter => {
+                    letter.style.animationPlayState = 'paused';
+                });
+            });
+
+            typingMarquee.addEventListener('mouseleave', () => {
+                typingMarquee.style.animationPlayState = 'running';
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach(letter => {
+                    letter.style.animationPlayState = 'running';
                 });
             });
 
@@ -1367,21 +1450,11 @@
             animateOnScroll();
             window.addEventListener('scroll', animateOnScroll);
 
-            // Marquee hover effect
-            const marquee = document.querySelector('.marquee-content');
-            marquee.addEventListener('mouseenter', () => {
-                marquee.style.animationPlayState = 'paused';
-            });
-
-            marquee.addEventListener('mouseleave', () => {
-                marquee.style.animationPlayState = 'running';
-            });
-
             // Add active class to current page in footer links
             const currentPage = window.location.pathname.split('/').pop();
             document.querySelectorAll('.footer-links a').forEach(link => {
                 if (link.getAttribute('href') === currentPage) {
-                    link.style.color = '#4CAF50';
+                    link.style.color = '#6B2C91';
                     link.style.fontWeight = '600';
                 }
             });
@@ -1398,8 +1471,8 @@
                 });
             });
 
-            // Add hover sound effect (optional)
-            const buttons = document.querySelectorAll('.cta-button, .social-links a, .reason');
+            // Add hover effect to buttons
+            const buttons = document.querySelectorAll('.social-links a, .reason');
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', () => {
                     button.style.transform = 'scale(1.05)';
@@ -1410,30 +1483,21 @@
                 });
             });
 
-            // Counter animation for stats (if any)
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const increment = target / 200;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 10);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                updateCount();
+            // Handle window resize
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             });
-        });
 
-        // Add loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-            document.body.style.transition = 'opacity 0.5s ease';
+            // Add loading animation
+            window.addEventListener('load', () => {
+                document.body.style.opacity = '1';
+                document.body.style.transition = 'opacity 0.5s ease';
+            });
         });
     </script>
 </body>

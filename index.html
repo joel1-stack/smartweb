@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Accountants - Professional Accounting Solutions</title>
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styles */
@@ -16,10 +18,27 @@
         }
 
         body {
-            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Background with vibrant purple accounting theme */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98)),
+                url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
         }
 
         .container {
@@ -29,103 +48,28 @@
             padding: 0 20px;
         }
 
-        /* Animated Gradient Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(135deg,
-                    rgba(0, 150, 136, 0.05) 0%,
-                    /* Green */
-                    rgba(139, 195, 74, 0.05) 25%,
-                    /* Light Green */
-                    rgba(76, 175, 80, 0.05) 50%,
-                    /* Green */
-                    rgba(56, 142, 60, 0.05) 75%,
-                    /* Dark Green */
-                    rgba(27, 94, 32, 0.05) 100%
-                    /* Deep Green */
-                ),
-                linear-gradient(45deg,
-                    rgba(33, 150, 243, 0.03) 0%,
-                    /* Blue */
-                    rgba(0, 188, 212, 0.03) 50%,
-                    /* Cyan */
-                    rgba(0, 150, 136, 0.03) 100%
-                    /* Teal */
-                );
-            background-size: 400% 400%, 200% 200%;
-            animation: gradientBG 20s ease infinite;
-            z-index: -2;
+        /* Animated Gradient Header */
+        .animated-header {
+            background: linear-gradient(-45deg, #8A4FFF, #6B2C91, #4CAF50, #A55B4B);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
         }
 
-        @keyframes gradientBG {
+        @keyframes gradientShift {
             0% {
-                background-position: 0% 0%, 0% 0%;
+                background-position: 0% 50%;
             }
 
             50% {
-                background-position: 100% 100%, 100% 100%;
+                background-position: 100% 50%;
             }
 
             100% {
-                background-position: 0% 0%, 0% 0%;
+                background-position: 0% 50%;
             }
         }
 
-        /* Floating Elements Animation */
-        .floating-element {
-            position: absolute;
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: 5%;
-            background: rgba(0, 150, 136, 0.1);
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 10%;
-            background: rgba(139, 195, 74, 0.1);
-            animation-delay: -2s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            left: 15%;
-            background: rgba(56, 142, 60, 0.1);
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        /* Header & Navigation with Marquee */
+        /* Header & Navigation */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -133,70 +77,14 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s;
             backdrop-filter: blur(10px);
-        }
-
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-top {
-            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
-            padding: 8px 0;
-            color: white;
-            font-size: 14px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-marquee {
-            display: flex;
-            animation: headerMarquee 30s linear infinite;
-        }
-
-        .marquee-item {
-            display: flex;
-            align-items: center;
-            margin: 0 30px;
-            white-space: nowrap;
-        }
-
-        .marquee-item i {
-            margin-right: 10px;
-            color: #FFEB3B;
-            animation: pulseIcon 2s infinite;
-        }
-
-        @keyframes headerMarquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes pulseIcon {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            min-height: 70px;
+            padding: 20px 0;
         }
 
         .logo {
@@ -205,45 +93,29 @@
             gap: 10px;
         }
 
-        .logo img {
+        .logo-img {
+            width: 50px;
             height: 50px;
-            width: auto;
+            object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.3);
             transition: transform 0.3s;
         }
 
-        .logo img:hover {
+        .logo-img:hover {
             transform: rotate(10deg) scale(1.1);
         }
 
         .logo h1 {
-            color: #4CAF50;
-            font-size: 24px;
-            font-weight: 700;
-            position: relative;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .logo h1::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover h1::after {
-            width: 100%;
+            font-size: 24px;
+            font-weight: 700;
         }
 
         .logo span {
-            color: #2196F3;
+            color: #A55B4B;
         }
 
         .nav-links {
@@ -273,7 +145,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             transition: width 0.3s ease;
         }
 
@@ -283,11 +155,11 @@
         }
 
         .nav-links a:hover {
-            color: #4CAF50;
+            color: #8A4FFF;
         }
 
         .nav-links a.active {
-            color: #4CAF50;
+            color: #8A4FFF;
         }
 
         .menu-toggle {
@@ -296,93 +168,101 @@
             cursor: pointer;
             background: none;
             border: none;
-            color: #333;
+            color: #210F37;
             transition: transform 0.3s;
         }
 
         .menu-toggle:hover {
             transform: scale(1.1);
-            color: #4CAF50;
         }
 
-        /* Animated Gradient Header */
-        .animated-header {
-            background: linear-gradient(-45deg, #4CAF50, #2196F3, #009688, #8BC34A);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        /* Marquee Banner with letter-by-letter typing effect */
+        .marquee-banner {
+            background: linear-gradient(45deg, #210F37, #6B2C91);
+            color: white;
+            padding: 15px 0;
+            margin-top: 80px;
+            overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
         }
 
-        @keyframes gradientShift {
+        .typing-marquee {
+            position: absolute;
+            white-space: nowrap;
+            animation: typingMarquee 60s linear infinite;
+            padding-left: 100%;
+        }
+
+        @keyframes typingMarquee {
             0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
+                transform: translateX(0);
             }
 
             100% {
-                background-position: 0% 50%;
+                transform: translateX(-100%);
             }
         }
 
-        /* Hero Section with Background Video */
+        .letter {
+            display: inline-block;
+            animation: letterGlow 2s infinite alternate;
+        }
+
+        @keyframes letterGlow {
+            0% {
+                opacity: 0.8;
+                text-shadow: 0 0 5px rgba(220, 160, 109, 0.5);
+            }
+
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px rgba(220, 160, 109, 1), 0 0 20px rgba(220, 160, 109, 0.5);
+            }
+        }
+
+        /* Hero Section */
         .hero {
-            position: relative;
+            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(107, 44, 145, 0.9)),
+                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 160px 0 100px;
+            padding: 140px 0 80px;
             text-align: center;
-            margin-top: 70px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .video-background {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
         }
 
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 150, 136, 0.85), rgba(33, 150, 243, 0.85));
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero .container {
             position: relative;
             z-index: 1;
         }
 
-        .hero h2 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 48px;
             margin-bottom: 20px;
             font-weight: 700;
-            line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s ease-out;
         }
@@ -400,27 +280,40 @@
         }
 
         .hero-tagline {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 20px;
             font-weight: 600;
-            color: #FFEB3B;
+            color: #DCA06D;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 18px;
             max-width: 700px;
             margin: 0 auto 40px;
             opacity: 0.95;
             line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
             color: white;
-            padding: 16px 35px;
+            padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
@@ -428,123 +321,42 @@
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 2px solid transparent;
-            position: relative;
-            z-index: 1;
-            animation: pulseCTA 2s infinite;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
-            background: linear-gradient(45deg, #2196F3, #4CAF50);
-            animation: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #8A4FFF, #DCA06D);
+            border-color: white;
         }
 
-        @keyframes pulseCTA {
-
-            0%,
-            100% {
-                box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 5px 20px rgba(76, 175, 80, 0.6);
-            }
-        }
-
-        /* Marquee Banner for Sections */
-        .section-marquee {
-            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
-            color: white;
-            padding: 15px 0;
-            overflow: hidden;
-            position: relative;
-            margin: 30px 0;
-        }
-
-        .section-marquee:hover .marquee-content {
-            animation-play-state: paused;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-            padding-left: 100%;
-        }
-
-        .marquee-content span {
-            margin: 0 40px;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-
-        .marquee-content span:hover {
-            color: #FFEB3B;
-            transform: scale(1.1);
-        }
-
-        .marquee-content i {
-            color: #FFEB3B;
-            margin-right: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Video Controls */
-        .video-controls {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10;
-            display: flex;
-            gap: 10px;
-        }
-
-        .video-btn {
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-        }
-
-        .video-btn:hover {
-            background: rgba(76, 175, 80, 0.8);
-            transform: scale(1.1);
-        }
-
-        /* Value Points - COMPACT CARDS */
+        /* Value Points */
         .value-points {
-            padding: 70px 0;
+            padding: 80px 0;
             background-color: #fff;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            position: relative;
         }
 
         .section-title h2 {
-            color: #333;
-            font-size: 2.5rem;
+            color: #210F37;
+            font-size: 2.8rem;
             margin-bottom: 15px;
             font-weight: 700;
             position: relative;
@@ -554,12 +366,13 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
             left: 50%;
+            bottom: -10px;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
+            border-radius: 2px;
         }
 
         .section-title p {
@@ -567,63 +380,78 @@
             max-width: 600px;
             margin: 0 auto;
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .points-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .point-card {
             background-color: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
+            padding: 40px 30px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.3s ease;
-            border-top: 4px solid #4CAF50;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
             height: 100%;
+            border-top: 5px solid #6B2C91;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .point-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
+            z-index: -1;
         }
 
         .point-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
+            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
         }
 
         .point-icon {
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             color: white;
-            width: 70px;
-            height: 70px;
-            line-height: 70px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
             border-radius: 50%;
-            margin: 0 auto 20px;
-            font-size: 28px;
+            margin: 0 auto 25px;
+            font-size: 32px;
             transition: all 0.3s;
         }
 
         .point-card:hover .point-icon {
-            transform: rotate(360deg) scale(1.1);
+            transform: rotate(360deg);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .point-card h3 {
-            color: #333;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-            font-weight: 600;
+            color: #210F37;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .point-card p {
             color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        /* Services Preview - COMPACT CARDS */
+        /* Services Preview */
         .services-preview {
-            padding: 70px 0;
-            background-color: #f8f9fa;
+            padding: 80px 0;
+            background-color: #f8f9ff;
             position: relative;
         }
 
@@ -634,74 +462,101 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
             background-color: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
             text-align: center;
             height: 100%;
-            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
+            z-index: -1;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
-            border-color: #4CAF50;
+            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
         }
 
         .service-icon {
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             color: white;
-            font-size: 28px;
-            margin-bottom: 20px;
-            height: 70px;
-            width: 70px;
-            line-height: 70px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            font-size: 32px;
             transition: all 0.3s;
         }
 
         .service-card:hover .service-icon {
-            transform: rotate(10deg) scale(1.1);
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
         }
 
         .service-card h3 {
-            color: #333;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-            font-weight: 600;
+            color: #210F37;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .service-card p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
+        .service-link {
+            display: inline-block;
+            color: #8A4FFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .service-link:hover {
+            color: #6B2C91;
+            transform: translateX(5px);
+        }
+
         /* Pricing Section */
         .pricing-section {
-            padding: 70px 0;
+            padding: 80px 0;
             background-color: #fff;
+            position: relative;
         }
 
         .pricing-table {
             overflow-x: auto;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         table {
@@ -711,268 +566,281 @@
         }
 
         thead {
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #210F37, #6B2C91);
             color: white;
         }
 
         th,
         td {
-            padding: 15px;
+            padding: 18px 20px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
 
         th {
             font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
         }
 
         tbody tr:hover {
+            background-color: #f9f5ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.1);
+        }
+
+        tbody tr:nth-child(even) {
             background-color: #f8f9ff;
+        }
+
+        tbody tr:nth-child(even):hover {
+            background-color: #f0f2ff;
         }
 
         .price {
             font-weight: bold;
-            color: #4CAF50;
-            font-size: 1.1rem;
+            color: #6B2C91;
+            font-size: 1.2rem;
         }
 
         .note {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f0f7ff;
-            border-left: 4px solid #4CAF50;
-            border-radius: 5px;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(45deg, #f9f5ff, #f0f2ff);
+            border-left: 4px solid #8A4FFF;
+            border-radius: 10px;
             font-style: italic;
-            color: #555;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .note strong {
+            color: #210F37;
         }
 
         /* Client References Section */
         .references-section {
-            padding: 70px 0;
-            background-color: #f8f9fa;
+            padding: 80px 0;
+            background-color: #f8f9ff;
+            position: relative;
         }
 
         .references-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 35px;
         }
 
         .reference-card {
             background-color: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s;
-            border-left: 4px solid #4CAF50;
+            border-radius: 15px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
         }
 
         .reference-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
+            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
+            border-color: #8A4FFF;
+        }
+
+        .reference-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .client-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
             border-bottom: 2px solid #f0f0f0;
         }
 
         .client-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-right: 15px;
+            font-size: 24px;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
 
         .client-info h4 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 1.2rem;
+            color: #210F37;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .client-info p {
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .client-info .phone {
+            color: #8A4FFF;
+            font-weight: 600;
         }
 
         .financial-snapshot {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #f8f9ff;
-            border-radius: 8px;
-            border-left: 4px solid #2196F3;
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(45deg, #f9f5ff, #f0f2ff);
+            border-radius: 10px;
+            border-left: 4px solid #6B2C91;
         }
 
         .financial-snapshot h5 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1rem;
+            color: #210F37;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .financial-snapshot pre {
             background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 15px;
+            border-radius: 8px;
             overflow-x: auto;
-            font-size: 0.85rem;
-            line-height: 1.4;
+            font-size: 0.9rem;
+            line-height: 1.5;
             color: #444;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #eee;
         }
 
-        /* CEO Welcome Video */
-        .ceo-welcome {
-            padding: 60px 0;
-            background-color: #fff;
-        }
-
-        .welcome-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .welcome-text h2 {
-            color: #333;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .welcome-text h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
-        }
-
-        .welcome-text p {
-            color: #666;
-            font-size: 1.1rem;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .video-container:hover {
-            transform: scale(1.02);
-        }
-
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Video fallback styling */
-        .video-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .video-fallback i {
-            font-size: 60px;
-            margin-bottom: 20px;
-            color: #FFEB3B;
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .video-fallback h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .video-fallback p {
-            font-size: 16px;
-            opacity: 0.9;
+        .financial-snapshot .highlight {
+            color: #6B2C91;
+            font-weight: bold;
         }
 
         /* Stats Section */
         .stats-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+            padding: 80px 0;
+            background: linear-gradient(135deg, #210F37 0%, #6B2C91 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
+            gap: 30px;
             text-align: center;
         }
 
         .stat-item {
-            padding: 20px;
-            transition: transform 0.3s;
+            padding: 30px 20px;
+            position: relative;
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
         }
 
         .stat-item h3 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 15px;
             font-weight: 700;
-            color: #FFEB3B;
+            color: #DCA06D;
         }
 
         .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 600;
         }
 
-        /* Footer - COMPACT */
-        footer {
-            background: linear-gradient(135deg, #1a237e, #283593);
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #210F37, #0A1929),
+                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
             color: white;
-            padding: 50px 0 25px;
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 80px auto;
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(138, 79, 255, 0.2), rgba(107, 44, 145, 0.2));
+            z-index: 0;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #210F37, #0A1929);
+            color: white;
+            padding: 70px 0 30px;
             position: relative;
             overflow: hidden;
         }
@@ -984,58 +852,56 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-logo {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .footer-logo img {
-            height: 45px;
+            height: 55px;
             width: auto;
             filter: brightness(0) invert(1);
             transition: transform 0.3s;
         }
 
         .footer-logo img:hover {
-            transform: rotate(-5deg) scale(1.1);
+            transform: rotate(-5deg);
         }
 
         .footer-logo h3 {
             color: white;
-            font-size: 22px;
+            font-size: 26px;
             margin-bottom: 5px;
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
         .footer-logo span {
-            color: #4CAF50;
+            color: #DCA06D;
         }
 
         .footer-logo p {
             color: #ccc;
-            font-size: 0.9rem;
+            font-size: 16px;
             line-height: 1.5;
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            color: #4CAF50;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            color: #DCA06D;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             font-weight: 600;
             position: relative;
             display: inline-block;
@@ -1050,7 +916,7 @@
             bottom: -5px;
             width: 40px;
             height: 2px;
-            background: #2196F3;
+            background: #6B2C91;
         }
 
         .footer-links ul,
@@ -1060,7 +926,7 @@
 
         .footer-links li,
         .footer-services li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a,
@@ -1068,105 +934,93 @@
             color: #ccc;
             text-decoration: none;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 16px;
             display: inline-block;
+            position: relative;
+            padding-left: 0;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: #4CAF50;
-            transform: translateX(5px);
+            color: #6B2C91;
+            padding-left: 10px;
         }
 
         .footer-contact p {
             color: #ccc;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
-            font-size: 0.9rem;
+            font-size: 16px;
             transition: color 0.3s;
         }
 
         .footer-contact p:hover {
-            color: #4CAF50;
+            color: #6B2C91;
         }
 
         .footer-contact i {
-            margin-right: 10px;
-            color: #4CAF50;
+            margin-right: 12px;
+            color: #DCA06D;
             margin-top: 3px;
-            font-size: 0.9rem;
+            font-size: 18px;
+            width: 20px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 1;
         }
 
         .social-links a:hover {
-            background: linear-gradient(45deg, #4CAF50, #2196F3);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
-            font-size: 0.85rem;
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background: linear-gradient(45deg, #25d366, #128C7E);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
-        }
-
-        /* Scroll-triggered Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+            font-size: 15px;
         }
 
         /* Responsive Design */
@@ -1175,55 +1029,56 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .hero h2 {
-                font-size: 3rem;
+            .references-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 2.5rem;
+            .hero h1 {
+                font-size: 36px;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero-tagline {
+                font-size: 22px;
             }
 
-            .section-title h2 {
-                font-size: 2rem;
+            .section-title h2,
+            .cta-section h2 {
+                font-size: 2.2rem;
             }
 
-            .welcome-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .point-card,
+            .service-card {
+                padding: 30px 25px;
             }
 
-            .welcome-text h2::after {
-                left: 50%;
-                transform: translateX(-50%);
+            .point-icon,
+            .service-icon {
+                width: 70px;
+                height: 70px;
+                line-height: 70px;
+                font-size: 28px;
             }
         }
 
         @media (max-width: 768px) {
-            .header-top {
-                display: none;
-            }
-
             .menu-toggle {
                 display: block;
             }
 
             .nav-links {
                 position: fixed;
-                top: 70px;
+                top: 80px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 80px);
                 background-color: white;
                 flex-direction: column;
                 align-items: center;
                 padding-top: 40px;
-                transition: left 0.3s ease;
+                transition: left 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
                 z-index: 999;
             }
 
@@ -1233,56 +1088,49 @@
 
             .nav-links li {
                 margin: 15px 0;
-                width: 100%;
+                width: 80%;
                 text-align: center;
             }
 
             .nav-links a {
                 display: block;
                 padding: 12px 0;
-                font-size: 1.1rem;
+                font-size: 18px;
                 border-bottom: 1px solid #eee;
-                width: 80%;
-                margin: 0 auto;
+                width: 100%;
             }
 
             .nav-links a:last-child {
                 border-bottom: none;
             }
 
+            .marquee-banner {
+                font-size: 16px;
+                height: 50px;
+            }
+
             .hero {
-                padding: 120px 0 80px;
+                padding: 100px 0 60px;
                 margin-top: 70px;
             }
 
-            .hero h2 {
-                font-size: 2.2rem;
+            .hero h1 {
+                font-size: 28px;
             }
 
             .hero-tagline {
-                font-size: 1.4rem;
+                font-size: 18px;
             }
 
             .hero p {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-
-            .cta-button {
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
-
-            .welcome-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                font-size: 16px;
             }
 
             .points-grid,
             .services-grid,
             .references-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
             }
 
             .point-card,
@@ -1297,56 +1145,44 @@
                 height: 60px;
                 line-height: 60px;
                 font-size: 24px;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
             }
 
             .point-card h3,
             .service-card h3 {
-                font-size: 1.2rem;
-                margin-bottom: 10px;
-            }
-
-            .point-card p,
-            .service-card p {
-                font-size: 0.9rem;
-                line-height: 1.4;
-            }
-
-            .video-controls {
-                bottom: 10px;
-                right: 10px;
-            }
-
-            .video-btn {
-                width: 35px;
-                height: 35px;
+                font-size: 1.3rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
             }
 
             .stat-item h3 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .cta-section {
+                padding: 60px 20px;
+                margin: 60px auto;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .footer-links li,
-            .footer-services li {
-                margin-bottom: 8px;
-            }
-
-            .footer-contact p {
-                margin-bottom: 10px;
-            }
-
-            .floating-element {
-                display: none;
+                gap: 30px;
             }
         }
 
@@ -1357,27 +1193,24 @@
             }
 
             .logo h1 {
-                font-size: 1.1rem;
+                font-size: 20px;
             }
 
-            .logo img {
-                height: 40px;
+            .marquee-banner {
+                font-size: 14px;
+                height: 45px;
             }
 
-            .hero h2 {
-                font-size: 1.8rem;
+            .hero h1 {
+                font-size: 24px;
             }
 
             .hero-tagline {
-                font-size: 1.2rem;
+                font-size: 16px;
             }
 
             .section-title h2 {
-                font-size: 1.6rem;
-            }
-
-            .section-title p {
-                font-size: 1rem;
+                font-size: 1.8rem;
             }
 
             .point-card,
@@ -1392,7 +1225,18 @@
                 height: 55px;
                 line-height: 55px;
                 font-size: 22px;
-                margin-bottom: 12px;
+                margin-bottom: 15px;
+            }
+
+            .client-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                margin-right: 15px;
+            }
+
+            .client-info h4 {
+                font-size: 1.1rem;
             }
 
             .footer-logo img {
@@ -1400,17 +1244,9 @@
             }
 
             .social-links a {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 24px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
         }
 
@@ -1431,72 +1267,47 @@
             animation: countUp 0.6s ease forwards;
         }
 
-        /* Loading animation for images */
-        .lazy-load {
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        /* Floating animation for cards */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        .lazy-load.loaded {
-            opacity: 1;
+        .point-card,
+        .service-card,
+        .reference-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .point-card:nth-child(2),
+        .service-card:nth-child(2),
+        .reference-card:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .point-card:nth-child(3),
+        .service-card:nth-child(3),
+        .reference-card:nth-child(3) {
+            animation-delay: 1s;
         }
     </style>
 </head>
 
 <body>
-    <!-- Floating Background Elements -->
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-        class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Header with Marquee -->
-    <header id="mainHeader">
-        <div class="header-top">
-            <div class="header-marquee">
-                <div class="marquee-item">
-                    <i class="fas fa-certificate"></i> Certified Professional Accountants
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-chart-line"></i> Expert Financial Analysis
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-file-invoice-dollar"></i> Tax Compliance Specialists
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-clock"></i> 24/7 Client Support Available
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-award"></i> Award-Winning Accounting Services
-                </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="marquee-item">
-                    <i class="fas fa-certificate"></i> Certified Professional Accountants
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-chart-line"></i> Expert Financial Analysis
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-file-invoice-dollar"></i> Tax Compliance Specialists
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-clock"></i> 24/7 Client Support Available
-                </div>
-                <div class="marquee-item">
-                    <i class="fas fa-award"></i> Award-Winning Accounting Services
-                </div>
-            </div>
-        </div>
-
+    <!-- Header & Navigation -->
+    <header class="animated-header">
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="lazy-load">
+                    <!-- Your local logo image -->
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
                     <h1>Smart<span>Accountants</span></h1>
                 </div>
 
@@ -1516,83 +1327,70 @@
         </div>
     </header>
 
-    <!-- Hero Section with Background Video -->
-    <section class="hero animated-header">
-        <div class="video-background">
-            <!-- Fixed working video source -->
-            <video autoplay muted loop playsinline id="bgVideo">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-financial-graph-on-a-screen-31436-large.mp4"
-                    type="video/mp4">
-                <!-- Fallback video -->
-                <source src="https://cdn.pixabay.com/video/2023/05/29/163256-825969211_large.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="video-overlay"></div>
-
-        <div class="container">
-            <div class="hero-content">
-                <h2>Smart Accountants</h2>
-                <div class="hero-tagline">YOUR TRUSTED ACCOUNTING PARTNER</div>
-                <p>Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya</p>
-                <a href="contact.html" class="cta-button">Get Free Consultation</a>
-            </div>
-        </div>
-
-        <div class="video-controls">
-            <button class="video-btn" id="muteBtn" aria-label="Toggle sound">
-                <i class="fas fa-volume-up"></i>
-            </button>
-            <button class="video-btn" id="pauseBtn" aria-label="Pause/Play video">
-                <i class="fas fa-pause"></i>
-            </button>
-        </div>
-    </section>
-
-    <!-- Section Marquee -->
-    <div class="section-marquee">
-        <div class="marquee-content">
-            <span><i class="fas fa-bullhorn"></i> NEW: QuickBooks Pro Setup Special Offer!</span>
-            <span><i class="fas fa-star"></i> FREE Initial Consultation for New Clients</span>
-            <span><i class="fas fa-gift"></i> Tax Season Discount: 15% Off All Filing Services</span>
-            <span><i class="fas fa-calendar-check"></i> Book Your Year-End Review Now!</span>
-            <span><i class="fas fa-chart-pie"></i> Custom Financial Dashboard Included</span>
-            <!-- Duplicate for seamless loop -->
-            <span><i class="fas fa-bullhorn"></i> NEW: QuickBooks Pro Setup Special Offer!</span>
-            <span><i class="fas fa-star"></i> FREE Initial Consultation for New Clients</span>
-            <span><i class="fas fa-gift"></i> Tax Season Discount: 15% Off All Filing Services</span>
-            <span><i class="fas fa-calendar-check"></i> Book Your Year-End Review Now!</span>
-            <span><i class="fas fa-chart-pie"></i> Custom Financial Dashboard Included</span>
+    <!-- Marquee Banner with Letter-by-Letter Typing Effect -->
+    <div class="marquee-banner">
+        <div class="typing-marquee" id="typingMarquee">
+            <span class="letter">S</span><span class="letter">M</span><span class="letter">A</span><span
+                class="letter">R</span><span class="letter">T</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
+                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">A</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">S</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">F</span><span class="letter">O</span><span class="letter">R</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">R</span><span class="letter">E</span><span class="letter">A</span><span
+                class="letter">L</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
+                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
+                class="letter">T</span><span class="letter">I</span><span class="letter">N</span><span
+                class="letter">G</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">S</span><span class="letter">O</span><span class="letter">L</span><span
+                class="letter">U</span><span class="letter">T</span><span class="letter">I</span><span
+                class="letter">O</span><span class="letter">N</span><span class="letter">S</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">📞</span>
+            <span class="letter">0</span><span class="letter">7</span><span class="letter">4</span><span
+                class="letter">8</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">8</span><span class="letter">3</span><span class="letter">6</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">2</span><span class="letter">0</span><span class="letter">8</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">|</span>
+            <span class="letter">&nbsp;</span>
+            <span class="letter">✉</span>
+            <span class="letter">s</span><span class="letter">m</span><span class="letter">a</span><span
+                class="letter">r</span><span class="letter">t</span><span class="letter">c</span><span
+                class="letter">o</span><span class="letter">u</span><span class="letter">n</span><span
+                class="letter">t</span><span class="letter">i</span><span class="letter">n</span><span
+                class="letter">g</span><span class="letter">s</span><span class="letter">@</span><span
+                class="letter">g</span><span class="letter">m</span><span class="letter">a</span><span
+                class="letter">i</span><span class="letter">l</span><span class="letter">.</span><span
+                class="letter">c</span><span class="letter">o</span><span class="letter">m</span>
         </div>
     </div>
 
-    <!-- CEO Welcome Video -->
-    <section class="ceo-welcome animate-on-scroll">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="welcome-content">
-                <div class="welcome-text">
-                    <h2>Welcome from Our CEO</h2>
-                    <p>Hear directly from our leadership about our commitment to excellence in accounting services and
-                        client satisfaction. We combine technical expertise with personalized service to help your
-                        business thrive.</p>
-                </div>
-                <div class="video-container">
-                    <video controls poster="images/video/poster.jpg" id="ceoVideo">
-                        <source src="images/video/Smart_Accountants_-_Professional_Account.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-fallback">
-                        <i class="fas fa-play-circle"></i>
-                        <h3>CEO Welcome Message</h3>
-                        <p>Click to play our CEO's welcome message</p>
-                    </div>
-                </div>
-            </div>
+            <h1>Smart Accountants</h1>
+            <div class="hero-tagline">YOUR TRUSTED ACCOUNTING PARTNER</div>
+            <p>Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya. We deliver
+                accurate, reliable, and timely financial solutions tailored to your business needs.</p>
+            <a href="contact.html" class="cta-button">Get Free Consultation</a>
         </div>
     </section>
 
     <!-- Value Points -->
-    <section class="value-points animate-on-scroll">
+    <section class="value-points">
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose Smart Accountants?</h2>
@@ -1605,7 +1403,8 @@
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <h3>Accurate & Reliable</h3>
-                    <p>We provide precise financial information you can trust for informed decision-making.</p>
+                    <p>We provide precise financial information you can trust for informed decision-making with zero
+                        errors.</p>
                 </div>
 
                 <div class="point-card">
@@ -1613,7 +1412,7 @@
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Technology-Driven</h3>
-                    <p>Using modern tools like QuickBooks, Excel, and digital reconciliation systems.</p>
+                    <p>Using modern tools like QuickBooks, Excel, and digital reconciliation systems for efficiency.</p>
                 </div>
 
                 <div class="point-card">
@@ -1627,25 +1426,8 @@
         </div>
     </section>
 
-    <!-- Services Marquee -->
-    <div class="section-marquee">
-        <div class="marquee-content">
-            <span><i class="fas fa-book"></i> Professional Bookkeeping Services</span>
-            <span><i class="fas fa-file-invoice-dollar"></i> Tax Computation & Filing</span>
-            <span><i class="fas fa-chart-line"></i> Financial Reporting & Analysis</span>
-            <span><i class="fas fa-users"></i> Payroll Management Solutions</span>
-            <span><i class="fas fa-calculator"></i> QuickBooks Setup & Training</span>
-            <!-- Duplicate for seamless loop -->
-            <span><i class="fas fa-book"></i> Professional Bookkeeping Services</span>
-            <span><i class="fas fa-file-invoice-dollar"></i> Tax Computation & Filing</span>
-            <span><i class="fas fa-chart-line"></i> Financial Reporting & Analysis</span>
-            <span><i class="fas fa-users"></i> Payroll Management Solutions</span>
-            <span><i class="fas fa-calculator"></i> QuickBooks Setup & Training</span>
-        </div>
-    </div>
-
     <!-- Services Preview -->
-    <section class="services-preview animate-on-scroll">
+    <section class="services-preview">
         <div class="container">
             <div class="section-title">
                 <h2>Our Core Services</h2>
@@ -1657,16 +1439,20 @@
                     <div class="service-icon">
                         <i class="fas fa-book"></i>
                     </div>
-                    <h3>Bookkeeping</h3>
-                    <p>Accurate recording and maintenance of financial transactions for smooth operations.</p>
+                    <h3>Accounting & Bookkeeping</h3>
+                    <p>Accurate recording and maintenance of financial transactions for smooth operations and
+                        compliance.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-file-invoice-dollar"></i>
                     </div>
-                    <h3>Tax Computation & Filing</h3>
-                    <p>VAT, Income Tax, PAYE, Withholding Tax, Annual Returns ensuring full compliance.</p>
+                    <h3>Tax Services</h3>
+                    <p>VAT, Income Tax, PAYE, Withholding Tax, Annual Returns ensuring full compliance with KRA
+                        regulations.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
                 </div>
 
                 <div class="service-card">
@@ -1674,14 +1460,16 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Financial Reporting</h3>
-                    <p>Balance Sheet, Profit & Loss, Cash Flow Statement, and Management Accounts.</p>
+                    <p>Balance Sheet, Profit & Loss, Cash Flow Statement, and Management Accounts for informed
+                        decisions.</p>
+                    <a href="services.html" class="service-link">Learn More →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing-section animate-on-scroll">
+    <section class="pricing-section">
         <div class="container">
             <div class="section-title">
                 <h2>Transparent Pricing</h2>
@@ -1699,52 +1487,52 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Accounting & Bookkeeping</td>
-                            <td>Complete financial record management</td>
+                            <td><strong>Accounting & Bookkeeping</strong></td>
+                            <td>Complete financial record management and transaction recording</td>
                             <td class="price">10,000 Ksh</td>
                         </tr>
                         <tr>
-                            <td>Tax Services</td>
-                            <td>VAT, Income Tax, PAYE filing</td>
+                            <td><strong>Tax Services</strong></td>
+                            <td>VAT, Income Tax, PAYE filing and compliance</td>
                             <td class="price">4,000 Ksh</td>
                         </tr>
                         <tr>
-                            <td>Consultancy Services</td>
-                            <td>Financial advice and planning</td>
+                            <td><strong>Consultancy Services</strong></td>
+                            <td>Financial advice, planning, and business strategy</td>
                             <td class="price">3,500 Ksh</td>
                         </tr>
                         <tr>
-                            <td>Payroll Management</td>
-                            <td>Per employee monthly management</td>
+                            <td><strong>Payroll Management</strong></td>
+                            <td>Per employee monthly salary processing and statutory deductions</td>
                             <td class="price">380 Ksh/employee</td>
                         </tr>
                         <tr>
-                            <td>Budgeting & Forecasting</td>
-                            <td>Financial planning and projections</td>
+                            <td><strong>Budgeting & Forecasting</strong></td>
+                            <td>Financial planning, projections, and budget preparation</td>
                             <td class="price">5,000 Ksh</td>
                         </tr>
                         <tr>
-                            <td>QuickBooks Setup</td>
-                            <td>System installation and configuration</td>
+                            <td><strong>QuickBooks Setup</strong></td>
+                            <td>System installation, configuration, and staff training</td>
                             <td class="price">6,000 Ksh</td>
                         </tr>
                         <tr>
-                            <td>Auditing</td>
-                            <td>Financial statement verification</td>
+                            <td><strong>Auditing</strong></td>
+                            <td>Financial statement verification and compliance auditing</td>
                             <td class="price">20,000 Ksh</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="note">
-                    <p><strong>Note:</strong> Prices may vary depending on transaction volume and business complexity.
-                    </p>
+                    <p><strong>NB:</strong> Prices are subject to change depending on the volume of transactions and
+                        business complexity. Contact us for customized packages.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Client References Section -->
-    <section class="references-section animate-on-scroll">
+    <section class="references-section">
         <div class="container">
             <div class="section-title">
                 <h2>Client References</h2>
@@ -1759,8 +1547,8 @@
                         </div>
                         <div class="client-info">
                             <h4>Aura Investment Ltd</h4>
-                            <p>Mrs. Lucy Mwangi, Director</p>
-                            <p>📞 0722 754 044</p>
+                            <p><strong>Referee:</strong> Mrs. Lucy Mwangi, Director</p>
+                            <p class="phone">📞 0722 754 044</p>
                         </div>
                     </div>
                     <p><strong>Services Provided:</strong> QuickBooks system setup, Bookkeeping services, Financial
@@ -1781,8 +1569,8 @@ and proper bookkeeping.</pre>
                         </div>
                         <div class="client-info">
                             <h4>Topmax Training College</h4>
-                            <p>Mr. Obiri Jephthah, Director</p>
-                            <p>📞 +254 720 662 991</p>
+                            <p><strong>Referee:</strong> Mr. Obiri Jephthah, Director</p>
+                            <p class="phone">📞 +254 720 662 991</p>
                         </div>
                     </div>
                     <p><strong>Services Provided:</strong> Accounting system setup, Bookkeeping, Financial reporting,
@@ -1792,7 +1580,7 @@ and proper bookkeeping.</pre>
                         <pre>Structured financial reports for
 educational institution demonstrating
 organized accounting and reporting
-systems.</pre>
+systems with full compliance.</pre>
                     </div>
                 </div>
 
@@ -1803,8 +1591,8 @@ systems.</pre>
                         </div>
                         <div class="client-info">
                             <h4>Kijani Eco Solutions Ltd</h4>
-                            <p>Ms. Lucy Kiburi, Director</p>
-                            <p>📞 +254 722 782 787</p>
+                            <p><strong>Referee:</strong> Ms. Lucy Kiburi, Director</p>
+                            <p class="phone">📞 +254 722 782 787</p>
                         </div>
                     </div>
                     <p><strong>Services Provided:</strong> Bookkeeping, Financial reporting, Tax advisory services</p>
@@ -1824,20 +1612,22 @@ proper tax compliance.</pre>
                         </div>
                         <div class="client-info">
                             <h4>African Pot Restaurant</h4>
-                            <p>Ms. Ann Ndungu, Director</p>
-                            <p>📞 0722 639 808</p>
+                            <p><strong>Referee:</strong> Ms. Ann Ndungu, Director</p>
+                            <p class="phone">📞 0722 639 808</p>
                         </div>
                     </div>
                     <p><strong>Services Provided:</strong> QuickBooks setup, Inventory accounting, Bookkeeping, P&L
                         Statements, Balance Sheets, Cash Flow Statements, Tax support</p>
                     <div class="financial-snapshot">
                         <h5>November 2025 Financial Snapshot:</h5>
-                        <pre>Total Income: 930,710 Ksh
-Gross Profit: 443,195 Ksh
-Net Income: 82,034 Ksh
+                        <pre><span class="highlight">Total Income: 930,710 Ksh</span>
+<span class="highlight">Gross Profit: 443,195 Ksh</span>
+<span class="highlight">Net Income: 82,034 Ksh</span>
 
 Detailed expense tracking
-with proper categorization.</pre>
+with proper categorization.
+Professional financial reporting
+enabling better decision-making.</pre>
                     </div>
                 </div>
             </div>
@@ -1845,7 +1635,7 @@ with proper categorization.</pre>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section animate-on-scroll">
+    <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -1868,6 +1658,16 @@ with proper categorization.</pre>
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to Streamline Your Accounting?</h2>
+            <p>Contact us today for a free consultation and let our expert team help you achieve financial clarity and
+                compliance.</p>
+            <a href="contact.html" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1877,10 +1677,19 @@ with proper categorization.</pre>
                     <h3>Smart<span>Accountants</span></h3>
                     <p>For Real Accounting Solutions</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook"><i
-                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                         <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank"
-                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:smartcountings@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:0748836208" aria-label="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1920,7 +1729,7 @@ with proper categorization.</pre>
             </div>
 
             <div class="copyright">
-                <p>&copy; 2025 Smart Accountants. All Rights Reserved.</p>
+                <p>&copy; 2025 Smart Accountants. All Rights Reserved. | Professional Accounting Solutions</p>
             </div>
         </div>
     </footer>
@@ -1928,16 +1737,21 @@ with proper categorization.</pre>
     <!-- Enhanced JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
+            const typingMarquee = document.getElementById('typingMarquee');
 
+            // Mobile Menu Toggle
             menuToggle.addEventListener('click', function () {
                 navLinks.classList.toggle('active');
                 const icon = menuToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             });
 
             // Close menu when clicking on a link
@@ -1947,320 +1761,133 @@ with proper categorization.</pre>
                     const icon = menuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
-                    document.body.style.overflow = '';
                 });
             });
 
-            // Video controls
-            const bgVideo = document.getElementById('bgVideo');
-            const muteBtn = document.getElementById('muteBtn');
-            const pauseBtn = document.getElementById('pauseBtn');
-            const ceoVideo = document.getElementById('ceoVideo');
-            const mainHeader = document.getElementById('mainHeader');
-
-            // Background video controls
-            muteBtn.addEventListener('click', function () {
-                if (bgVideo.muted) {
-                    bgVideo.muted = false;
-                    this.innerHTML = '<i class="fas fa-volume-up"></i>';
-                    localStorage.setItem('videoMuted', 'false');
-                } else {
-                    bgVideo.muted = true;
-                    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                    localStorage.setItem('videoMuted', 'true');
-                }
-            });
-
-            pauseBtn.addEventListener('click', function () {
-                if (bgVideo.paused) {
-                    bgVideo.play();
-                    this.innerHTML = '<i class="fas fa-pause"></i>';
-                    localStorage.setItem('videoPaused', 'false');
-                } else {
-                    bgVideo.pause();
-                    this.innerHTML = '<i class="fas fa-play"></i>';
-                    localStorage.setItem('videoPaused', 'true');
-                }
-            });
-
-            // CEO video controls
-            if (ceoVideo) {
-                ceoVideo.addEventListener('play', function () {
-                    localStorage.setItem('ceoVideoProgress', ceoVideo.currentTime);
+            // Marquee letter-by-letter animation
+            function initMarqueeAnimation() {
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach((letter, index) => {
+                    letter.style.animationDelay = `${index * 0.05}s`;
                 });
+            }
+            initMarqueeAnimation();
 
-                ceoVideo.addEventListener('pause', function () {
-                    localStorage.setItem('ceoVideoProgress', ceoVideo.currentTime);
+            // Marquee hover effect
+            typingMarquee.addEventListener('mouseenter', () => {
+                typingMarquee.style.animationPlayState = 'paused';
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach(letter => {
+                    letter.style.animationPlayState = 'paused';
                 });
-
-                // Restore video progress
-                const savedProgress = localStorage.getItem('ceoVideoProgress');
-                if (savedProgress) {
-                    ceoVideo.currentTime = parseFloat(savedProgress);
-                }
-            }
-
-            // Ensure video plays on mobile
-            bgVideo.addEventListener('click', function () {
-                if (bgVideo.paused) {
-                    bgVideo.play();
-                    pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                }
             });
 
-            // Restore video settings from localStorage
-            const videoMuted = localStorage.getItem('videoMuted');
-            const videoPaused = localStorage.getItem('videoPaused');
-
-            if (videoMuted === 'true') {
-                bgVideo.muted = true;
-                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            }
-
-            if (videoPaused === 'true') {
-                bgVideo.pause();
-                pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-
-            // Handle video loading errors
-            bgVideo.addEventListener('error', function () {
-                console.log('Error loading background video');
-                // Fallback to background image if video fails
-                document.querySelector('.hero').style.backgroundImage = 'linear-gradient(rgba(76, 175, 80, 0.85), rgba(33, 150, 243, 0.85)), url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")';
-                document.querySelector('.hero').style.backgroundSize = 'cover';
-                document.querySelector('.hero').style.backgroundPosition = 'center';
+            typingMarquee.addEventListener('mouseleave', () => {
+                typingMarquee.style.animationPlayState = 'running';
+                const letters = typingMarquee.querySelectorAll('.letter');
+                letters.forEach(letter => {
+                    letter.style.animationPlayState = 'running';
+                });
             });
 
-            // Header scroll effect
-            let lastScroll = 0;
-            window.addEventListener('scroll', function () {
-                const currentScroll = window.pageYOffset;
+            // Scroll animation for elements
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.point-card, .service-card, .reference-card, .stat-item');
 
-                if (currentScroll > 100) {
-                    mainHeader.classList.add('scrolled');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
 
-                    // Hide/show header on scroll
-                    if (currentScroll > lastScroll && currentScroll > 200) {
-                        mainHeader.style.transform = 'translateY(-100%)';
-                    } else {
-                        mainHeader.style.transform = 'translateY(0)';
-                    }
-                } else {
-                    mainHeader.classList.remove('scrolled');
-                    mainHeader.style.transform = 'translateY(0)';
-                }
-
-                lastScroll = currentScroll;
-            });
-
-            // Lazy loading images
-            const lazyImages = document.querySelectorAll('.lazy-load');
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
+                    if (elementPosition < screenPosition) {
+                        element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                        element.style.opacity = '1';
                     }
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '50px'
+            }
+
+            // Initial animation check
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Add hover sound effect (optional)
+            const buttons = document.querySelectorAll('.cta-button, .service-link, .social-links a');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'scale(1.05)';
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'scale(1)';
+                });
             });
 
-            lazyImages.forEach(img => imageObserver.observe(img));
-
-            // Animate stats on scroll
-            const statsSection = document.querySelector('.stats-section');
+            // Counter animation for stats
             const statNumbers = document.querySelectorAll('.stat-item h3');
             let animated = false;
 
             function animateStats() {
-                if (!animated && isElementInViewport(statsSection)) {
+                if (!animated && isElementInViewport(document.querySelector('.stats-section'))) {
                     animated = true;
 
                     statNumbers.forEach((stat, index) => {
                         const originalText = stat.textContent;
                         const target = parseInt(originalText);
-                        let current = 0;
-                        const increment = target / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                stat.textContent = originalText;
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(current) + (originalText.includes('%') ? '%' : '+');
-                            }
-                        }, 30);
+
+                        if (!isNaN(target)) {
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    stat.textContent = originalText;
+                                    clearInterval(timer);
+                                } else {
+                                    stat.textContent = Math.floor(current) + (originalText.includes('%') ? '%' : '+');
+                                }
+                            }, 30);
+                        }
                     });
                 }
             }
 
             function isElementInViewport(el) {
-                if (!el) return false;
                 const rect = el.getBoundingClientRect();
                 return (
                     rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
                 );
             }
 
-            // Scroll-triggered animations
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-
-            function checkScroll() {
-                animateElements.forEach(element => {
-                    if (isElementInViewport(element)) {
-                        element.classList.add('visible');
-                    }
-                });
-
-                animateStats(); // Check stats animation
-            }
-
             // Initial check
-            checkScroll();
-            window.addEventListener('scroll', checkScroll);
+            animateStats();
+            window.addEventListener('scroll', animateStats);
 
-            // Marquee hover effects
-            const marquees = document.querySelectorAll('.section-marquee, .header-marquee');
-            marquees.forEach(marquee => {
-                marquee.addEventListener('mouseenter', function () {
-                    this.style.animationPlayState = 'paused';
-                });
+            // Add loading animation
+            window.addEventListener('load', () => {
+                document.body.style.opacity = '1';
+                document.body.style.transition = 'opacity 0.5s ease';
 
-                marquee.addEventListener('mouseleave', function () {
-                    this.style.animationPlayState = 'running';
-                });
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"], a[href*=".html"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-
-                    // Only handle internal links
-                    if (href.includes('.html') && !href.startsWith('http')) {
-                        e.preventDefault();
-
-                        if (href.includes('#')) {
-                            const [page, hash] = href.split('#');
-                            if (page && hash) {
-                                window.location.href = href;
-                            }
-                        } else {
-                            window.location.href = href;
-                        }
-                    }
-                });
-            });
-
-            // WhatsApp button animation
-            const whatsappFloat = document.querySelector('.whatsapp-float');
-            if (whatsappFloat) {
-                setInterval(() => {
-                    whatsappFloat.style.transform = 'scale(1.1)';
+                // Animate cards on load
+                const cards = document.querySelectorAll('.point-card, .service-card, .reference-card');
+                cards.forEach((card, index) => {
                     setTimeout(() => {
-                        whatsappFloat.style.transform = 'scale(1)';
-                    }, 300);
-                }, 5000);
-
-                // Add click tracking
-                whatsappFloat.addEventListener('click', function () {
-                    localStorage.setItem('whatsappClicked', new Date().toISOString());
-                });
-            }
-
-            // Card hover effects enhancement
-            const cards = document.querySelectorAll('.point-card, .service-card, .reference-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function () {
-                    this.style.zIndex = '100';
-                });
-
-                card.addEventListener('mouseleave', function () {
-                    this.style.zIndex = '';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
                 });
             });
-
-            // Form interaction for future forms
-            const forms = document.querySelectorAll('form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    // Add your form submission logic here
-                    console.log('Form submitted:', this.id);
-                });
-            });
-
-            // Add keyboard navigation
-            document.addEventListener('keydown', function (e) {
-                // Escape key closes mobile menu
-                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                    document.body.style.overflow = '';
-                }
-
-                // Space key toggles video play/pause
-                if (e.key === ' ' && e.target === document.body) {
-                    e.preventDefault();
-                    if (bgVideo.paused) {
-                        bgVideo.play();
-                        pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    } else {
-                        bgVideo.pause();
-                        pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    }
-                }
-            });
-
-            // Add page load animation
-            document.body.classList.add('loaded');
-
-            // Service worker registration for PWA capabilities (optional)
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/sw.js').catch(error => {
-                        console.log('ServiceWorker registration failed:', error);
-                    });
-                });
-            }
-
-            // Performance monitoring
-            window.addEventListener('load', function () {
-                const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
-                console.log('Page loaded in', loadTime, 'ms');
-
-                // Store performance data
-                localStorage.setItem('pageLoadTime', loadTime);
-            });
-
-            // Real-time clock in header (optional)
-            function updateClock() {
-                const now = new Date();
-                const timeString = now.toLocaleTimeString('en-KE', {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true
-                });
-
-                // You could add this to header if desired
-                // document.getElementById('clock').textContent = timeString;
-            }
-
-            setInterval(updateClock, 60000);
-            updateClock();
         });
 
-        // Add beforeunload event for cleanup
-        window.addEventListener('beforeunload', function () {
-            // Pause all videos
-            document.querySelectorAll('video').forEach(video => {
-                video.pause();
-            });
+        // Handle window resize
+        window.addEventListener('resize', function () {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+
+            if (window.innerWidth > 768) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
     </script>
 </body>

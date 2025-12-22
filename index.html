@@ -19,6 +19,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -28,14 +29,166 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg,
+                    rgba(0, 150, 136, 0.05) 0%,
+                    /* Green */
+                    rgba(139, 195, 74, 0.05) 25%,
+                    /* Light Green */
+                    rgba(76, 175, 80, 0.05) 50%,
+                    /* Green */
+                    rgba(56, 142, 60, 0.05) 75%,
+                    /* Dark Green */
+                    rgba(27, 94, 32, 0.05) 100%
+                    /* Deep Green */
+                ),
+                linear-gradient(45deg,
+                    rgba(33, 150, 243, 0.03) 0%,
+                    /* Blue */
+                    rgba(0, 188, 212, 0.03) 50%,
+                    /* Cyan */
+                    rgba(0, 150, 136, 0.03) 100%
+                    /* Teal */
+                );
+            background-size: 400% 400%, 200% 200%;
+            animation: gradientBG 20s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 0%, 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%, 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%, 0% 0%;
+            }
+        }
+
+        /* Floating Elements Animation */
+        .floating-element {
+            position: absolute;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+            background: rgba(0, 150, 136, 0.1);
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            background: rgba(139, 195, 74, 0.1);
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 15%;
+            background: rgba(56, 142, 60, 0.1);
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Header & Navigation with Marquee */
         header {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
+            padding: 8px 0;
+            color: white;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-marquee {
+            display: flex;
+            animation: headerMarquee 30s linear infinite;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            margin: 0 30px;
+            white-space: nowrap;
+        }
+
+        .marquee-item i {
+            margin-right: 10px;
+            color: #FFEB3B;
+            animation: pulseIcon 2s infinite;
+        }
+
+        @keyframes headerMarquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes pulseIcon {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
         }
 
         nav {
@@ -53,18 +206,44 @@
         }
 
         .logo img {
-            height: 45px;
+            height: 50px;
             width: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .logo h1 {
-            color: #8A4FFF;
-            font-size: 22px;
+            color: #4CAF50;
+            font-size: 24px;
             font-weight: 700;
+            position: relative;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover h1::after {
+            width: 100%;
         }
 
         .logo span {
-            color: #A55B4B;
+            color: #2196F3;
         }
 
         .nav-links {
@@ -73,7 +252,8 @@
         }
 
         .nav-links li {
-            margin-left: 25px;
+            margin-left: 30px;
+            position: relative;
         }
 
         .nav-links a {
@@ -82,53 +262,120 @@
             font-weight: 600;
             font-size: 16px;
             transition: color 0.3s;
-            padding: 5px 0;
             position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: #8A4FFF;
+            color: #4CAF50;
         }
 
         .nav-links a.active {
-            color: #8A4FFF;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #A55B4B;
+            color: #4CAF50;
         }
 
         .menu-toggle {
             display: none;
             font-size: 24px;
             cursor: pointer;
-            color: #210F37;
             background: none;
             border: none;
+            color: #333;
+            transition: transform 0.3s;
         }
 
-        /* Hero Section */
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            color: #4CAF50;
+        }
+
+        /* Animated Gradient Header */
+        .animated-header {
+            background: linear-gradient(-45deg, #4CAF50, #2196F3, #009688, #8BC34A);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hero Section with Background Video */
         .hero {
-            background: linear-gradient(rgba(107, 44, 145, 0.85), rgba(165, 91, 75, 0.85)),
-                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            position: relative;
             color: white;
             padding: 160px 0 100px;
             text-align: center;
             margin-top: 70px;
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 150, 136, 0.85), rgba(33, 150, 243, 0.85));
+            z-index: -1;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h2 {
@@ -136,13 +383,28 @@
             margin-bottom: 20px;
             font-weight: 700;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-tagline {
             font-size: 1.8rem;
             margin-bottom: 10px;
             font-weight: 600;
-            color: #DCA06D;
+            color: #FFEB3B;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
@@ -151,12 +413,13 @@
             margin: 0 auto 40px;
             opacity: 0.95;
             line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #DCA06D;
-            color: #6B2C91;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            color: white;
             padding: 16px 35px;
             border-radius: 50px;
             text-decoration: none;
@@ -165,34 +428,138 @@
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
+            animation: pulseCTA 2s infinite;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            background-color: #6B2C91;
-            color: #DCA06D;
-            border-color: #DCA06D;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            animation: none;
+        }
+
+        @keyframes pulseCTA {
+
+            0%,
+            100% {
+                box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 5px 20px rgba(76, 175, 80, 0.6);
+            }
+        }
+
+        /* Marquee Banner for Sections */
+        .section-marquee {
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
+            color: white;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .section-marquee:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            padding-left: 100%;
+        }
+
+        .marquee-content span {
+            margin: 0 40px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .marquee-content span:hover {
+            color: #FFEB3B;
+            transform: scale(1.1);
+        }
+
+        .marquee-content i {
+            color: #FFEB3B;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .video-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-btn:hover {
+            background: rgba(76, 175, 80, 0.8);
+            transform: scale(1.1);
         }
 
         /* Value Points - COMPACT CARDS */
         .value-points {
             padding: 70px 0;
-            /* Reduced from 80px */
             background-color: #fff;
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 50px;
-            /* Reduced from 60px */
         }
 
         .section-title h2 {
-            color: #210F37;
+            color: #333;
             font-size: 2.5rem;
             margin-bottom: 15px;
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
         }
 
         .section-title p {
@@ -206,72 +573,56 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            /* Reduced from 30px */
         }
 
         .point-card {
             background-color: #fff;
             padding: 30px 25px;
-            /* Reduced from 40px 30px */
             border-radius: 12px;
-            /* Smaller radius */
             text-align: center;
             transition: all 0.3s ease;
-            border-top: 4px solid #210F37;
-            /* Thinner border */
+            border-top: 4px solid #4CAF50;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            /* Lighter shadow */
             height: 100%;
         }
 
         .point-card:hover {
-            transform: translateY(-8px);
-            /* Reduced hover lift */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
         }
 
         .point-icon {
-            background-color: #A55B4B;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
             color: white;
             width: 70px;
-            /* Reduced from 80px */
             height: 70px;
-            /* Reduced from 80px */
             line-height: 70px;
-            /* Reduced from 80px */
             border-radius: 50%;
             margin: 0 auto 20px;
-            /* Reduced margin */
             font-size: 28px;
-            /* Smaller icon */
             transition: all 0.3s;
         }
 
         .point-card:hover .point-icon {
-            background-color: #210F37;
-            transform: scale(1.1);
+            transform: rotate(360deg) scale(1.1);
         }
 
         .point-card h3 {
-            color: #210F37;
+            color: #333;
             margin-bottom: 12px;
-            /* Reduced margin */
             font-size: 1.3rem;
-            /* Slightly smaller */
             font-weight: 600;
         }
 
         .point-card p {
             color: #666;
             font-size: 0.95rem;
-            /* Smaller text */
             line-height: 1.5;
         }
 
         /* Services Preview - COMPACT CARDS */
         .services-preview {
             padding: 70px 0;
-            /* Reduced from 80px */
             background-color: #f8f9fa;
             position: relative;
         }
@@ -283,24 +634,20 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, #210F37, #A55B4B);
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            /* Reduced from 30px */
         }
 
         .service-card {
             background-color: #fff;
             padding: 30px 25px;
-            /* Reduced from 35px 30px */
             border-radius: 12px;
-            /* Smaller radius */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            /* Lighter shadow */
             transition: all 0.3s;
             text-align: center;
             height: 100%;
@@ -308,86 +655,177 @@
         }
 
         .service-card:hover {
-            transform: translateY(-6px);
-            /* Reduced hover lift */
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-            border-color: #A55B4B;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
+            border-color: #4CAF50;
         }
 
         .service-icon {
-            color: #4F1C51;
-            font-size: 42px;
-            /* Reduced from 48px */
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            color: white;
+            font-size: 28px;
             margin-bottom: 20px;
-            /* Reduced margin */
             height: 70px;
-            /* Reduced from 80px */
             width: 70px;
-            /* Reduced from 80px */
             line-height: 70px;
-            /* Reduced from 80px */
-            background-color: #f9f5ff;
             border-radius: 50%;
             margin: 0 auto 20px;
-            /* Reduced margin */
             transition: all 0.3s;
         }
 
         .service-card:hover .service-icon {
-            background-color: #4F1C51;
-            color: white;
-            transform: rotate(10deg);
+            transform: rotate(10deg) scale(1.1);
         }
 
         .service-card h3 {
-            color: #210F37;
+            color: #333;
             margin-bottom: 12px;
-            /* Reduced margin */
             font-size: 1.3rem;
-            /* Slightly smaller */
             font-weight: 600;
         }
 
         .service-card p {
             color: #666;
             font-size: 0.95rem;
-            /* Smaller text */
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
-        .view-all {
-            text-align: center;
-            margin-top: 50px;
-            /* Reduced from 60px */
+        /* Pricing Section */
+        .pricing-section {
+            padding: 70px 0;
+            background-color: #fff;
         }
 
-        .view-all a {
-            color: #210F37;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 25px;
-            border: 2px solid #210F37;
-            border-radius: 50px;
-            transition: all 0.3s;
+        .pricing-table {
+            overflow-x: auto;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .view-all a:hover {
-            background-color: #210F37;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        thead {
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
             color: white;
-            padding: 12px 30px;
         }
 
-        .view-all a i {
-            margin-left: 8px;
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #4CAF50;
+            font-size: 1.1rem;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Client References Section */
+        .references-section {
+            padding: 70px 0;
+            background-color: #f8f9fa;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .reference-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s;
+            border-left: 4px solid #4CAF50;
         }
 
-        .view-all a:hover i {
-            transform: translateX(5px);
+        .reference-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(76, 175, 80, 0.15);
+        }
+
+        .client-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .client-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .client-info h4 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .client-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .financial-snapshot {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .financial-snapshot h5 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .financial-snapshot pre {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #444;
         }
 
         /* CEO Welcome Video */
@@ -404,10 +842,21 @@
         }
 
         .welcome-text h2 {
-            color: #210F37;
+            color: #333;
             font-size: 2.2rem;
             margin-bottom: 15px;
             font-weight: 700;
+            position: relative;
+        }
+
+        .welcome-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
         }
 
         .welcome-text p {
@@ -423,6 +872,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
         }
 
         .video-container iframe,
@@ -442,7 +896,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -455,7 +909,18 @@
         .video-fallback i {
             font-size: 60px;
             margin-bottom: 20px;
-            color: #DCA06D;
+            color: #FFEB3B;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .video-fallback h3 {
@@ -471,7 +936,7 @@
         /* Stats Section */
         .stats-section {
             padding: 60px 0;
-            background: linear-gradient(135deg, #210F37 0%, #4F1C51 100%);
+            background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
             color: white;
         }
 
@@ -479,19 +944,23 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
-            /* Reduced from 30px */
             text-align: center;
         }
 
         .stat-item {
             padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
         }
 
         .stat-item h3 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             font-weight: 700;
-            color: #DCA06D;
+            color: #FFEB3B;
         }
 
         .stat-item p {
@@ -501,62 +970,87 @@
 
         /* Footer - COMPACT */
         footer {
-            background-color: #210F37;
+            background: linear-gradient(135deg, #1a237e, #283593);
             color: white;
             padding: 50px 0 25px;
-            /* Reduced from 60px 0 30px */
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            /* Smaller min-width */
             gap: 30px;
-            /* Reduced from 40px */
             margin-bottom: 30px;
-            /* Reduced from 40px */
         }
 
         .footer-logo {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            /* Reduced from 15px */
         }
 
         .footer-logo img {
             height: 45px;
-            /* Reduced from 50px */
             width: auto;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+        }
+
+        .footer-logo img:hover {
+            transform: rotate(-5deg) scale(1.1);
         }
 
         .footer-logo h3 {
             color: white;
             font-size: 22px;
-            /* Reduced from 24px */
             margin-bottom: 5px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .footer-logo span {
-            color: #DCA06D;
+            color: #4CAF50;
         }
 
         .footer-logo p {
             color: #ccc;
             font-size: 0.9rem;
-            /* Reduced from 0.95rem */
             line-height: 1.5;
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            color: #DCA06D;
+            color: #4CAF50;
             margin-bottom: 15px;
-            /* Reduced from 20px */
             font-size: 1.1rem;
-            /* Reduced from 1.2rem */
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background: #2196F3;
         }
 
         .footer-links ul,
@@ -567,7 +1061,6 @@
         .footer-links li,
         .footer-services li {
             margin-bottom: 10px;
-            /* Reduced from 12px */
         }
 
         .footer-links a,
@@ -576,40 +1069,39 @@
             text-decoration: none;
             transition: all 0.3s;
             font-size: 0.9rem;
-            /* Reduced from 0.95rem */
             display: inline-block;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: #DCA06D;
+            color: #4CAF50;
             transform: translateX(5px);
         }
 
         .footer-contact p {
             color: #ccc;
             margin-bottom: 12px;
-            /* Reduced from 15px */
             display: flex;
             align-items: flex-start;
             font-size: 0.9rem;
-            /* Reduced from 0.95rem */
+            transition: color 0.3s;
+        }
+
+        .footer-contact p:hover {
+            color: #4CAF50;
         }
 
         .footer-contact i {
             margin-right: 10px;
-            color: #DCA06D;
+            color: #4CAF50;
             margin-top: 3px;
             font-size: 0.9rem;
-            /* Reduced icon size */
         }
 
         .social-links {
             display: flex;
             gap: 12px;
-            /* Reduced from 15px */
             margin-top: 15px;
-            /* Reduced from 20px */
         }
 
         .social-links a {
@@ -617,40 +1109,74 @@
             align-items: center;
             justify-content: center;
             width: 36px;
-            /* Reduced from 40px */
             height: 36px;
-            /* Reduced from 40px */
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
             font-size: 0.9rem;
-            /* Reduced icon size */
         }
 
         .social-links a:hover {
-            background-color: #DCA06D;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
             transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
             padding-top: 25px;
-            /* Reduced from 30px */
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 0.85rem;
-            /* Reduced from 0.9rem */
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(45deg, #25d366, #128C7E);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Scroll-triggered Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 3rem;
-            }
-
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h2 {
+                font-size: 3rem;
             }
         }
 
@@ -666,9 +1192,23 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .welcome-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .welcome-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
 
         @media (max-width: 768px) {
+            .header-top {
+                display: none;
+            }
+
             .menu-toggle {
                 display: block;
             }
@@ -738,20 +1278,17 @@
                 gap: 30px;
             }
 
-            .welcome-text {
-                text-align: center;
-            }
-
             .points-grid,
-            .services-grid {
+            .services-grid,
+            .references-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
 
             .point-card,
-            .service-card {
+            .service-card,
+            .reference-card {
                 padding: 25px 20px;
-                /* Even more compact on mobile */
             }
 
             .point-icon,
@@ -775,6 +1312,16 @@
                 line-height: 1.4;
             }
 
+            .video-controls {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .video-btn {
+                width: 35px;
+                height: 35px;
+            }
+
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -787,18 +1334,19 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 25px;
-                /* Reduced gap on mobile */
             }
 
             .footer-links li,
             .footer-services li {
                 margin-bottom: 8px;
-                /* Tighter spacing on mobile */
             }
 
             .footer-contact p {
                 margin-bottom: 10px;
-                /* Tighter spacing on mobile */
+            }
+
+            .floating-element {
+                display: none;
             }
         }
 
@@ -813,7 +1361,7 @@
             }
 
             .logo img {
-                height: 35px;
+                height: 40px;
             }
 
             .hero h2 {
@@ -833,9 +1381,9 @@
             }
 
             .point-card,
-            .service-card {
+            .service-card,
+            .reference-card {
                 padding: 20px 15px;
-                /* Very compact for small screens */
             }
 
             .point-icon,
@@ -849,13 +1397,20 @@
 
             .footer-logo img {
                 height: 40px;
-                /* Smaller logo on mobile */
             }
 
             .social-links a {
                 width: 32px;
                 height: 32px;
                 font-size: 0.8rem;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
             }
         }
 
@@ -889,8 +1444,55 @@
 </head>
 
 <body>
-    <!-- Header & Navigation -->
-    <header>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
+        class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header with Marquee -->
+    <header id="mainHeader">
+        <div class="header-top">
+            <div class="header-marquee">
+                <div class="marquee-item">
+                    <i class="fas fa-certificate"></i> Certified Professional Accountants
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-chart-line"></i> Expert Financial Analysis
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-file-invoice-dollar"></i> Tax Compliance Specialists
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-clock"></i> 24/7 Client Support Available
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-award"></i> Award-Winning Accounting Services
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item">
+                    <i class="fas fa-certificate"></i> Certified Professional Accountants
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-chart-line"></i> Expert Financial Analysis
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-file-invoice-dollar"></i> Tax Compliance Specialists
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-clock"></i> 24/7 Client Support Available
+                </div>
+                <div class="marquee-item">
+                    <i class="fas fa-award"></i> Award-Winning Accounting Services
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <nav>
                 <div class="logo">
@@ -914,38 +1516,83 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with Background Video -->
+    <section class="hero animated-header">
+        <div class="video-background">
+            <!-- Fixed working video source -->
+            <video autoplay muted loop playsinline id="bgVideo">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-financial-graph-on-a-screen-31436-large.mp4"
+                    type="video/mp4">
+                <!-- Fallback video -->
+                <source src="https://cdn.pixabay.com/video/2023/05/29/163256-825969211_large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="video-overlay"></div>
+
         <div class="container">
             <div class="hero-content">
                 <h2>Smart Accountants</h2>
-                <div class="hero-tagline">FOR REAL ACCOUNTING SOLUTIONS</div>
-                <p>Professional Accounting & Financial Consultancy for SMEs, Startups, and Corporates Across Kenya</p>
+                <div class="hero-tagline">YOUR TRUSTED ACCOUNTING PARTNER</div>
+                <p>Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya</p>
                 <a href="contact.html" class="cta-button">Get Free Consultation</a>
             </div>
         </div>
+
+        <div class="video-controls">
+            <button class="video-btn" id="muteBtn" aria-label="Toggle sound">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="video-btn" id="pauseBtn" aria-label="Pause/Play video">
+                <i class="fas fa-pause"></i>
+            </button>
+        </div>
     </section>
 
+    <!-- Section Marquee -->
+    <div class="section-marquee">
+        <div class="marquee-content">
+            <span><i class="fas fa-bullhorn"></i> NEW: QuickBooks Pro Setup Special Offer!</span>
+            <span><i class="fas fa-star"></i> FREE Initial Consultation for New Clients</span>
+            <span><i class="fas fa-gift"></i> Tax Season Discount: 15% Off All Filing Services</span>
+            <span><i class="fas fa-calendar-check"></i> Book Your Year-End Review Now!</span>
+            <span><i class="fas fa-chart-pie"></i> Custom Financial Dashboard Included</span>
+            <!-- Duplicate for seamless loop -->
+            <span><i class="fas fa-bullhorn"></i> NEW: QuickBooks Pro Setup Special Offer!</span>
+            <span><i class="fas fa-star"></i> FREE Initial Consultation for New Clients</span>
+            <span><i class="fas fa-gift"></i> Tax Season Discount: 15% Off All Filing Services</span>
+            <span><i class="fas fa-calendar-check"></i> Book Your Year-End Review Now!</span>
+            <span><i class="fas fa-chart-pie"></i> Custom Financial Dashboard Included</span>
+        </div>
+    </div>
+
     <!-- CEO Welcome Video -->
-    <section class="ceo-welcome">
+    <section class="ceo-welcome animate-on-scroll">
         <div class="container">
             <div class="welcome-content">
                 <div class="welcome-text">
                     <h2>Welcome from Our CEO</h2>
-                    <p>A personal message about our commitment to excellence in accounting services</p>
+                    <p>Hear directly from our leadership about our commitment to excellence in accounting services and
+                        client satisfaction. We combine technical expertise with personalized service to help your
+                        business thrive.</p>
                 </div>
                 <div class="video-container">
-                    <video controls autoplay muted>
-                        <source src="images/video/Smart_Accountants_-_Professional_Account (1).mp4" type="video/mp4">
+                    <video controls poster="images/video/poster.jpg" id="ceoVideo">
+                        <source src="images/video/Smart_Accountants_-_Professional_Account.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="video-fallback">
+                        <i class="fas fa-play-circle"></i>
+                        <h3>CEO Welcome Message</h3>
+                        <p>Click to play our CEO's welcome message</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Value Points -->
-    <section class="value-points">
+    <section class="value-points animate-on-scroll">
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose Smart Accountants?</h2>
@@ -980,8 +1627,25 @@
         </div>
     </section>
 
+    <!-- Services Marquee -->
+    <div class="section-marquee">
+        <div class="marquee-content">
+            <span><i class="fas fa-book"></i> Professional Bookkeeping Services</span>
+            <span><i class="fas fa-file-invoice-dollar"></i> Tax Computation & Filing</span>
+            <span><i class="fas fa-chart-line"></i> Financial Reporting & Analysis</span>
+            <span><i class="fas fa-users"></i> Payroll Management Solutions</span>
+            <span><i class="fas fa-calculator"></i> QuickBooks Setup & Training</span>
+            <!-- Duplicate for seamless loop -->
+            <span><i class="fas fa-book"></i> Professional Bookkeeping Services</span>
+            <span><i class="fas fa-file-invoice-dollar"></i> Tax Computation & Filing</span>
+            <span><i class="fas fa-chart-line"></i> Financial Reporting & Analysis</span>
+            <span><i class="fas fa-users"></i> Payroll Management Solutions</span>
+            <span><i class="fas fa-calculator"></i> QuickBooks Setup & Training</span>
+        </div>
+    </div>
+
     <!-- Services Preview -->
-    <section class="services-preview">
+    <section class="services-preview animate-on-scroll">
         <div class="container">
             <div class="section-title">
                 <h2>Our Core Services</h2>
@@ -1013,15 +1677,175 @@
                     <p>Balance Sheet, Profit & Loss, Cash Flow Statement, and Management Accounts.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="view-all">
-                <a href="services.html">View All Services <i class="fas fa-arrow-right"></i></a>
+    <!-- Pricing Section -->
+    <section class="pricing-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transparent Pricing</h2>
+                <p>Clear, affordable pricing for all our accounting services</p>
+            </div>
+
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Accounting & Bookkeeping</td>
+                            <td>Complete financial record management</td>
+                            <td class="price">10,000 Ksh</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Services</td>
+                            <td>VAT, Income Tax, PAYE filing</td>
+                            <td class="price">4,000 Ksh</td>
+                        </tr>
+                        <tr>
+                            <td>Consultancy Services</td>
+                            <td>Financial advice and planning</td>
+                            <td class="price">3,500 Ksh</td>
+                        </tr>
+                        <tr>
+                            <td>Payroll Management</td>
+                            <td>Per employee monthly management</td>
+                            <td class="price">380 Ksh/employee</td>
+                        </tr>
+                        <tr>
+                            <td>Budgeting & Forecasting</td>
+                            <td>Financial planning and projections</td>
+                            <td class="price">5,000 Ksh</td>
+                        </tr>
+                        <tr>
+                            <td>QuickBooks Setup</td>
+                            <td>System installation and configuration</td>
+                            <td class="price">6,000 Ksh</td>
+                        </tr>
+                        <tr>
+                            <td>Auditing</td>
+                            <td>Financial statement verification</td>
+                            <td class="price">20,000 Ksh</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="note">
+                    <p><strong>Note:</strong> Prices may vary depending on transaction volume and business complexity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client References Section -->
+    <section class="references-section animate-on-scroll">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client References</h2>
+                <p>Real businesses we've helped with their financial management</p>
+            </div>
+
+            <div class="references-grid">
+                <div class="reference-card">
+                    <div class="client-header">
+                        <div class="client-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Aura Investment Ltd</h4>
+                            <p>Mrs. Lucy Mwangi, Director</p>
+                            <p>📞 0722 754 044</p>
+                        </div>
+                    </div>
+                    <p><strong>Services Provided:</strong> QuickBooks system setup, Bookkeeping services, Financial
+                        reporting, Taxation services</p>
+                    <div class="financial-snapshot">
+                        <h5>Financial Report Snapshot:</h5>
+                        <pre>QuickBooks-generated financial reports
+(Profit & Loss / Balance Sheet)
+showing system setup accuracy
+and proper bookkeeping.</pre>
+                    </div>
+                </div>
+
+                <div class="reference-card">
+                    <div class="client-header">
+                        <div class="client-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Topmax Training College</h4>
+                            <p>Mr. Obiri Jephthah, Director</p>
+                            <p>📞 +254 720 662 991</p>
+                        </div>
+                    </div>
+                    <p><strong>Services Provided:</strong> Accounting system setup, Bookkeeping, Financial reporting,
+                        Statutory compliance support</p>
+                    <div class="financial-snapshot">
+                        <h5>Financial Report Snapshot:</h5>
+                        <pre>Structured financial reports for
+educational institution demonstrating
+organized accounting and reporting
+systems.</pre>
+                    </div>
+                </div>
+
+                <div class="reference-card">
+                    <div class="client-header">
+                        <div class="client-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Kijani Eco Solutions Ltd</h4>
+                            <p>Ms. Lucy Kiburi, Director</p>
+                            <p>📞 +254 722 782 787</p>
+                        </div>
+                    </div>
+                    <p><strong>Services Provided:</strong> Bookkeeping, Financial reporting, Tax advisory services</p>
+                    <div class="financial-snapshot">
+                        <h5>Financial Report Snapshot:</h5>
+                        <pre>Financial statements confirming
+accurate bookkeeping and reporting
+for manufacturing entity with
+proper tax compliance.</pre>
+                    </div>
+                </div>
+
+                <div class="reference-card">
+                    <div class="client-header">
+                        <div class="client-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>African Pot Restaurant</h4>
+                            <p>Ms. Ann Ndungu, Director</p>
+                            <p>📞 0722 639 808</p>
+                        </div>
+                    </div>
+                    <p><strong>Services Provided:</strong> QuickBooks setup, Inventory accounting, Bookkeeping, P&L
+                        Statements, Balance Sheets, Cash Flow Statements, Tax support</p>
+                    <div class="financial-snapshot">
+                        <h5>November 2025 Financial Snapshot:</h5>
+                        <pre>Total Income: 930,710 Ksh
+Gross Profit: 443,195 Ksh
+Net Income: 82,034 Ksh
+
+Detailed expense tracking
+with proper categorization.</pre>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section">
+    <section class="stats-section animate-on-scroll">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
@@ -1049,8 +1873,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo"
-                        style="filter: brightness(0) invert(1);">
+                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
                     <h3>Smart<span>Accountants</span></h3>
                     <p>For Real Accounting Solutions</p>
                     <div class="social-links">
@@ -1091,6 +1914,8 @@
                     <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
                     <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
+                    <p><i class="fas fa-money-bill-wave"></i> Lipa na M-Pesa: PayBill 714777</p>
+                    <p><i class="fas fa-credit-card"></i> Account: 0708 305 767</p>
                 </div>
             </div>
 
@@ -1100,19 +1925,19 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu and Animations -->
+    <!-- Enhanced JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
-            const videoFallback = document.getElementById('videoFallback');
 
-            // Mobile Menu Toggle
             menuToggle.addEventListener('click', function () {
                 navLinks.classList.toggle('active');
                 const icon = menuToggle.querySelector('i');
                 icon.classList.toggle('fa-bars');
                 icon.classList.toggle('fa-times');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
             });
 
             // Close menu when clicking on a link
@@ -1122,20 +1947,114 @@
                     const icon = menuToggle.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
                 });
             });
 
-            // Video autoplay handling
-            const video = document.querySelector('.video-container video');
-            if (video) {
-                video.addEventListener('loadeddata', function() {
-                    console.log('Video loaded successfully');
+            // Video controls
+            const bgVideo = document.getElementById('bgVideo');
+            const muteBtn = document.getElementById('muteBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const ceoVideo = document.getElementById('ceoVideo');
+            const mainHeader = document.getElementById('mainHeader');
+
+            // Background video controls
+            muteBtn.addEventListener('click', function () {
+                if (bgVideo.muted) {
+                    bgVideo.muted = false;
+                    this.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    localStorage.setItem('videoMuted', 'false');
+                } else {
+                    bgVideo.muted = true;
+                    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                    localStorage.setItem('videoMuted', 'true');
+                }
+            });
+
+            pauseBtn.addEventListener('click', function () {
+                if (bgVideo.paused) {
+                    bgVideo.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                    localStorage.setItem('videoPaused', 'false');
+                } else {
+                    bgVideo.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                    localStorage.setItem('videoPaused', 'true');
+                }
+            });
+
+            // CEO video controls
+            if (ceoVideo) {
+                ceoVideo.addEventListener('play', function () {
+                    localStorage.setItem('ceoVideoProgress', ceoVideo.currentTime);
                 });
+
+                ceoVideo.addEventListener('pause', function () {
+                    localStorage.setItem('ceoVideoProgress', ceoVideo.currentTime);
+                });
+
+                // Restore video progress
+                const savedProgress = localStorage.getItem('ceoVideoProgress');
+                if (savedProgress) {
+                    ceoVideo.currentTime = parseFloat(savedProgress);
+                }
             }
+
+            // Ensure video plays on mobile
+            bgVideo.addEventListener('click', function () {
+                if (bgVideo.paused) {
+                    bgVideo.play();
+                    pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            });
+
+            // Restore video settings from localStorage
+            const videoMuted = localStorage.getItem('videoMuted');
+            const videoPaused = localStorage.getItem('videoPaused');
+
+            if (videoMuted === 'true') {
+                bgVideo.muted = true;
+                muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+
+            if (videoPaused === 'true') {
+                bgVideo.pause();
+                pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+
+            // Handle video loading errors
+            bgVideo.addEventListener('error', function () {
+                console.log('Error loading background video');
+                // Fallback to background image if video fails
+                document.querySelector('.hero').style.backgroundImage = 'linear-gradient(rgba(76, 175, 80, 0.85), rgba(33, 150, 243, 0.85)), url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")';
+                document.querySelector('.hero').style.backgroundSize = 'cover';
+                document.querySelector('.hero').style.backgroundPosition = 'center';
+            });
+
+            // Header scroll effect
+            let lastScroll = 0;
+            window.addEventListener('scroll', function () {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > 100) {
+                    mainHeader.classList.add('scrolled');
+
+                    // Hide/show header on scroll
+                    if (currentScroll > lastScroll && currentScroll > 200) {
+                        mainHeader.style.transform = 'translateY(-100%)';
+                    } else {
+                        mainHeader.style.transform = 'translateY(0)';
+                    }
+                } else {
+                    mainHeader.classList.remove('scrolled');
+                    mainHeader.style.transform = 'translateY(0)';
+                }
+
+                lastScroll = currentScroll;
+            });
 
             // Lazy loading images
             const lazyImages = document.querySelectorAll('.lazy-load');
-
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1144,6 +2063,9 @@
                         observer.unobserve(img);
                     }
                 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
             });
 
             lazyImages.forEach(img => imageObserver.observe(img));
@@ -1158,16 +2080,17 @@
                     animated = true;
 
                     statNumbers.forEach((stat, index) => {
-                        const target = parseInt(stat.textContent);
+                        const originalText = stat.textContent;
+                        const target = parseInt(originalText);
                         let current = 0;
                         const increment = target / 50;
                         const timer = setInterval(() => {
                             current += increment;
                             if (current >= target) {
-                                stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+                                stat.textContent = originalText;
                                 clearInterval(timer);
                             } else {
-                                stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
+                                stat.textContent = Math.floor(current) + (originalText.includes('%') ? '%' : '+');
                             }
                         }, 30);
                     });
@@ -1175,17 +2098,169 @@
             }
 
             function isElementInViewport(el) {
+                if (!el) return false;
                 const rect = el.getBoundingClientRect();
                 return (
                     rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
                 );
             }
 
-            // Initial check
-            animateStats();
+            // Scroll-triggered animations
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-            // Check on scroll
-            window.addEventListener('scroll', animateStats);
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('visible');
+                    }
+                });
+
+                animateStats(); // Check stats animation
+            }
+
+            // Initial check
+            checkScroll();
+            window.addEventListener('scroll', checkScroll);
+
+            // Marquee hover effects
+            const marquees = document.querySelectorAll('.section-marquee, .header-marquee');
+            marquees.forEach(marquee => {
+                marquee.addEventListener('mouseenter', function () {
+                    this.style.animationPlayState = 'paused';
+                });
+
+                marquee.addEventListener('mouseleave', function () {
+                    this.style.animationPlayState = 'running';
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"], a[href*=".html"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    // Only handle internal links
+                    if (href.includes('.html') && !href.startsWith('http')) {
+                        e.preventDefault();
+
+                        if (href.includes('#')) {
+                            const [page, hash] = href.split('#');
+                            if (page && hash) {
+                                window.location.href = href;
+                            }
+                        } else {
+                            window.location.href = href;
+                        }
+                    }
+                });
+            });
+
+            // WhatsApp button animation
+            const whatsappFloat = document.querySelector('.whatsapp-float');
+            if (whatsappFloat) {
+                setInterval(() => {
+                    whatsappFloat.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        whatsappFloat.style.transform = 'scale(1)';
+                    }, 300);
+                }, 5000);
+
+                // Add click tracking
+                whatsappFloat.addEventListener('click', function () {
+                    localStorage.setItem('whatsappClicked', new Date().toISOString());
+                });
+            }
+
+            // Card hover effects enhancement
+            const cards = document.querySelectorAll('.point-card, .service-card, .reference-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.zIndex = '100';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.zIndex = '';
+                });
+            });
+
+            // Form interaction for future forms
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    console.log('Form submitted:', this.id);
+                });
+            });
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function (e) {
+                // Escape key closes mobile menu
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = '';
+                }
+
+                // Space key toggles video play/pause
+                if (e.key === ' ' && e.target === document.body) {
+                    e.preventDefault();
+                    if (bgVideo.paused) {
+                        bgVideo.play();
+                        pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    } else {
+                        bgVideo.pause();
+                        pauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+            });
+
+            // Add page load animation
+            document.body.classList.add('loaded');
+
+            // Service worker registration for PWA capabilities (optional)
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js').catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+                });
+            }
+
+            // Performance monitoring
+            window.addEventListener('load', function () {
+                const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
+                console.log('Page loaded in', loadTime, 'ms');
+
+                // Store performance data
+                localStorage.setItem('pageLoadTime', loadTime);
+            });
+
+            // Real-time clock in header (optional)
+            function updateClock() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-KE', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+
+                // You could add this to header if desired
+                // document.getElementById('clock').textContent = timeString;
+            }
+
+            setInterval(updateClock, 60000);
+            updateClock();
+        });
+
+        // Add beforeunload event for cleanup
+        window.addEventListener('beforeunload', function () {
+            // Pause all videos
+            document.querySelectorAll('video').forEach(video => {
+                video.pause();
+            });
         });
     </script>
 </body>

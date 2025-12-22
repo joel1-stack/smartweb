@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Smart Accountants</title>
-    <!-- Favicon for browser tab -->
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -21,6 +20,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -30,14 +30,132 @@
             padding: 0 20px;
         }
 
+        /* Animated Gradient Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(135deg,
+                    rgba(0, 150, 136, 0.05) 0%,
+                    /* Green */
+                    rgba(139, 195, 74, 0.05) 25%,
+                    /* Light Green */
+                    rgba(76, 175, 80, 0.05) 50%,
+                    /* Green */
+                    rgba(56, 142, 60, 0.05) 75%,
+                    /* Dark Green */
+                    rgba(27, 94, 32, 0.05) 100%
+                    /* Deep Green */
+                ),
+                linear-gradient(45deg,
+                    rgba(33, 150, 243, 0.03) 0%,
+                    /* Blue */
+                    rgba(0, 188, 212, 0.03) 50%,
+                    /* Cyan */
+                    rgba(0, 150, 136, 0.03) 100%
+                    /* Teal */
+                );
+            background-size: 400% 400%, 200% 200%;
+            animation: gradientBG 20s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 0%, 0% 0%;
+            }
+
+            50% {
+                background-position: 100% 100%, 100% 100%;
+            }
+
+            100% {
+                background-position: 0% 0%, 0% 0%;
+            }
+        }
+
+        /* Floating Elements Animation */
+        .floating-element {
+            position: absolute;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+            background: rgba(0, 150, 136, 0.1);
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            background: rgba(139, 195, 74, 0.1);
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 15%;
+            background: rgba(56, 142, 60, 0.1);
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Animated Gradient Header */
+        .animated-header {
+            background: linear-gradient(-45deg, #4CAF50, #2196F3, #009688, #8BC34A);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         /* Header & Navigation */
         header {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -50,22 +168,46 @@
         .logo {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo-img {
             width: 50px;
             height: 50px;
             object-fit: contain;
-            margin-right: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: rotate(10deg) scale(1.1);
         }
 
         .logo h1 {
-            color: #210F37;
+            color: #4CAF50;
             font-size: 24px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover h1::after {
+            width: 100%;
         }
 
         .logo span {
-            color: #A55B4B;
+            color: #2196F3;
         }
 
         .nav-links {
@@ -75,6 +217,7 @@
 
         .nav-links li {
             margin-left: 30px;
+            position: relative;
         }
 
         .nav-links a {
@@ -83,58 +226,258 @@
             font-weight: 600;
             font-size: 16px;
             transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: #210F37;
+            color: #4CAF50;
         }
 
         .nav-links a.active {
-            color: #210F37;
+            color: #4CAF50;
         }
 
         .menu-toggle {
             display: none;
             font-size: 24px;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            color: #4CAF50;
+        }
+
+        /* Marquee Animation */
+        .marquee-banner {
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #4CAF50);
+            color: white;
+            padding: 15px 0;
+            margin-top: 80px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .marquee-banner:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+            padding-left: 100%;
+        }
+
+        .marquee-content span {
+            margin: 0 40px;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .marquee-content span:hover {
+            color: #FFEB3B;
+            transform: scale(1.1);
+        }
+
+        .marquee-content i {
+            color: #FFEB3B;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Page Header with Typing Animation */
+        .page-header {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(33, 150, 243, 0.9));
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .typing-container {
+            min-height: 60px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .typing-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: #FFEB3B;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 35px;
+            background-color: #FFEB3B;
+            margin-left: 5px;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* WhatsApp Floating Button */
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             bottom: 40px;
             right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
+            background: linear-gradient(45deg, #25d366, #128C7E);
+            color: white;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 100;
+            font-size: 32px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
 
         .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
-            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+            background: linear-gradient(45deg, #128C7E, #25d366);
         }
 
         .whatsapp-float::after {
-            content: "Chat with us";
+            content: "Chat Now";
             position: absolute;
             top: 50%;
-            right: 70px;
+            right: 75px;
             transform: translateY(-50%);
             background: #25d366;
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 25px;
             font-size: 14px;
             font-weight: 600;
@@ -142,66 +485,66 @@
             opacity: 0;
             transition: opacity 0.3s, right 0.3s;
             pointer-events: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .whatsapp-float:hover::after {
             opacity: 1;
-            right: 75px;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, #210F37 0%, #8A4FFF 100%);
-            color: white;
-            padding: 140px 0 60px;
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
+            right: 80px;
         }
 
         /* Contact Section */
         .contact-section {
             padding: 80px 0;
+            position: relative;
         }
 
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
+            animation: slideInUp 1s ease-out;
         }
 
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contact Info */
         .contact-info {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #4CAF50;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(76, 175, 80, 0.15);
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            opacity: 0.1;
         }
 
         .contact-info h2 {
@@ -209,16 +552,18 @@
             font-size: 32px;
             margin-bottom: 30px;
             position: relative;
+            display: inline-block;
         }
 
-        .contact-info h2:after {
+        .contact-info h2::after {
             content: '';
             position: absolute;
-            left: 0;
             bottom: -10px;
+            left: 0;
             width: 60px;
             height: 3px;
-            background-color: #A55B4B;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            border-radius: 2px;
         }
 
         .contact-details {
@@ -229,11 +574,20 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9ff;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.15);
         }
 
         .contact-icon {
-            background-color: #DCA06D;
-            color: #210F37;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -243,6 +597,11 @@
             font-size: 20px;
             margin-right: 15px;
             flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: rotate(360deg);
         }
 
         .contact-text h4 {
@@ -257,57 +616,91 @@
 
         /* WhatsApp Direct Contact */
         .whatsapp-contact {
-            background-color: #25d366;
+            background: linear-gradient(45deg, #25d366, #128C7E);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             margin-top: 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-5.46-4.45-9.91-9.91-9.91m0 1.5c4.64 0 8.41 3.77 8.41 8.41s-3.77 8.41-8.41 8.41c-1.43 0-2.8-.36-4.04-1.03l-3.16.83l.85-3.07c-.69-1.23-1.06-2.64-1.06-4.14c0-4.64 3.77-8.41 8.41-8.41M8.53 7.33c-.4 0-.73.23-.86.62c-.14.4.04.83.4 1.08l.96.71l.84 2.83c.1.34.41.56.77.56c.07 0 .14-.01.22-.03l2.14-.53c.38-.09.64-.39.64-.78c0-.08-.01-.16-.04-.24l-1.01-2.54l.96-.72c.37-.28.51-.74.35-1.16c-.16-.42-.59-.7-1.05-.7h-2.73z"/></svg>') center/100px no-repeat;
+            opacity: 0.1;
         }
 
         .whatsapp-contact h4 {
             margin-bottom: 15px;
             font-size: 20px;
+            position: relative;
         }
 
         .whatsapp-contact p {
             margin-bottom: 20px;
             opacity: 0.9;
+            position: relative;
         }
 
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            background-color: white;
+            background: white;
             color: #25d366;
-            padding: 12px 25px;
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 16px;
             transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .whatsapp-btn i {
             margin-right: 10px;
-            font-size: 20px;
+            font-size: 24px;
         }
 
         .whatsapp-btn:hover {
-            background-color: #128C7E;
+            background: #128C7E;
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .business-hours {
             margin-top: 40px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 15px;
+            border-left: 4px solid #4CAF50;
         }
 
         .business-hours h3 {
             color: #333;
             margin-bottom: 20px;
             font-size: 22px;
+            position: relative;
+        }
+
+        .business-hours h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #4CAF50;
         }
 
         .hours-list {
@@ -317,6 +710,7 @@
         .hours-list li {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
@@ -332,15 +726,37 @@
         }
 
         .time {
-            color: #666;
+            color: #4CAF50;
+            font-weight: 600;
         }
 
         /* Contact Form */
         .contact-form {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #2196F3;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(33, 150, 243, 0.15);
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            opacity: 0.1;
         }
 
         .contact-form h2 {
@@ -348,16 +764,18 @@
             font-size: 32px;
             margin-bottom: 30px;
             position: relative;
+            display: inline-block;
         }
 
-        .contact-form h2:after {
+        .contact-form h2::after {
             content: '';
             position: absolute;
-            left: 0;
             bottom: -10px;
+            left: 0;
             width: 60px;
             height: 3px;
-            background-color: #A55B4B;
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            border-radius: 2px;
         }
 
         .form-group {
@@ -375,18 +793,21 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
             font-size: 16px;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            background: #f8f9ff;
         }
 
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #210F37;
+            border-color: #4CAF50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
         }
 
         .form-row {
@@ -396,33 +817,55 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #210F37 0%, #8A4FFF 100%);
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
+            padding: 18px 40px;
+            border-radius: 50px;
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(33, 15, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
         }
 
         /* Map Section */
         .map-section {
             margin-bottom: 80px;
+            animation: slideInUp 1s ease-out 0.2s both;
         }
 
         .map-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #4CAF50;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            opacity: 0.1;
         }
 
         .map-container h2 {
@@ -430,42 +873,116 @@
             font-size: 32px;
             margin-bottom: 30px;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .map-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
         }
 
         .map-placeholder {
             height: 400px;
-            background-color: #DCA06D;
-            border-radius: 5px;
+            background: linear-gradient(45deg, #f8f9ff, #e8f5e9);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #210F37;
+            color: #333;
             font-size: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 2px dashed #4CAF50;
+        }
+
+        .map-placeholder i {
+            font-size: 80px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .map-placeholder p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .map-placeholder .subtext {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 10px;
         }
 
         /* FAQ Section */
         .faq-section {
             margin-bottom: 80px;
+            animation: slideInUp 1s ease-out 0.4s both;
         }
 
         .faq-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid #2196F3;
+        }
+
+        .faq-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            opacity: 0.1;
         }
 
         .faq-container h2 {
             color: #333;
             font-size: 32px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .faq-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
         }
 
         .faq-item {
             margin-bottom: 20px;
             border-bottom: 1px solid #eee;
             padding-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-bottom-color: #4CAF50;
         }
 
         .faq-item:last-child {
@@ -486,18 +1003,45 @@
             color: #333;
             font-size: 18px;
             margin: 0;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover h3 {
+            color: #4CAF50;
         }
 
         .faq-toggle {
-            color: #A55B4B;
-            font-size: 20px;
-            transition: transform 0.3s;
+            color: #4CAF50;
+            font-size: 24px;
+            transition: all 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f8f9ff;
         }
 
         .faq-answer {
             color: #666;
-            padding-top: 10px;
+            padding-top: 15px;
+            font-size: 16px;
+            line-height: 1.6;
             display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .faq-answer.active {
@@ -506,57 +1050,91 @@
 
         .faq-toggle.active {
             transform: rotate(45deg);
+            background: #4CAF50;
+            color: white;
         }
 
-        /* Footer - UPDATED TO MATCH TEAM PAGE */
+        /* Enhanced Footer */
         footer {
-            background-color: #210F37;
+            background: linear-gradient(135deg, #1a237e, #283593);
             color: white;
-            padding: 50px 0 25px;
+            padding: 70px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-logo {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
 
         .footer-logo img {
-            height: 45px;
+            height: 55px;
             width: auto;
             filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+        }
+
+        .footer-logo img:hover {
+            transform: rotate(-5deg);
         }
 
         .footer-logo h3 {
             color: white;
-            font-size: 22px;
+            font-size: 26px;
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .footer-logo span {
-            color: #DCA06D;
+            color: #4CAF50;
         }
 
         .footer-logo p {
             color: #ccc;
-            font-size: 0.9rem;
+            font-size: 16px;
             line-height: 1.5;
         }
 
         .footer-links h4,
         .footer-services h4,
         .footer-contact h4 {
-            color: #DCA06D;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h4::after,
+        .footer-services h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background: #2196F3;
         }
 
         .footer-links ul,
@@ -566,7 +1144,7 @@
 
         .footer-links li,
         .footer-services li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .footer-links a,
@@ -574,65 +1152,123 @@
             color: #ccc;
             text-decoration: none;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 16px;
             display: inline-block;
+            position: relative;
+            padding-left: 0;
         }
 
         .footer-links a:hover,
         .footer-services a:hover {
-            color: #DCA06D;
-            transform: translateX(5px);
+            color: #4CAF50;
+            padding-left: 10px;
         }
 
         .footer-contact p {
             color: #ccc;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
-            font-size: 0.9rem;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-contact p:hover {
+            color: #4CAF50;
         }
 
         .footer-contact i {
-            margin-right: 10px;
-            color: #DCA06D;
+            margin-right: 12px;
+            color: #4CAF50;
             margin-top: 3px;
-            font-size: 0.9rem;
+            font-size: 18px;
+            width: 20px;
         }
 
         .social-links {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #4CAF50, #2196F3);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 1;
         }
 
         .social-links a:hover {
-            background-color: #DCA06D;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .social-links a:hover::before {
+            opacity: 1;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
-            font-size: 0.85rem;
+            font-size: 15px;
+        }
+
+        /* Scroll-triggered Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .contact-container {
+                gap: 40px;
+            }
+        }
+
         @media (max-width: 992px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .typing-text {
+                font-size: 22px;
+            }
+
             .contact-container {
                 grid-template-columns: 1fr;
             }
@@ -641,8 +1277,11 @@
                 grid-template-columns: 1fr;
             }
 
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
+            .contact-info h2,
+            .contact-form h2,
+            .map-container h2,
+            .faq-container h2 {
+                font-size: 28px;
             }
         }
 
@@ -662,6 +1301,8 @@
                 align-items: center;
                 padding-top: 40px;
                 transition: left 0.3s;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 999;
             }
 
             .nav-links.active {
@@ -670,17 +1311,37 @@
 
             .nav-links li {
                 margin: 15px 0;
+                width: 80%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 18px;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+            }
+
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .page-header {
+                padding: 80px 0 60px;
             }
 
             .page-header h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
-            .contact-info h2,
-            .contact-form h2,
-            .map-container h2,
-            .faq-container h2 {
-                font-size: 28px;
+            .typing-text {
+                font-size: 20px;
+            }
+
+            .marquee-content span {
+                font-size: 14px;
+                margin: 0 20px;
             }
 
             .contact-info,
@@ -691,50 +1352,77 @@
             }
 
             .whatsapp-float {
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
                 bottom: 20px;
                 right: 20px;
-                font-size: 24px;
+                font-size: 28px;
             }
 
             .whatsapp-float::after {
                 display: none;
             }
 
-            .logo-img {
-                width: 40px;
-                height: 40px;
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .map-placeholder {
+                height: 300px;
+            }
+
+            .map-placeholder p {
+                font-size: 1.2rem;
+            }
+
+            .floating-element {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 95%;
+                padding: 0 15px;
             }
 
             .logo h1 {
                 font-size: 20px;
             }
 
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            .page-header h1 {
+                font-size: 28px;
             }
 
-            .footer-links li,
-            .footer-services li {
-                margin-bottom: 8px;
+            .typing-text {
+                font-size: 18px;
             }
 
-            .footer-contact p {
-                margin-bottom: 10px;
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
             }
-        }
 
-        @media (max-width: 576px) {
-            .footer-content {
-                grid-template-columns: 1fr;
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .whatsapp-btn {
+                padding: 12px 25px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Floating Background Elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
         class="whatsapp-float" target="_blank">
@@ -746,7 +1434,6 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <!-- Your local logo image -->
                     <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
                     <h1>Smart<span>Accountants</span></h1>
                 </div>
@@ -767,18 +1454,46 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <!-- Marquee Animation -->
+    <section class="marquee-banner animated-header">
+        <div class="marquee-content">
+            <span><i class="fas fa-certificate"></i> Certified Accountants</span>
+            <span><i class="fas fa-chart-line"></i> Financial Analysis Experts</span>
+            <span><i class="fas fa-file-invoice-dollar"></i> Tax Specialists</span>
+            <span><i class="fas fa-balance-scale"></i> Bookkeeping Professionals</span>
+            <span><i class="fas fa-clock"></i> 24/7 Support Available</span>
+            <span><i class="fas fa-award"></i> Award-Winning Service</span>
+            <span><i class="fas fa-users"></i> Dedicated Client Support</span>
+            <span><i class="fas fa-shield-alt"></i> Secure & Confidential</span>
+            <!-- Duplicate for seamless loop -->
+            <span><i class="fas fa-certificate"></i> Certified Accountants</span>
+            <span><i class="fas fa-chart-line"></i> Financial Analysis Experts</span>
+            <span><i class="fas fa-file-invoice-dollar"></i> Tax Specialists</span>
+            <span><i class="fas fa-balance-scale"></i> Bookkeeping Professionals</span>
+            <span><i class="fas fa-clock"></i> 24/7 Support Available</span>
+            <span><i class="fas fa-award"></i> Award-Winning Service</span>
+            <span><i class="fas fa-users"></i> Dedicated Client Support</span>
+            <span><i class="fas fa-shield-alt"></i> Secure & Confidential</span>
+        </div>
+    </section>
+
+    <!-- Page Header with Typing Animation -->
+    <section class="page-header animated-header">
         <div class="container">
             <h1>Contact Smart Accountants</h1>
-            <p>Get in touch with us for professional accounting solutions tailored to your business needs</p>
+            <div class="typing-container">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor"></span>
+            </div>
+            <p>Get in touch with us for professional accounting solutions tailored to your business needs. Our team of
+                experts is ready to assist you.</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact-section">
         <div class="container">
-            <div class="contact-container">
+            <div class="contact-container animate-on-scroll">
                 <!-- Contact Information -->
                 <div class="contact-info">
                     <h2>Get In Touch</h2>
@@ -818,7 +1533,7 @@
                     <!-- WhatsApp Direct Contact -->
                     <div class="whatsapp-contact">
                         <h4>Chat with us on WhatsApp</h4>
-                        <p>Get instant responses to your queries</p>
+                        <p>Get instant responses to your queries - Available 24/7</p>
                         <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
                             class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
@@ -893,7 +1608,9 @@
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
                 </div>
             </div>
@@ -901,15 +1618,15 @@
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
+    <section class="map-section animate-on-scroll">
         <div class="container">
             <div class="map-container">
                 <h2>Our Location</h2>
                 <div class="map-placeholder">
                     <div style="text-align: center;">
-                        <i class="fas fa-map-marked-alt" style="font-size: 60px; margin-bottom: 20px;"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                         <p>Nairobi, Kenya</p>
-                        <p style="font-size: 16px; margin-top: 10px;">Map integration available upon request</p>
+                        <p class="subtext">Map integration available upon request</p>
                     </div>
                 </div>
             </div>
@@ -917,7 +1634,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section class="faq-section animate-on-scroll">
         <div class="container">
             <div class="faq-container">
                 <h2>Frequently Asked Questions</h2>
@@ -985,7 +1702,7 @@
         </div>
     </section>
 
-    <!-- Footer - UPDATED TO MATCH TEAM PAGE -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -994,8 +1711,14 @@
                     <h3>Smart<span>Accountants</span></h3>
                     <p>For Real Accounting Solutions</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
 
@@ -1047,16 +1770,9 @@
 
             menuToggle.addEventListener('click', function () {
                 navLinks.classList.toggle('active');
-
-                // Change menu icon
                 const icon = menuToggle.querySelector('i');
-                if (icon.classList.contains('fa-bars')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             });
 
             // Close menu when clicking on a link
@@ -1069,6 +1785,52 @@
                 });
             });
 
+            // Typing Animation
+            const typingText = document.getElementById('typingText');
+            const messages = [
+                "Professional Accounting Solutions",
+                "Expert Financial Guidance",
+                "Tax & Compliance Specialists",
+                "Your Trusted Accounting Partner"
+            ];
+            let messageIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let isEnd = false;
+
+            function typeWriter() {
+                const currentMessage = messages[messageIndex];
+
+                if (isDeleting) {
+                    typingText.textContent = currentMessage.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingText.textContent = currentMessage.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentMessage.length) {
+                    isEnd = true;
+                    setTimeout(() => {
+                        isDeleting = true;
+                        typeWriter();
+                    }, 1500);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    messageIndex++;
+                    if (messageIndex === messages.length) {
+                        messageIndex = 0;
+                    }
+                    setTimeout(typeWriter, 500);
+                } else {
+                    const speed = isDeleting ? 50 : 100;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+
+            // Start typing animation after page loads
+            setTimeout(typeWriter, 1000);
+
             // FAQ Toggle
             const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -1077,18 +1839,9 @@
                     const answer = this.nextElementSibling;
                     const toggle = this.querySelector('.faq-toggle');
 
-                    // Toggle active class on answer
                     answer.classList.toggle('active');
-
-                    // Toggle active class on toggle icon
                     toggle.classList.toggle('active');
-
-                    // Change icon
-                    if (toggle.classList.contains('active')) {
-                        toggle.textContent = '−';
-                    } else {
-                        toggle.textContent = '+';
-                    }
+                    toggle.textContent = toggle.classList.contains('active') ? '−' : '+';
                 });
             });
 
@@ -1098,37 +1851,88 @@
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
 
-                // Get form values
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
                 const phone = document.getElementById('phone').value;
                 const service = document.getElementById('service').value;
                 const message = document.getElementById('message').value;
 
-                // Simple validation
                 if (!name || !email || !message) {
                     alert('Please fill in all required fields.');
                     return;
                 }
 
-                // In a real application, you would send this data to a server
-                // For this demo, we'll just show a success message
-                alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} regarding ${service ? service : 'your inquiry'} soon.`);
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
 
-                // Reset form
-                contactForm.reset();
+                setTimeout(() => {
+                    alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} regarding ${service ? service : 'your inquiry'} soon.`);
+                    contactForm.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
             });
 
-            // WhatsApp Button Hover Effect
-            const whatsappBtn = document.querySelector('.whatsapp-btn');
-            if (whatsappBtn) {
-                whatsappBtn.addEventListener('mouseenter', function () {
-                    this.style.transform = 'translateY(-3px)';
-                });
+            // Scroll-triggered Animations
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-                whatsappBtn.addEventListener('mouseleave', function () {
-                    this.style.transform = 'translateY(0)';
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
                 });
+            }
+
+            // Initial check
+            checkScroll();
+
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+
+            // Marquee hover effect
+            const marquee = document.querySelector('.marquee-banner');
+            if (marquee) {
+                marquee.addEventListener('mouseenter', () => {
+                    marquee.style.animationPlayState = 'paused';
+                });
+                marquee.addEventListener('mouseleave', () => {
+                    marquee.style.animationPlayState = 'running';
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // WhatsApp button animation
+            const whatsappFloat = document.querySelector('.whatsapp-float');
+            if (whatsappFloat) {
+                setInterval(() => {
+                    whatsappFloat.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        whatsappFloat.style.transform = 'scale(1)';
+                    }, 300);
+                }, 5000);
             }
         });
     </script>

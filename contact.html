@@ -1,1997 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Smart Accountants</title>
+    <title>Contact | Smart Accountants</title>
+    <meta name="description" content="Talk to Sephat directly on WhatsApp. No forms, no waiting. He replies in 10-15 minutes.">
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        navy: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 100: '#f1f5f9' },
+                        amber: { 500: '#f59e0b', 400: '#fbbf24', 50: '#fffbeb' },
+                        wa: '#25d366', 'wa-dark': '#128c7e'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Animated Gradient Background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(135deg,
-                    rgba(107, 44, 145, 0.05) 0%,
-                    /* Purple */
-                    rgba(138, 79, 255, 0.05) 25%,
-                    /* Light Purple */
-                    rgba(107, 44, 145, 0.05) 50%,
-                    /* Purple */
-                    rgba(165, 91, 75, 0.05) 75%,
-                    /* Brown */
-                    rgba(220, 160, 109, 0.05) 100%
-                    /* Tan */
-                ),
-                linear-gradient(45deg,
-                    rgba(33, 15, 55, 0.03) 0%,
-                    /* Dark Purple */
-                    rgba(107, 44, 145, 0.03) 50%,
-                    /* Purple */
-                    rgba(138, 79, 255, 0.03) 100%
-                    /* Light Purple */
-                );
-            background-size: 400% 400%, 200% 200%;
-            animation: gradientBG 20s ease infinite;
-            z-index: -2;
-        }
-
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 0%, 0% 0%;
-            }
-
-            50% {
-                background-position: 100% 100%, 100% 100%;
-            }
-
-            100% {
-                background-position: 0% 0%, 0% 0%;
-            }
-        }
-
-        /* Floating Elements Animation */
-        .floating-element {
-            position: absolute;
-            background: rgba(138, 79, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        .floating-element:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: 5%;
-            background: rgba(107, 44, 145, 0.1);
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            right: 10%;
-            background: rgba(138, 79, 255, 0.1);
-            animation-delay: -2s;
-        }
-
-        .floating-element:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            left: 15%;
-            background: rgba(165, 91, 75, 0.1);
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        /* Animated Gradient Header */
-        .animated-header {
-            background: linear-gradient(-45deg, #8A4FFF, #6B2C91, #A55B4B, #DCA06D);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .logo-img:hover {
-            transform: rotate(10deg) scale(1.1);
-        }
-
-        .logo h1 {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .logo h1::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover h1::after {
-            width: 100%;
-        }
-
-        .logo span {
-            color: #A55B4B;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #8A4FFF;
-        }
-
-        .nav-links a.active {
-            color: #8A4FFF;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #333;
-            transition: transform 0.3s;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-            color: #8A4FFF;
-        }
-
-        /* Marquee Banner with Letter-by-Letter Typing Effect */
-        .marquee-banner {
-            background: linear-gradient(45deg, #210F37, #6B2C91);
-            color: white;
-            padding: 15px 0;
-            margin-top: 80px;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Courier New', monospace;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            position: relative;
-            height: 60px;
-            display: flex;
-            align-items: center;
-        }
-
-        .typing-marquee {
-            position: absolute;
-            white-space: nowrap;
-            animation: typingMarquee 60s linear infinite;
-            padding-left: 100%;
-        }
-
-        @keyframes typingMarquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .letter {
-            display: inline-block;
-            animation: letterGlow 2s infinite alternate;
-        }
-
-        @keyframes letterGlow {
-            0% {
-                opacity: 0.8;
-                text-shadow: 0 0 5px rgba(220, 160, 109, 0.5);
-            }
-
-            100% {
-                opacity: 1;
-                text-shadow: 0 0 10px rgba(220, 160, 109, 1), 0 0 20px rgba(220, 160, 109, 0.5);
-            }
-        }
-
-        /* Page Header with Typing Animation */
-        .page-header {
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(107, 44, 145, 0.9));
-            color: white;
-            padding: 100px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
-            z-index: 0;
-        }
-
-        .page-header .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .typing-container {
-            min-height: 60px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .typing-text {
-            font-size: 28px;
-            font-weight: 600;
-            color: #DCA06D;
-            display: inline-block;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 35px;
-            background-color: #DCA06D;
-            margin-left: 5px;
-            animation: blink 0.8s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .page-header p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 65px;
-            height: 65px;
-            bottom: 40px;
-            right: 40px;
-            background: linear-gradient(45deg, #25d366, #128C7E);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 32px;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            animation: pulse 2s infinite;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-            background: linear-gradient(45deg, #128C7E, #25d366);
-        }
-
-        .whatsapp-float::after {
-            content: "Chat Now";
-            position: absolute;
-            top: 50%;
-            right: 75px;
-            transform: translateY(-50%);
-            background: #25d366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s, right 0.3s;
-            pointer-events: none;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .whatsapp-float:hover::after {
-            opacity: 1;
-            right: 80px;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            animation: slideInUp 1s ease-out;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Contact Info */
-        .contact-info {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            border-left: 5px solid #8A4FFF;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .contact-info:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(138, 79, 255, 0.15);
-        }
-
-        .contact-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            clip-path: polygon(0 0, 100% 0, 100% 100%);
-            opacity: 0.1;
-        }
-
-        .contact-info h2 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .contact-info h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            border-radius: 2px;
-        }
-
-        .contact-details {
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #f8f9ff;
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.15);
-        }
-
-        .contact-icon {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-right: 15px;
-            flex-shrink: 0;
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover .contact-icon {
-            transform: rotate(360deg);
-        }
-
-        .contact-text h4 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 18px;
-        }
-
-        .contact-text p {
-            color: #666;
-        }
-
-        /* WhatsApp Direct Contact */
-        .whatsapp-contact {
-            background: linear-gradient(45deg, #25d366, #128C7E);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-5.46-4.45-9.91-9.91-9.91m0 1.5c4.64 0 8.41 3.77 8.41 8.41s-3.77 8.41-8.41 8.41c-1.43 0-2.8-.36-4.04-1.03l-3.16.83l.85-3.07c-.69-1.23-1.06-2.64-1.06-4.14c0-4.64 3.77-8.41 8.41-8.41M8.53 7.33c-.4 0-.73.23-.86.62c-.14.4.04.83.4 1.08l.96.71l.84 2.83c.1.34.41.56.77.56c.07 0 .14-.01.22-.03l2.14-.53c.38-.09.64-.39.64-.78c0-.08-.01-.16-.04-.24l-1.01-2.54l.96-.72c.37-.28.51-.74.35-1.16c-.16-.42-.59-.7-1.05-.7h-2.73z"/></svg>') center/100px no-repeat;
-            opacity: 0.1;
-        }
-
-        .whatsapp-contact h4 {
-            margin-bottom: 15px;
-            font-size: 20px;
-            position: relative;
-        }
-
-        .whatsapp-contact p {
-            margin-bottom: 20px;
-            opacity: 0.9;
-            position: relative;
-        }
-
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: #25d366;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .whatsapp-btn i {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .business-hours {
-            margin-top: 40px;
-            padding: 25px;
-            background: #f8f9ff;
-            border-radius: 15px;
-            border-left: 4px solid #8A4FFF;
-        }
-
-        .business-hours h3 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 22px;
-            position: relative;
-        }
-
-        .business-hours h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #8A4FFF;
-        }
-
-        .hours-list {
-            list-style: none;
-        }
-
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
-
-        .day {
-            color: #333;
-            font-weight: 600;
-        }
-
-        .time {
-            color: #8A4FFF;
-            font-weight: 600;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            border-left: 5px solid #6B2C91;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .contact-form:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(107, 44, 145, 0.15);
-        }
-
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-            clip-path: polygon(0 0, 100% 0, 0 100%);
-            opacity: 0.1;
-        }
-
-        .contact-form h2 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .contact-form h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-            border-radius: 2px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #333;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-            background: #f8f9ff;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8A4FFF;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(138, 79, 255, 0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 5px 20px rgba(138, 79, 255, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(138, 79, 255, 0.4);
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-        }
-
-        /* Map Section */
-        .map-section {
-            margin-bottom: 80px;
-            animation: slideInUp 1s ease-out 0.2s both;
-        }
-
-        .map-container {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid #8A4FFF;
-        }
-
-        .map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            clip-path: polygon(0 0, 100% 0, 100% 100%);
-            opacity: 0.1;
-        }
-
-        .map-container h2 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .map-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .map-placeholder {
-            height: 400px;
-            background: linear-gradient(45deg, #f8f9ff, #f5f0ff);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-size: 24px;
-            position: relative;
-            overflow: hidden;
-            border: 2px dashed #8A4FFF;
-        }
-
-        .map-placeholder i {
-            font-size: 80px;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .map-placeholder p {
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .map-placeholder .subtext {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            margin-bottom: 80px;
-            animation: slideInUp 1s ease-out 0.4s both;
-        }
-
-        .faq-container {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid #6B2C91;
-        }
-
-        .faq-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-            clip-path: polygon(0 0, 100% 0, 0 100%);
-            opacity: 0.1;
-        }
-
-        .faq-container h2 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 40px;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .faq-container h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            border-bottom-color: #8A4FFF;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            padding: 15px 0;
-        }
-
-        .faq-question h3 {
-            color: #333;
-            font-size: 18px;
-            margin: 0;
-            transition: color 0.3s;
-        }
-
-        .faq-question:hover h3 {
-            color: #8A4FFF;
-        }
-
-        .faq-toggle {
-            color: #8A4FFF;
-            font-size: 24px;
-            transition: all 0.3s;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: #f8f9ff;
-        }
-
-        .faq-answer {
-            color: #666;
-            padding-top: 15px;
-            font-size: 16px;
-            line-height: 1.6;
-            display: none;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        .faq-toggle.active {
-            transform: rotate(45deg);
-            background: #8A4FFF;
-            color: white;
-        }
-
-        /* Enhanced Footer */
-        footer {
-            background: linear-gradient(135deg, #210F37, #0A1929);
-            color: white;
-            padding: 70px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .footer-logo img {
-            height: 55px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s;
-        }
-
-        .footer-logo img:hover {
-            transform: rotate(-5deg);
-        }
-
-        .footer-logo h3 {
-            color: white;
-            font-size: 26px;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .footer-logo span {
-            color: #DCA06D;
-        }
-
-        .footer-logo p {
-            color: #ccc;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .footer-links h4,
-        .footer-services h4,
-        .footer-contact h4 {
-            color: #DCA06D;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-links h4::after,
-        .footer-services h4::after,
-        .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 40px;
-            height: 2px;
-            background: #6B2C91;
-        }
-
-        .footer-links ul,
-        .footer-services ul {
-            list-style: none;
-        }
-
-        .footer-links li,
-        .footer-services li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a,
-        .footer-services a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 16px;
-            display: inline-block;
-            position: relative;
-            padding-left: 0;
-        }
-
-        .footer-links a:hover,
-        .footer-services a:hover {
-            color: #6B2C91;
-            padding-left: 10px;
-        }
-
-        .footer-contact p {
-            color: #ccc;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .footer-contact p:hover {
-            color: #6B2C91;
-        }
-
-        .footer-contact i {
-            margin-right: 12px;
-            color: #DCA06D;
-            margin-top: 3px;
-            font-size: 18px;
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-            font-size: 18px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
-        }
-
-        .social-links a i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
-        }
-
-        .social-links a:hover::before {
-            opacity: 1;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 15px;
-        }
-
-        /* Scroll-triggered Animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .contact-container {
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .page-header h1 {
-                font-size: 36px;
-            }
-
-            .typing-text {
-                font-size: 22px;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info h2,
-            .contact-form h2,
-            .map-container h2,
-            .faq-container h2 {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: left 0.3s;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-                width: 80%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px 0;
-                font-size: 18px;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-            }
-
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-
-            .page-header {
-                padding: 80px 0 60px;
-            }
-
-            .page-header h1 {
-                font-size: 32px;
-            }
-
-            .typing-text {
-                font-size: 20px;
-            }
-
-            .marquee-banner {
-                font-size: 16px;
-                height: 50px;
-            }
-
-            .contact-info,
-            .contact-form,
-            .map-container,
-            .faq-container {
-                padding: 30px 20px;
-            }
-
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 28px;
-            }
-
-            .whatsapp-float::after {
-                display: none;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .map-placeholder {
-                height: 300px;
-            }
-
-            .map-placeholder p {
-                font-size: 1.2rem;
-            }
-
-            .floating-element {
-                display: none;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-                padding: 0 15px;
-            }
-
-            .logo h1 {
-                font-size: 20px;
-            }
-
-            .page-header h1 {
-                font-size: 28px;
-            }
-
-            .typing-text {
-                font-size: 18px;
-            }
-
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .contact-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .whatsapp-btn {
-                padding: 12px 25px;
-                font-size: 14px;
-            }
-
-            .marquee-banner {
-                font-size: 14px;
-                height: 45px;
-            }
-        }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+        .animate-fade-slide-up { animation: fadeSlideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .animate-heartbeat { animation: heartbeat 3s ease-in-out infinite; }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .phone-icon:hover { animation: wiggle 0.3s ease; }
+        html { scroll-behavior: smooth; }
+        button:focus-visible, a:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-<body>
-    <!-- Floating Background Elements -->
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-        class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Header & Navigation -->
-    <header class="animated-header">
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
-                    <h1>Smart<span>Accountants</span></h1>
-                </div>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Marquee Banner with Letter-by-Letter Typing Effect -->
-    <div class="marquee-banner">
-        <div class="typing-marquee" id="typingMarquee">
-            <span class="letter">S</span><span class="letter">M</span><span class="letter">A</span><span
-                class="letter">R</span><span class="letter">T</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
-                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
-                class="letter">T</span><span class="letter">A</span><span class="letter">N</span><span
-                class="letter">T</span><span class="letter">S</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">|</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">F</span><span class="letter">O</span><span class="letter">R</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">R</span><span class="letter">E</span><span class="letter">A</span><span
-                class="letter">L</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">A</span><span class="letter">C</span><span class="letter">C</span><span
-                class="letter">O</span><span class="letter">U</span><span class="letter">N</span><span
-                class="letter">T</span><span class="letter">I</span><span class="letter">N</span><span
-                class="letter">G</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">S</span><span class="letter">O</span><span class="letter">L</span><span
-                class="letter">U</span><span class="letter">T</span><span class="letter">I</span><span
-                class="letter">O</span><span class="letter">N</span><span class="letter">S</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">|</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">📞</span>
-            <span class="letter">0</span><span class="letter">7</span><span class="letter">4</span><span
-                class="letter">8</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">8</span><span class="letter">3</span><span class="letter">6</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">2</span><span class="letter">0</span><span class="letter">8</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">|</span>
-            <span class="letter">&nbsp;</span>
-            <span class="letter">✉</span>
-            <span class="letter">s</span><span class="letter">m</span><span class="letter">a</span><span
-                class="letter">r</span><span class="letter">t</span><span class="letter">c</span><span
-                class="letter">o</span><span class="letter">u</span><span class="letter">n</span><span
-                class="letter">t</span><span class="letter">i</span><span class="letter">n</span><span
-                class="letter">g</span><span class="letter">s</span><span class="letter">@</span><span
-                class="letter">g</span><span class="letter">m</span><span class="letter">a</span><span
-                class="letter">i</span><span class="letter">l</span><span class="letter">.</span><span
-                class="letter">c</span><span class="letter">o</span><span class="letter">m</span>
-        </div>
-    </div>
-
-    <!-- Page Header with Typing Animation -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Contact Smart Accountants</h1>
-            <div class="typing-container">
-                <span class="typing-text" id="typingText"></span>
-                <span class="cursor"></span>
+    <!-- Nav -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md transition-shadow duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-lg text-navy-900 tracking-tight">Smart<span class="text-amber-500">Accountants</span></a>
+            <div class="hidden sm:flex items-center gap-6 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-navy-800 transition">Home</a>
+                <a href="about.html" class="hover:text-navy-800 transition">About</a>
+                <a href="services.html" class="hover:text-navy-800 transition">Services</a>
+                <a href="projects.html" class="hover:text-navy-800 transition">Results</a>
+                <a href="team.html" class="hover:text-navy-800 transition">Team</a>
+                <a href="contact.html" class="font-semibold text-navy-900">Contact</a>
             </div>
-            <p>Get in touch with us for professional accounting solutions tailored to your business needs. Our team of
-                experts is ready to assist you.</p>
+            <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20need%20help%20with%20my%20business%20accounting" target="_blank"
+               class="bg-wa hover:bg-wa-dark text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-md">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-12 px-4 sm:pt-32">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="animate-fade-slide-up inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-wide border border-amber-100">
+                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+                DIRECT LINE TO SEPHAT
+            </div>
+            <h1 class="animate-fade-slide-up stagger-1 text-3xl sm:text-4xl font-extrabold text-navy-900 mb-5 leading-tight tracking-tight">
+                Talk to Sephat <span class="text-amber-500">Directly</span>
+            </h1>
+            <p class="animate-fade-slide-up stagger-2 text-lg text-slate-600 leading-relaxed mb-10">
+                No forms. No waiting. Just WhatsApp. He usually replies in 10–15 minutes during business hours.
+            </p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-container animate-on-scroll">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Our Location</h4>
-                                <p>Nairobi, Kenya</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone Number</h4>
-                                <p>0748 836 208</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email Address</h4>
-                                <p>smartcountings@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- WhatsApp Direct Contact -->
-                    <div class="whatsapp-contact">
-                        <h4>Chat with us on WhatsApp</h4>
-                        <p>Get instant responses to your queries - Available 24/7</p>
-                        <a href="https://wa.me/254748836208?text=Hello%20Smart%20Accountants,%20I%20would%20like%20to%20inquire%20about%20your%20services"
-                            class="whatsapp-btn" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
-                        </a>
-                    </div>
-
-                    <div class="business-hours">
-                        <h3>Business Hours</h3>
-                        <ul class="hours-list">
-                            <li>
-                                <span class="day">Monday - Thursday</span>
-                                <span class="time">8:00 AM - 5:00 PM</span>
-                            </li>
-                            <li>
-                                <span class="day">Friday</span>
-                                <span class="time">8:00 AM - 4:00 PM</span>
-                            </li>
-                            <li>
-                                <span class="day">Saturday</span>
-                                <span class="time">9:00 AM - 1:00 PM</span>
-                            </li>
-                            <li>
-                                <span class="day">Sunday</span>
-                                <span class="time">Closed</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <h2>Send Us a Message</h2>
-
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="service">Service Interested In</label>
-                                <select id="service" name="service">
-                                    <option value="">Select a service</option>
-                                    <option value="bookkeeping">Bookkeeping</option>
-                                    <option value="tax">Tax Computation & Filing</option>
-                                    <option value="payroll">Payroll Management</option>
-                                    <option value="reporting">Financial Reporting</option>
-                                    <option value="quickbooks">QuickBooks Setup</option>
-                                    <option value="budgeting">Budgeting & Forecasting</option>
-                                    <option value="analysis">Financial Analysis</option>
-                                    <option value="audit">Audit Services</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Your Message *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
+    <!-- WhatsApp CTA -->
+    <section class="px-4 pb-8">
+        <div class="max-w-lg mx-auto text-center">
+            <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20saw%20your%20website%20and%20I%20need%20help%20with%20my%20business%20accounting"
+               target="_blank"
+               class="animate-heartbeat animate-fade-slide-up stagger-1 inline-flex items-center gap-3 bg-wa hover:bg-wa-dark text-white text-lg font-bold px-10 py-5 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 shadow-xl mb-6">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Start WhatsApp Chat
+            </a>
+            <p class="animate-fade-slide-up stagger-2 text-sm text-slate-400 mb-12">
+                Or call directly:
+                <a href="tel:+254748836208" class="phone-icon text-navy-800 font-semibold underline underline-offset-2 hover:text-amber-600 transition">
+                    0748 836 208
+                </a>
+            </p>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section animate-on-scroll">
-        <div class="container">
-            <div class="map-container">
-                <h2>Our Location</h2>
-                <div class="map-placeholder">
-                    <div style="text-align: center;">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <p>Nairobi, Kenya</p>
-                        <p class="subtext">Map integration available upon request</p>
+    <!-- What Happens Next -->
+    <section class="px-4 pb-16">
+        <div class="max-w-lg mx-auto">
+            <div class="reveal bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <h3 class="font-bold text-navy-900 mb-5 text-lg">What happens next:</h3>
+                <div class="space-y-5">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-9 h-9 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        <div>
+                            <p class="font-semibold text-navy-800">Sephat replies within 15 minutes</p>
+                            <p class="text-sm text-slate-500 mt-0.5">During business hours (Mon–Fri, 8am–6pm EAT)</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-9 h-9 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <p class="font-semibold text-navy-800">You send your messy data</p>
+                            <p class="text-sm text-slate-500 mt-0.5">M-Pesa screenshots, receipts, bank alerts — anything works. We organize the mess.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-9 h-9 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                        <div>
+                            <p class="font-semibold text-navy-800">He tells you exactly what's wrong</p>
+                            <p class="text-sm text-slate-500 mt-0.5">Clear diagnosis + exact cost to fix it. No surprises, no pressure.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-9 h-9 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                        <div>
+                            <p class="font-semibold text-navy-800">You decide. No pressure.</p>
+                            <p class="text-sm text-slate-500 mt-0.5">Start with KSh 2,500 Rescue or go monthly. Your call, your timeline.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section animate-on-scroll">
-        <div class="container">
-            <div class="faq-container">
-                <h2>Frequently Asked Questions</h2>
+    <!-- Contact Details -->
+    <section class="py-16 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="reveal p-6 hover:bg-slate-50 rounded-xl transition">
+                    <div class="text-3xl mb-3 phone-icon cursor-default">📞</div>
+                    <h3 class="font-bold text-navy-900 mb-1">Phone</h3>
+                    <p class="text-slate-500 text-sm mb-2">Call or WhatsApp anytime</p>
+                    <a href="tel:+254748836208" class="text-amber-600 font-bold hover:underline transition">0748 836 208</a>
+                </div>
+                <div class="reveal p-6 hover:bg-slate-50 rounded-xl transition">
+                    <div class="text-3xl mb-3">✉️</div>
+                    <h3 class="font-bold text-navy-900 mb-1">Email</h3>
+                    <p class="text-slate-500 text-sm mb-2">For formal documents & invoices</p>
+                    <a href="mailto:smartcountings@gmail.com" class="text-amber-600 font-bold hover:underline transition text-sm">smartcountings@gmail.com</a>
+                </div>
+                <div class="reveal p-6 hover:bg-slate-50 rounded-xl transition">
+                    <div class="text-3xl mb-3">📍</div>
+                    <h3 class="font-bold text-navy-900 mb-1">Location</h3>
+                    <p class="text-slate-500 text-sm mb-2">Based in Nairobi, serving all Kenya</p>
+                    <span class="text-slate-700 font-semibold">Nairobi, Kenya</span>
+                </div>
+            </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What types of businesses do you work with?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We work with businesses of all sizes including SMEs, startups, corporates, and organizations
-                            across various industries in Kenya. Our services are tailored to meet the specific needs of
-                            each client.</p>
+            <div class="reveal mt-10 bg-slate-50 rounded-xl p-6 text-center border border-slate-200">
+                <p class="text-sm text-slate-500 mb-1">Business Hours</p>
+                <p class="font-semibold text-navy-900">Monday – Friday: 8:00 AM – 5:00 PM EAT</p>
+                <p class="text-xs text-slate-400 mt-1">WhatsApp responses may continue outside hours for urgent compliance issues</p>
+            </div>
+
+            <!-- M-Pesa Payment -->
+            <div class="reveal mt-6 bg-amber-50 rounded-xl p-6 text-center border border-amber-100">
+                <p class="text-sm text-amber-700 font-semibold mb-1">💳 Pay via M-Pesa</p>
+                <p class="text-navy-900 font-bold">Lipa na M-Pesa: PayBill <span class="text-amber-600">714777</span></p>
+                <p class="text-slate-600 text-sm mt-1">Account Number: <span class="font-semibold">0708 305 767</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 px-4 bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-navy-900 mb-10">Common Questions</h2>
+            <div class="space-y-4" id="faq">
+
+                <div class="reveal bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-4 font-semibold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        Do I need to organize my receipts first?
+                        <span class="faq-icon text-amber-500 font-bold text-xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                        No. Send us whatever you have — crumpled receipts, M-Pesa SMS screenshots, bank alerts, voice notes. We organize the mess. That's literally what we do.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How quickly can you start working on our accounting needs?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We can typically begin working with you within 1-3 business days after our initial
-                            consultation. For urgent matters, we can arrange a quicker start based on your specific
-                            requirements.</p>
+                <div class="reveal bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-4 font-semibold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        How quickly can you file my missing KRA returns?
+                        <span class="faq-icon text-amber-500 font-bold text-xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                        Smart Rescue packages are completed within 48 hours of receiving your data. For urgent KRA deadlines, we can often turn around same-day. WhatsApp us and we'll tell you exactly what's possible.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What accounting software do you work with?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We specialize in QuickBooks (both Desktop and Online versions) but also have experience with
-                            other accounting software. We can also help you set up and implement the accounting system
-                            that best fits your business.</p>
+                <div class="reveal bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-4 font-semibold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        Is my financial information kept confidential?
+                        <span class="faq-icon text-amber-500 font-bold text-xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                        Absolutely. We never publish client names, phone numbers, or financial data. All staff sign confidentiality agreements. Your business information stays between you and us — always.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do you ensure confidentiality of our financial information?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We take client confidentiality very seriously. All our staff sign confidentiality agreements,
-                            and we have secure systems in place to protect your financial data. We follow strict
-                            protocols to ensure your information remains private and secure.</p>
+                <div class="reveal bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-4 font-semibold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        What accounting software do you use?
+                        <span class="faq-icon text-amber-500 font-bold text-xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                        We specialize in QuickBooks (Desktop and Online) but work with Excel, Google Sheets, and manual records too. You don't need any software — we handle the tools, you just forward your data on WhatsApp.
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you offer customized packages for small businesses?</h3>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we offer flexible and affordable packages tailored to small businesses. We understand
-                            that every business has unique needs and budget constraints, so we work with you to create a
-                            package that provides the services you need at a price that works for you.</p>
+                <div class="reveal bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full text-left px-6 py-4 font-semibold text-navy-900 flex justify-between items-center hover:bg-slate-50 transition">
+                        Can I cancel the monthly plan anytime?
+                        <span class="faq-icon text-amber-500 font-bold text-xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-slate-600 text-sm leading-relaxed">
+                        Yes. No long-term contracts. Cancel anytime with 30 days notice. We believe in earning your business every month, not locking you in.
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 px-4 bg-navy-900 text-white text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4">KRA Deadline This Week?</h2>
+            <p class="text-slate-300 mb-8">Don't wait. WhatsApp Sephat now and we'll assess your situation immediately.</p>
+            <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20have%20an%20urgent%20KRA%20deadline%20and%20need%20help%20immediately" target="_blank"
+               class="inline-flex items-center gap-3 bg-wa hover:bg-wa-dark text-white px-10 py-5 rounded-2xl font-bold text-lg transition hover:-translate-y-0.5 shadow-xl">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp Sephat Now
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
-                    <h3>Smart<span>Accountants</span></h3>
-                    <p>For Real Accounting Solutions</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:smartcountings@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:0748836208" aria-label="Phone"><i class="fas fa-phone"></i></a>
+    <footer class="bg-navy-900 text-slate-400 py-10 px-4 text-sm border-t border-slate-800">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="font-bold text-lg text-white mb-2">Smart<span class="text-amber-500">Accountants</span></div>
+                    <p class="text-slate-500 text-xs leading-relaxed">Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya.</p>
+                </div>
+                <div>
+                    <div class="font-semibold text-white mb-3">Quick Links</div>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block hover:text-amber-400 transition">Home</a>
+                        <a href="about.html" class="block hover:text-amber-400 transition">About</a>
+                        <a href="services.html" class="block hover:text-amber-400 transition">Services</a>
+                        <a href="projects.html" class="block hover:text-amber-400 transition">Results</a>
+                        <a href="team.html" class="block hover:text-amber-400 transition">Team</a>
+                        <a href="contact.html" class="block hover:text-amber-400 transition">Contact</a>
                     </div>
                 </div>
-
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-services">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="services.html">Bookkeeping</a></li>
-                        <li><a href="services.html">Tax Filing</a></li>
-                        <li><a href="services.html">Financial Reporting</a></li>
-                        <li><a href="services.html">Payroll Management</a></li>
-                        <li><a href="services.html">QuickBooks Setup</a></li>
-                        <li><a href="services.html">Financial Analysis</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
-                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
-                    <p><i class="fas fa-money-bill-wave"></i> Lipa na M-Pesa: PayBill 714777</p>
-                    <p><i class="fas fa-credit-card"></i> Account: 0708 305 767</p>
+                <div>
+                    <div class="font-semibold text-white mb-3">Contact</div>
+                    <div class="space-y-2 text-slate-500">
+                        <p>📞 0748 836 208</p>
+                        <p>✉️ smartcountings@gmail.com</p>
+                        <p>📍 Nairobi, Kenya</p>
+                        <p>🕐 Mon–Fri: 8AM–5PM</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="copyright">
-                <p>&copy; 2026 Smart Accountants. All Rights Reserved.</p>
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+                © 2026 Smart Accountants. All Rights Reserved. | KRA Registered Tax Agent
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mobile Menu Toggle
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            const typingMarquee = document.getElementById('typingMarquee');
+        // Navbar scroll shadow
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 50);
+        });
 
-            menuToggle.addEventListener('click', function () {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            });
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // Close menu when clicking on a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function () {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
+        // FAQ accordion
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('.faq-icon');
+                const isOpen = !answer.classList.contains('hidden');
 
-            // Marquee letter-by-letter animation
-            function initMarqueeAnimation() {
-                const letters = typingMarquee.querySelectorAll('.letter');
-                letters.forEach((letter, index) => {
-                    letter.style.animationDelay = `${index * 0.05}s`;
-                });
-            }
-            initMarqueeAnimation();
+                // Close all
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+                document.querySelectorAll('.faq-icon').forEach(i => { i.textContent = '+'; i.style.transform = 'rotate(0deg)'; });
 
-            // Marquee hover effect
-            typingMarquee.addEventListener('mouseenter', () => {
-                typingMarquee.style.animationPlayState = 'paused';
-                const letters = typingMarquee.querySelectorAll('.letter');
-                letters.forEach(letter => {
-                    letter.style.animationPlayState = 'paused';
-                });
-            });
-
-            typingMarquee.addEventListener('mouseleave', () => {
-                typingMarquee.style.animationPlayState = 'running';
-                const letters = typingMarquee.querySelectorAll('.letter');
-                letters.forEach(letter => {
-                    letter.style.animationPlayState = 'running';
-                });
-            });
-
-            // Typing Animation
-            const typingText = document.getElementById('typingText');
-            const messages = [
-                "Professional Accounting Solutions",
-                "Expert Financial Guidance",
-                "Tax & Compliance Specialists",
-                "Your Trusted Accounting Partner"
-            ];
-            let messageIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let isEnd = false;
-
-            function typeWriter() {
-                const currentMessage = messages[messageIndex];
-
-                if (isDeleting) {
-                    typingText.textContent = currentMessage.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typingText.textContent = currentMessage.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                if (!isDeleting && charIndex === currentMessage.length) {
-                    isEnd = true;
-                    setTimeout(() => {
-                        isDeleting = true;
-                        typeWriter();
-                    }, 1500);
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    messageIndex++;
-                    if (messageIndex === messages.length) {
-                        messageIndex = 0;
-                    }
-                    setTimeout(typeWriter, 500);
-                } else {
-                    const speed = isDeleting ? 50 : 100;
-                    setTimeout(typeWriter, speed);
-                }
-            }
-
-            // Start typing animation after page loads
-            setTimeout(typeWriter, 1000);
-
-            // FAQ Toggle
-            const faqQuestions = document.querySelectorAll('.faq-question');
-
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function () {
-                    const answer = this.nextElementSibling;
-                    const toggle = this.querySelector('.faq-toggle');
-
-                    answer.classList.toggle('active');
-                    toggle.classList.toggle('active');
-                    toggle.textContent = toggle.classList.contains('active') ? '−' : '+';
-                });
-            });
-
-            // Contact Form Submission
-            const contactForm = document.getElementById('contactForm');
-
-            contactForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const service = document.getElementById('service').value;
-                const message = document.getElementById('message').value;
-
-                if (!name || !email || !message) {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
-
-                // Simulate form submission
-                const submitBtn = contactForm.querySelector('.submit-btn');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-
-                setTimeout(() => {
-                    alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you at ${email} regarding ${service ? service : 'your inquiry'} soon.`);
-                    contactForm.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            });
-
-            // Scroll-triggered Animations
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-
-            function checkScroll() {
-                animateElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-
-                    if (elementTop < windowHeight - 100) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-
-            // Initial check
-            checkScroll();
-
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
-
-            // Add active class to current page in footer links
-            const currentPage = window.location.pathname.split('/').pop();
-            document.querySelectorAll('.footer-links a').forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
-                    link.style.color = '#6B2C91';
-                    link.style.fontWeight = '600';
-                }
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // WhatsApp button animation
-            const whatsappFloat = document.querySelector('.whatsapp-float');
-            if (whatsappFloat) {
-                setInterval(() => {
-                    whatsappFloat.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        whatsappFloat.style.transform = 'scale(1)';
-                    }, 300);
-                }, 5000);
-            }
-
-            // Handle window resize
-            window.addEventListener('resize', function () {
-                if (window.innerWidth > 768) {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                // Open clicked if it was closed
+                if (!isOpen) {
+                    answer.classList.remove('hidden');
+                    icon.textContent = '−';
+                    icon.style.transform = 'rotate(0deg)';
                 }
             });
         });
     </script>
 </body>
-
 </html>

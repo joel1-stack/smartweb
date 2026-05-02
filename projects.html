@@ -1,1889 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Projects - Smart Accountants</title>
+    <title>Client Results | Smart Accountants</title>
+    <meta name="description" content="Real results for real Kenyan businesses. Anonymous case studies and success stories.">
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        navy: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 100: '#f1f5f9' },
+                        amber: { 500: '#f59e0b', 400: '#fbbf24', 50: '#fffbeb' },
+                        wa: '#25d366', 'wa-dark': '#128c7e'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            color: #333;
-            line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* Background with vibrant green accounting theme */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.98)),
-                url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -1;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Animated Gradient Header */
-        .animated-header {
-            background: linear-gradient(-45deg, #8A4FFF, #6B2C91, #A55B4B, #DCA06D);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .logo-img:hover {
-            transform: rotate(10deg) scale(1.1);
-        }
-
-        .logo h1 {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .logo span {
-            color: #A55B4B;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #8A4FFF;
-        }
-
-        .nav-links a.active {
-            color: #8A4FFF;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #210F37;
-            transition: transform 0.3s;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Marquee Banner */
-        .marquee-banner {
-            background: linear-gradient(45deg, #210F37, #6B2C91);
-            color: white;
-            padding: 15px 0;
-            margin-top: 80px;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-            padding-left: 100%;
-        }
-
-        .marquee-content span {
-            margin: 0 40px;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-        }
-
-        .marquee-content i {
-            color: #DCA06D;
-            margin-right: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Page Header with Typing Effect */
-        .page-header {
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(107, 44, 145, 0.9)),
-                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 0;
-        }
-
-        .page-header .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .typing-container {
-            min-height: 50px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .typed-text {
-            font-size: 28px;
-            font-weight: 600;
-            color: #DCA06D;
-            display: inline-block;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 35px;
-            background-color: #DCA06D;
-            margin-left: 5px;
-            animation: blink 0.8s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .page-header p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            background: rgba(138, 79, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        /* Projects Section */
-        .projects-section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            color: #210F37;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -10px;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Projects Filter */
-        .projects-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 50px;
-            background: #f8f9ff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .filter-btn {
-            background: white;
-            border: 2px solid #e9ecef;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            color: white;
-            border-color: #8A4FFF;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.2);
-        }
-
-        .filter-btn.active::before,
-        .filter-btn:hover::before {
-            opacity: 1;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            border: 1px solid #f0f0f0;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
-            border-color: #8A4FFF;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            z-index: 1;
-        }
-
-        .project-image {
-            height: 200px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-icon-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.85), rgba(107, 44, 145, 0.85));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 60px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-icon-overlay {
-            opacity: 1;
-        }
-
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-category {
-            display: inline-block;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            align-self: flex-start;
-        }
-
-        .project-content h3 {
-            color: #210F37;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .project-content h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .project-content p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .project-details {
-            margin-bottom: 20px;
-            background: #f9f9ff;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #8A4FFF;
-        }
-
-        .detail-item {
-            display: flex;
-            margin-bottom: 10px;
-            align-items: center;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: #555;
-            min-width: 120px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .detail-label i {
-            color: #8A4FFF;
-        }
-
-        .detail-value {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .outcome {
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border-left: 4px solid #6B2C91;
-        }
-
-        .outcome h4 {
-            color: #210F37;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .outcome h4 i {
-            color: #8A4FFF;
-        }
-
-        .outcome p {
-            color: #666;
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, #210F37, #0A1929),
-                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            border-radius: 20px;
-            margin-bottom: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.2), rgba(76, 175, 80, 0.2));
-            z-index: 0;
-        }
-
-        .stats-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-section h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .stats-section h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -15px;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: #DCA06D;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #DCA06D;
-        }
-
-        .stat-item h3 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            color: #DCA06D;
-        }
-
-        .stat-item p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Demo Video Section */
-        .demo-video {
-            padding: 80px 0;
-            background: #f8f9ff;
-            position: relative;
-        }
-
-        .demo-video::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .video-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .video-text h2 {
-            color: #210F37;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .video-text h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .video-text p {
-            color: #666;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .video-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(138, 79, 255, 0.2);
-        }
-
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #f8f9ff, #f0f2ff);
-            padding: 80px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .cta-section h2 {
-            color: #210F37;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .cta-section h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -15px;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .cta-section p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 35px;
-            font-size: 1.2rem;
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #8A4FFF, #DCA06D);
-            border-color: #210F37;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #210F37, #0A1929);
-            color: white;
-            padding: 70px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91, #DCA06D);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .footer-logo img {
-            height: 55px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s;
-        }
-
-        .footer-logo img:hover {
-            transform: rotate(-5deg);
-        }
-
-        .footer-logo h3 {
-            color: white;
-            font-size: 26px;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .footer-logo span {
-            color: #DCA06D;
-        }
-
-        .footer-logo p {
-            color: #ccc;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .footer-links h4,
-        .footer-services h4,
-        .footer-contact h4 {
-            color: #DCA06D;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-links h4::after,
-        .footer-services h4::after,
-        .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 40px;
-            height: 2px;
-            background: #6B2C91;
-        }
-
-        .footer-links ul,
-        .footer-services ul {
-            list-style: none;
-        }
-
-        .footer-links li,
-        .footer-services li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a,
-        .footer-services a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 16px;
-            display: inline-block;
-            position: relative;
-            padding-left: 0;
-        }
-
-        .footer-links a:hover,
-        .footer-services a:hover {
-            color: #8A4FFF;
-            padding-left: 10px;
-        }
-
-        .footer-contact p {
-            color: #ccc;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .footer-contact p:hover {
-            color: #8A4FFF;
-        }
-
-        .footer-contact i {
-            margin-right: 12px;
-            color: #DCA06D;
-            margin-top: 3px;
-            font-size: 18px;
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-            font-size: 18px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #4CAF50);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
-        }
-
-        .social-links a i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
-        }
-
-        .social-links a:hover::before {
-            opacity: 1;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 15px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .page-header h1 {
-                font-size: 36px;
-            }
-
-            .typed-text {
-                font-size: 22px;
-            }
-
-            .section-title h2,
-            .cta-section h2,
-            .video-text h2,
-            .stats-section h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: left 0.3s;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-                width: 80%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px 0;
-                font-size: 18px;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-            }
-
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-
-            .page-header {
-                padding: 100px 0 60px;
-                margin-top: 70px;
-            }
-
-            .page-header h1 {
-                font-size: 32px;
-            }
-
-            .typed-text {
-                font-size: 20px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-filter {
-                padding: 15px;
-            }
-
-            .filter-btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .video-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .video-text {
-                text-align: center;
-            }
-
-            .video-text h2::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .cta-section {
-                padding: 60px 20px;
-            }
-
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .cta-section p {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-                padding: 0 15px;
-            }
-
-            .logo h1 {
-                font-size: 20px;
-            }
-
-            .page-header h1 {
-                font-size: 28px;
-            }
-
-            .typed-text {
-                font-size: 18px;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .project-image {
-                height: 180px;
-            }
-
-            .project-content {
-                padding: 20px;
-            }
-
-            .project-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .marquee-content span {
-                font-size: 14px;
-                margin: 0 20px;
-            }
-
-            .stat-item h3 {
-                font-size: 2.5rem;
-            }
-        }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-slide-up { animation: fadeSlideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        html { scroll-behavior: smooth; }
+        button:focus-visible, a:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-<body>
-    <!-- Header & Navigation -->
-    <header class="animated-header">
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
-                    <h1>Smart<span>Accountants</span></h1>
-                </div>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Marquee Banner -->
-    <div class="marquee-banner">
-        <div class="marquee-content">
-            <span><i class="fas fa-project-diagram"></i> 50+ SUCCESSFUL PROJECTS COMPLETED</span>
-            <span><i class="fas fa-trophy"></i> AWARD-WINNING ACCOUNTING SOLUTIONS</span>
-            <span><i class="fas fa-users"></i> SATISFIED CLIENTS ACROSS KENYA</span>
-            <span><i class="fas fa-chart-line"></i> PROVEN FINANCIAL RESULTS</span>
-            <span><i class="fas fa-handshake"></i> TRUSTED BY BUSINESSES SINCE 2020</span>
-            <span><i class="fas fa-star"></i> EXCELLENCE IN ACCOUNTING SERVICES</span>
-            <span><i class="fas fa-bullseye"></i> 100% TAX COMPLIANCE RECORD</span>
-            <span><i class="fas fa-clock"></i> TIMELY PROJECT DELIVERY</span>
-        </div>
-    </div>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Projects & Case Studies</h1>
-            <div class="typing-container">
-                <span class="typed-text" id="typedText"></span>
-                <span class="cursor" id="cursor"></span>
+    <!-- Nav -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md transition-shadow duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-lg text-navy-900 tracking-tight">Smart<span class="text-amber-500">Accountants</span></a>
+            <div class="hidden sm:flex items-center gap-6 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-navy-800 transition">Home</a>
+                <a href="about.html" class="hover:text-navy-800 transition">About</a>
+                <a href="services.html" class="hover:text-navy-800 transition">Services</a>
+                <a href="projects.html" class="font-semibold text-navy-900">Results</a>
+                <a href="team.html" class="hover:text-navy-800 transition">Team</a>
+                <a href="contact.html" class="hover:text-navy-800 transition">Contact</a>
             </div>
-            <p>Real accounting solutions delivered for businesses across Kenya</p>
+            <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20need%20help%20with%20my%20business%20accounting" target="_blank"
+               class="bg-wa hover:bg-wa-dark text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-md">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-12 px-4 sm:pt-32">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="animate-fade-slide-up inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-wide border border-amber-100">
+                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+                ANONYMOUS CASE STUDIES
+            </div>
+            <h1 class="animate-fade-slide-up stagger-1 text-3xl sm:text-4xl font-extrabold text-navy-900 mb-5 leading-tight tracking-tight">
+                Real Results for <span class="text-amber-500">Real Businesses</span>
+            </h1>
+            <p class="animate-fade-slide-up stagger-2 text-lg text-slate-600 leading-relaxed">
+                We protect client privacy. No real names, no phone numbers. But the outcomes speak for themselves.
+            </p>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects-section">
-        <!-- Floating Elements -->
-        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; bottom: 20%; right: 10%;"></div>
-        <div class="floating-element" style="width: 80px; height: 80px; top: 40%; right: 15%;"></div>
+    <!-- Stats Band -->
+    <section class="py-10 px-4 bg-navy-900 text-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div><div class="text-2xl font-extrabold text-amber-400 mb-1">50+</div><div class="text-xs text-slate-300">Businesses Helped</div></div>
+                <div><div class="text-2xl font-extrabold text-amber-400 mb-1">100%</div><div class="text-xs text-slate-300">Compliance Rate</div></div>
+                <div><div class="text-2xl font-extrabold text-amber-400 mb-1">KSh 2.5M+</div><div class="text-xs text-slate-300">Penalties Avoided</div></div>
+                <div><div class="text-2xl font-extrabold text-amber-400 mb-1">48hrs</div><div class="text-xs text-slate-300">Rescue Turnaround</div></div>
+            </div>
+        </div>
+    </section>
 
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Portfolio of Work</h2>
-                <p>Successful projects and case studies demonstrating our expertise in accounting solutions</p>
+    <!-- Case Studies -->
+    <section class="py-16 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto space-y-8">
+
+            <!-- Case 1 -->
+            <div class="reveal bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 hover:shadow-md transition">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1 rounded-full">RETAIL</span>
+                    <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">SMART RESCUE</span>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 mb-2">From KRA Nightmare to Clean Books</h3>
+                <p class="text-sm text-slate-500 mb-5">Nairobi-based retail shop | 3 employees | KSh 150K monthly revenue</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-5">
+                    <div class="bg-white rounded-xl p-4 border border-red-200">
+                        <p class="text-xs font-bold text-red-600 uppercase mb-2">Before</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> 6 months of unfiled KRA returns</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> KSh 18,000 in accumulated penalties</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> No idea if the business was profitable</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Receipts in a shoebox</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 border border-green-200">
+                        <p class="text-xs font-bold text-green-600 uppercase mb-2">After (2 weeks)</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> All returns filed, penalties stopped</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Discovered actual profit: KSh 32K/month</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> WhatsApp tracking system set up</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Owner gets weekly profit reports</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm pt-4 border-t border-slate-200">
+                    <span class="font-bold text-navy-900">Result: KSh 18K saved + full profit visibility</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-slate-500">Rescue → Smart Growth</span>
+                </div>
             </div>
 
-            <!-- Projects Filter -->
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="sme">SME Projects</button>
-                <button class="filter-btn" data-filter="tax">Tax Compliance</button>
-                <button class="filter-btn" data-filter="payroll">Payroll</button>
-                <button class="filter-btn" data-filter="analysis">Financial Analysis</button>
-                <button class="filter-btn" data-filter="audit">Audit</button>
+            <!-- Case 2 -->
+            <div class="reveal bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 hover:shadow-md transition">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1 rounded-full">LOGISTICS</span>
+                    <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">SMART GROWTH</span>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 mb-2">Loan-Ready in 30 Days</h3>
+                <p class="text-sm text-slate-500 mb-5">Transport company | 8 employees | KSh 400K monthly revenue</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-5">
+                    <div class="bg-white rounded-xl p-4 border border-red-200">
+                        <p class="text-xs font-bold text-red-600 uppercase mb-2">Before</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Needed KSh 500K bank loan for new truck</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Bank rejected: "Books not audit-ready"</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Mixed personal and business expenses</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> No financial statements for 2 years</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 border border-green-200">
+                        <p class="text-xs font-bold text-green-600 uppercase mb-2">After (30 days)</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Clean financial statements produced</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Personal/business expenses separated</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Bank approved loan on first application</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Now on monthly Smart Growth plan</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm pt-4 border-t border-slate-200">
+                    <span class="font-bold text-navy-900">Result: KSh 500K loan approved</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-slate-500">Rescue → Smart Growth</span>
+                </div>
             </div>
 
-            <!-- Projects Grid -->
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="sme">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="SME Accounting System Setup">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-building"></i>
-                        </div>
+            <!-- Case 3 -->
+            <div class="reveal bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 hover:shadow-md transition">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1 rounded-full">HOSPITALITY</span>
+                    <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">SMART GROWTH</span>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 mb-2">The Restaurant That Didn't Know Its Margin</h3>
+                <p class="text-sm text-slate-500 mb-5">Restaurant in Nairobi CBD | 12 employees | KSh 600K monthly revenue</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-5">
+                    <div class="bg-white rounded-xl p-4 border border-red-200">
+                        <p class="text-xs font-bold text-red-600 uppercase mb-2">Before</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> "Busy every night but no money left"</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Food costs unknown (guessing 30%)</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Staff overtime bleeding cash</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> VAT returns always late</li>
+                        </ul>
                     </div>
-                    <div class="project-content">
-                        <span class="project-category">SME Setup</span>
-                        <h3>SME Full Accounting System Setup</h3>
-                        <p>Complete accounting system implementation for small and medium enterprises to streamline
-                            financial operations.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">Small Medium Enterprise</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">2 Weeks</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">System Setup, Training</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Improved accuracy and real-time financial visibility for the client, enabling better
-                                decision-making.</p>
-                        </div>
+                    <div class="bg-white rounded-xl p-4 border border-green-200">
+                        <p class="text-xs font-bold text-green-600 uppercase mb-2">After (Ongoing)</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Actual food cost: 42% → fixed to 35%</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Overtime policy saved KSh 15K/month</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> VAT filed on time, zero penalties</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Owner knows daily break-even number</li>
+                        </ul>
                     </div>
                 </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm pt-4 border-t border-slate-200">
+                    <span class="font-bold text-navy-900">Result: KSh 45K/month saved + profit clarity</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-slate-500">Smart Growth (ongoing)</span>
+                </div>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="project-card" data-category="tax">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Tax Compliance Services">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
+            <!-- Case 4 -->
+            <div class="reveal bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-200 hover:shadow-md transition">
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="bg-navy-900 text-white text-xs font-bold px-3 py-1 rounded-full">EDUCATION</span>
+                    <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">SMART SCALE</span>
+                </div>
+                <h3 class="text-xl font-bold text-navy-900 mb-2">Training College Gets Audit-Ready</h3>
+                <p class="text-sm text-slate-500 mb-5">Private training college | 20 staff | KSh 1.2M monthly revenue</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-5">
+                    <div class="bg-white rounded-xl p-4 border border-red-200">
+                        <p class="text-xs font-bold text-red-600 uppercase mb-2">Before</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Disorganized accounting system</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Statutory compliance gaps</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> No proper payroll structure</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">✗</span> Couldn't pass government audit</li>
+                        </ul>
                     </div>
-                    <div class="project-content">
-                        <span class="project-category">Tax Compliance</span>
-                        <h3>Tax Compliance & Filing for Multiple Clients</h3>
-                        <p>Comprehensive tax computation and filing services for various business types ensuring full
-                            compliance.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">SMEs & Limited Companies</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">Ongoing</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">Tax Computation, Filing</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Zero penalties for clients, improved compliance, and better tax planning strategies
-                                implemented.</p>
-                        </div>
+                    <div class="bg-white rounded-xl p-4 border border-green-200">
+                        <p class="text-xs font-bold text-green-600 uppercase mb-2">After (6 weeks)</p>
+                        <ul class="text-sm text-slate-600 space-y-1.5">
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> QuickBooks fully set up and running</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> All statutory returns filed and current</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Payroll system implemented</li>
+                            <li class="flex items-start gap-2"><span class="text-green-500 mt-0.5">✓</span> Passed government audit successfully</li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-category="payroll">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Payroll Management Services">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-users"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Payroll & Bookkeeping</span>
-                        <h3>Monthly Bookkeeping & Payroll Processing</h3>
-                        <p>Regular bookkeeping and payroll management for restaurants and retail businesses.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">Restaurants & Retail</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">Monthly Retainer</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">Bookkeeping, Payroll, P&L Statements, Balance Sheets, Cash Flow Statements, Tax support</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Detailed expense tracking with proper categorization. Professional financial reporting enabling better decision-making and improved operational efficiency.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card" data-category="analysis">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Financial Analysis Services">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Financial Analysis</span>
-                        <h3>Financial Health & Liquidity Reporting</h3>
-                        <p>In-depth financial analysis for manufacturing and service firms to assess performance and
-                            stability.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">Manufacturing & Service</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">1 Month</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">Financial Analysis, Reporting</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Increased efficiency and improved financial stability through targeted cost reduction
-                                strategies.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card" data-category="audit">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Audit Services">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Audit Services</span>
-                        <h3>Audit of Financial Transactions</h3>
-                        <p>Comprehensive audit of financial transactions for growing SMEs to ensure accuracy and detect
-                            discrepancies.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">Growing SMEs</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">3 Weeks</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">Transaction Audit, Reconciliation</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Strengthened accountability and reduced fraud risk through corrected accounting errors.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card" data-category="sme">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Accounting Software Implementation">
-                        <div class="project-icon-overlay">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">QuickBooks Implementation</span>
-                        <h3>Accounting Software Implementation</h3>
-                        <p>QuickBooks setup and staff training for multiple businesses to modernize their accounting
-                            processes.</p>
-
-                        <div class="project-details">
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-user-tie"></i> Client Type:</span>
-                                <span class="detail-value">Various Businesses</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-calendar-alt"></i> Duration:</span>
-                                <span class="detail-value">1-2 Weeks Each</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label"><i class="fas fa-cogs"></i> Services:</span>
-                                <span class="detail-value">Software Setup, Training</span>
-                            </div>
-                        </div>
-
-                        <div class="outcome">
-                            <h4><i class="fas fa-check-circle"></i> Outcome:</h4>
-                            <p>Modernized accounting processes, reduced manual errors, and improved reporting
-                                efficiency.</p>
-                        </div>
-                    </div>
+                <div class="flex flex-wrap items-center gap-3 text-sm pt-4 border-t border-slate-200">
+                    <span class="font-bold text-navy-900">Result: Audit passed + full compliance achieved</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-slate-500">Smart Scale</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <h2>Our Project Success in Numbers</h2>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3 data-count="50">0+</h3>
-                    <p>Projects Completed</p>
+    <!-- Industries -->
+    <section class="py-16 px-4 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-navy-900 mb-10">Industries We Serve</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🏪</div><p class="font-semibold text-navy-900 text-sm">Retail</p>
                 </div>
-
-                <div class="stat-item">
-                    <h3 data-count="30">0+</h3>
-                    <p>Satisfied Clients</p>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🍽️</div><p class="font-semibold text-navy-900 text-sm">Hospitality</p>
                 </div>
-
-                <div class="stat-item">
-                    <h3 data-count="100">0%</h3>
-                    <p>Tax Compliance Rate</p>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🚚</div><p class="font-semibold text-navy-900 text-sm">Logistics</p>
                 </div>
-
-                <div class="stat-item">
-                    <h3 data-count="5">0+</h3>
-                    <p>Years Experience</p>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🏗️</div><p class="font-semibold text-navy-900 text-sm">Construction</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Demo Video -->
-    <section class="demo-video">
-        <div class="container">
-            <div class="video-content">
-                <div class="video-text">
-                    <h2>See Our Projects in Action</h2>
-                    <p>Watch how we deliver professional accounting solutions and transform businesses</p>
-                    <p>Our video showcases real projects and demonstrates our approach to solving complex accounting
-                        challenges for businesses across Kenya.</p>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">💻</div><p class="font-semibold text-navy-900 text-sm">Tech / SaaS</p>
                 </div>
-                <div class="video-container">
-                    <video controls
-                        poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
-                        <source src="images/video/Smart_Accountants_-_Professional_Account.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🎓</div><p class="font-semibold text-navy-900 text-sm">Education</p>
+                </div>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🏥</div><p class="font-semibold text-navy-900 text-sm">Healthcare</p>
+                </div>
+                <div class="reveal bg-white p-5 rounded-xl border border-slate-200 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-2xl mb-2">🌾</div><p class="font-semibold text-navy-900 text-sm">Agriculture</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Start Your Project?</h2>
-            <p>Contact us today to discuss how we can help streamline your accounting processes and improve your
-                financial management for sustainable business growth.</p>
-            <a href="contact.html" class="cta-button">Start Your Project</a>
+    <!-- CTA -->
+    <section class="py-16 px-4 bg-navy-900 text-white text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Be Our Next Success Story</h2>
+            <p class="text-slate-300 mb-8">Every business starts with a Smart Score. Check yours in 60 seconds — no email required.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#assessment" class="bg-amber-500 hover:bg-amber-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition hover:-translate-y-0.5 shadow-lg">
+                    Check My Score →
+                </a>
+                <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20want%20results%20like%20your%20case%20studies" target="_blank"
+                   class="border-2 border-white text-white hover:bg-white hover:text-navy-900 px-8 py-4 rounded-xl font-bold text-lg transition">
+                    Chat with Sephat
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
-                    <h3>Smart<span>Accountants</span></h3>
-                    <p>For Real Accounting Solutions</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank"
-                            aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:smartcountings@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:0748836208" aria-label="Phone">
-                            <i class="fas fa-phone"></i>
-                        </a>
+    <footer class="bg-navy-900 text-slate-400 py-10 px-4 text-sm border-t border-slate-800">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="font-bold text-lg text-white mb-2">Smart<span class="text-amber-500">Accountants</span></div>
+                    <p class="text-slate-500 text-xs leading-relaxed">Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya.</p>
+                </div>
+                <div>
+                    <div class="font-semibold text-white mb-3">Quick Links</div>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block hover:text-amber-400 transition">Home</a>
+                        <a href="about.html" class="block hover:text-amber-400 transition">About</a>
+                        <a href="services.html" class="block hover:text-amber-400 transition">Services</a>
+                        <a href="projects.html" class="block hover:text-amber-400 transition">Results</a>
+                        <a href="team.html" class="block hover:text-amber-400 transition">Team</a>
+                        <a href="contact.html" class="block hover:text-amber-400 transition">Contact</a>
                     </div>
                 </div>
-
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-services">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="services.html">Bookkeeping</a></li>
-                        <li><a href="services.html">Tax Filing</a></li>
-                        <li><a href="services.html">Financial Reporting</a></li>
-                        <li><a href="services.html">Payroll Management</a></li>
-                        <li><a href="services.html">QuickBooks Setup</a></li>
-                        <li><a href="services.html">Financial Analysis</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
-                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
-                    <p><i class="fas fa-money-bill-wave"></i> PayBill: 714777</p>
-                    <p><i class="fas fa-credit-card"></i> Account: 0708 305 767</p>
+                <div>
+                    <div class="font-semibold text-white mb-3">Contact</div>
+                    <div class="space-y-2 text-slate-500">
+                        <p>📞 0748 836 208</p>
+                        <p>✉️ smartcountings@gmail.com</p>
+                        <p>📍 Nairobi, Kenya</p>
+                        <p>🕐 Mon–Fri: 8AM–5PM</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="copyright">
-                <p>&copy; 2026 Smart Accountants. All Rights Reserved. | Professional Accounting Solutions</p>
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+                © 2026 Smart Accountants. All Rights Reserved. | KRA Registered Tax Agent
             </div>
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            const typedText = document.getElementById('typedText');
-            const cursor = document.getElementById('cursor');
-            const marqueeContent = document.querySelector('.marquee-content');
-            const statNumbers = document.querySelectorAll('.stat-item h3');
-            const statsSection = document.querySelector('.stats-section');
-
-            // Mobile Menu Toggle
-            menuToggle.addEventListener('click', function () {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon.classList.contains('fa-bars')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            // Close menu when clicking on a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function () {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
-
-            // Typing Effect
-            const texts = [
-                "Successful Accounting Projects",
-                "Real Business Case Studies",
-                "Tax Compliance Solutions",
-                "Financial System Implementations",
-                "SME Accounting Transformations",
-                "Payroll Management Success Stories"
-            ];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-
-            function typeEffect() {
-                const currentText = texts[textIndex];
-
-                if (!isDeleting && charIndex < currentText.length) {
-                    typedText.textContent += currentText.charAt(charIndex);
-                    charIndex++;
-                    typingSpeed = 100;
-                } else if (isDeleting && charIndex > 0) {
-                    typedText.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                }
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    typingSpeed = 1500; // Pause at end
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typingSpeed = 500; // Pause before typing next
-                }
-
-                setTimeout(typeEffect, typingSpeed);
-            }
-
-            // Start typing effect after a delay
-            setTimeout(typeEffect, 1000);
-
-            // Cursor blink animation
-            function blinkCursor() {
-                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                setTimeout(blinkCursor, 500);
-            }
-            blinkCursor();
-
-            // Marquee hover effect
-            marqueeContent.addEventListener('mouseenter', () => {
-                marqueeContent.style.animationPlayState = 'paused';
-            });
-
-            marqueeContent.addEventListener('mouseleave', () => {
-                marqueeContent.style.animationPlayState = 'running';
-            });
-
-            // Project Filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterValue = this.getAttribute('data-filter');
-
-                    // Filter project cards with animation
-                    projectCards.forEach(card => {
-                        if (filterValue === 'all') {
-                            card.style.display = 'flex';
-                            card.style.animation = 'fadeInUp 0.5s ease-out';
-                        } else {
-                            const cardCategory = card.getAttribute('data-category');
-                            if (cardCategory === filterValue) {
-                                card.style.display = 'flex';
-                                card.style.animation = 'fadeInUp 0.5s ease-out';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        }
-                    });
-                });
-            });
-
-            // Animate stats counter
-            let statsAnimated = false;
-
-            function animateStats() {
-                if (statsAnimated) return;
-
-                const rect = statsSection.getBoundingClientRect();
-                if (rect.top <= window.innerHeight * 0.8) {
-                    statsAnimated = true;
-
-                    statNumbers.forEach(stat => {
-                        const target = parseInt(stat.getAttribute('data-count'));
-                        let current = 0;
-                        const increment = target / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(current) + (stat.textContent.includes('%') ? '%' : '+');
-                            }
-                        }, 30);
-                    });
-                }
-            }
-
-            // Check stats animation on scroll
-            window.addEventListener('scroll', animateStats);
-            animateStats(); // Check on initial load
-
-            // Scroll animation for project cards
-            function animateOnScroll() {
-                const elements = document.querySelectorAll('.project-card, .video-content > *');
-
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Initial animation check
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
-
-            // Add hover effects
-            const buttons = document.querySelectorAll('.filter-btn, .cta-button, .social-links a');
-            const cards = document.querySelectorAll('.project-card, .stat-item');
-
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-5px)';
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0)';
-                });
-            });
-
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    if (!button.classList.contains('active')) {
-                        button.style.transform = 'scale(1.05)';
-                    }
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    if (!button.classList.contains('active')) {
-                        button.style.transform = 'scale(1)';
-                    }
-                });
-            });
-
-            // Add loading animation
-            window.addEventListener('load', () => {
-                document.body.style.opacity = '1';
-                document.body.style.transition = 'opacity 0.5s ease';
-
-                // Animate project cards on load
-                const projectCards = document.querySelectorAll('.project-card');
-                projectCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            });
-
-            // Video autoplay handling
-            const video = document.querySelector('.video-container video');
-            if (video) {
-                video.addEventListener('click', function () {
-                    if (video.paused) {
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-            }
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 50);
         });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-
 </html>

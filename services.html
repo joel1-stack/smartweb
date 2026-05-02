@@ -1,1735 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Smart Accountants</title>
+    <title>Services & Pricing | Smart Accountants</title>
+    <meta name="description" content="Productized accounting packages for Kenyan SMEs. Smart Rescue KSh 2,500, Smart Growth KSh 5,000/mo, Smart Scale KSh 12,000/mo.">
     <link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        navy: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 100: '#f1f5f9' },
+                        amber: { 500: '#f59e0b', 400: '#fbbf24', 50: '#fffbeb' },
+                        wa: '#25d366', 'wa-dark': '#128c7e'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            color: #333;
-            line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
-        }
-
-        /* Background with vibrant green accounting theme */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.98)),
-                url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            z-index: -1;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Animated Gradient Header */
-        .animated-header {
-            background: linear-gradient(-45deg, #8A4FFF, #6B2C91, #A55B4B, #DCA06D);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .logo-img:hover {
-            transform: rotate(10deg) scale(1.1);
-        }
-
-        .logo h1 {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .logo span {
-            color: #A55B4B;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #8A4FFF;
-        }
-
-        .nav-links a.active {
-            color: #8A4FFF;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #210F37;
-            transition: transform 0.3s;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Marquee Banner */
-        .marquee-banner {
-            background: linear-gradient(45deg, #210F37, #6B2C91);
-            color: white;
-            padding: 15px 0;
-            margin-top: 80px;
-            overflow: hidden;
-            white-space: nowrap;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-            padding-left: 100%;
-        }
-
-        .marquee-content span {
-            margin: 0 40px;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-        }
-
-        .marquee-content i {
-            color: #DCA06D;
-            margin-right: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Page Header with Typing Effect */
-        .page-header {
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.9), rgba(107, 44, 145, 0.9)),
-                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 0;
-        }
-
-        .page-header .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .typing-container {
-            min-height: 50px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .typed-text {
-            font-size: 28px;
-            font-weight: 600;
-            color: #DCA06D;
-            display: inline-block;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 35px;
-            background-color: #DCA06D;
-            margin-left: 5px;
-            animation: blink 0.8s infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .page-header p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Floating Elements */
-        .floating-element {
-            position: absolute;
-            background: rgba(138, 79, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-            z-index: -1;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        /* Services Section */
-        .services-section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            color: #210F37;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -10px;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Services Filter */
-        .services-filter {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 50px;
-            background: #f8f9ff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .filter-btn {
-            background: white;
-            border: 2px solid #e9ecef;
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #555;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            color: white;
-            border-color: #8A4FFF;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.2);
-        }
-
-        .filter-btn.active::before,
-        .filter-btn:hover::before {
-            opacity: 1;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            border: 1px solid #f0f0f0;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(138, 79, 255, 0.15);
-            border-color: #8A4FFF;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            z-index: 1;
-        }
-
-        .service-image {
-            height: 200px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .service-card:hover .service-image img {
-            transform: scale(1.1);
-        }
-
-        .service-icon-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(33, 15, 55, 0.85), rgba(107, 44, 145, 0.85));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 60px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover .service-icon-overlay {
-            opacity: 1;
-        }
-
-        .service-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-content h3 {
-            color: #210F37;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .service-content h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .service-content p {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .service-details {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            display: none;
-            animation: slideDown 0.3s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-details.active {
-            display: block;
-        }
-
-        .service-details ul {
-            list-style-type: none;
-            margin-left: 0;
-            padding-left: 0;
-        }
-
-        .service-details li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .service-details li:before {
-            content: "✓";
-            color: #8A4FFF;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .toggle-details {
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 12px 25px;
-            border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: auto;
-            transition: all 0.3s;
-            width: fit-content;
-        }
-
-        .toggle-details:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-        }
-
-        .toggle-details i {
-            margin-left: 8px;
-            transition: transform 0.3s;
-        }
-
-        .toggle-details.active i {
-            transform: rotate(180deg);
-        }
-
-        /* Service Categories */
-        .service-categories {
-            background: linear-gradient(135deg, #f8f9ff, #f0f2ff);
-            padding: 60px 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-categories::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .service-categories h2 {
-            text-align: center;
-            color: #210F37;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .service-categories h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -15px;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .category-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.4s ease;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.05), rgba(107, 44, 145, 0.05));
-            z-index: -1;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(138, 79, 255, 0.15);
-        }
-
-        .category-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            height: 80px;
-            width: 80px;
-            line-height: 80px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            color: white;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .category-card:hover .category-icon {
-            transform: rotate(360deg);
-            background: linear-gradient(45deg, #6B2C91, #8A4FFF);
-        }
-
-        .category-card h4 {
-            color: #210F37;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .category-card p {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #210F37, #0A1929),
-                url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            border-radius: 20px;
-            margin-bottom: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(138, 79, 255, 0.2), rgba(107, 44, 145, 0.2));
-            z-index: 0;
-        }
-
-        .cta-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 35px;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #DCA06D, #8A4FFF);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #8A4FFF, #DCA06D);
-            border-color: white;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #210F37, #0A1929);
-            color: white;
-            padding: 70px 0 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91, #DCA06D);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .footer-logo img {
-            height: 55px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: transform 0.3s;
-        }
-
-        .footer-logo img:hover {
-            transform: rotate(-5deg);
-        }
-
-        .footer-logo h3 {
-            color: white;
-            font-size: 26px;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .footer-logo span {
-            color: #DCA06D;
-        }
-
-        .footer-logo p {
-            color: #ccc;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .footer-links h4,
-        .footer-services h4,
-        .footer-contact h4 {
-            color: #DCA06D;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-links h4::after,
-        .footer-services h4::after,
-        .footer-contact h4::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 40px;
-            height: 2px;
-            background: #6B2C91;
-        }
-
-        .footer-links ul,
-        .footer-services ul {
-            list-style: none;
-        }
-
-        .footer-links li,
-        .footer-services li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a,
-        .footer-services a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 16px;
-            display: inline-block;
-            position: relative;
-            padding-left: 0;
-        }
-
-        .footer-links a:hover,
-        .footer-services a:hover {
-            color: #8A4FFF;
-            padding-left: 10px;
-        }
-
-        .footer-contact p {
-            color: #ccc;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .footer-contact p:hover {
-            color: #8A4FFF;
-        }
-
-        .footer-contact i {
-            margin-right: 12px;
-            color: #DCA06D;
-            margin-top: 3px;
-            font-size: 18px;
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: all 0.3s;
-            font-size: 18px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #8A4FFF, #6B2C91);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
-        }
-
-        .social-links a i {
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 79, 255, 0.3);
-        }
-
-        .social-links a:hover::before {
-            opacity: 1;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 15px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .page-header h1 {
-                font-size: 36px;
-            }
-
-            .typed-text {
-                font-size: 22px;
-            }
-
-            .section-title h2,
-            .service-categories h2,
-            .cta-section h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: left 0.3s;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-                width: 80%;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px 0;
-                font-size: 18px;
-                border-bottom: 1px solid #eee;
-                width: 100%;
-            }
-
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-
-            .page-header {
-                padding: 100px 0 60px;
-                margin-top: 70px;
-            }
-
-            .page-header h1 {
-                font-size: 32px;
-            }
-
-            .typed-text {
-                font-size: 20px;
-            }
-
-            .services-grid,
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-filter {
-                padding: 15px;
-            }
-
-            .filter-btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .service-categories {
-                padding: 40px 20px;
-            }
-
-            .cta-section {
-                padding: 60px 20px;
-            }
-
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .cta-section p {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-                padding: 0 15px;
-            }
-
-            .logo h1 {
-                font-size: 20px;
-            }
-
-            .page-header h1 {
-                font-size: 28px;
-            }
-
-            .typed-text {
-                font-size: 18px;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .service-image {
-                height: 180px;
-            }
-
-            .service-content {
-                padding: 20px;
-            }
-
-            .service-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .marquee-content span {
-                font-size: 14px;
-                margin: 0 20px;
-            }
-        }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .animate-fade-slide-up { animation: fadeSlideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+        .animate-float { animation: gentleFloat 4s ease-in-out infinite; }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        html { scroll-behavior: smooth; }
+        button:focus-visible, a:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     </style>
 </head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-<body>
-    <!-- Header & Navigation -->
-    <header class="animated-header">
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo" class="logo-img">
-                    <h1>Smart<span>Accountants</span></h1>
-                </div>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Marquee Banner -->
-    <div class="marquee-banner">
-        <div class="marquee-content">
-            <span><i class="fas fa-file-invoice-dollar"></i> PROFESSIONAL TAX FILING</span>
-            <span><i class="fas fa-book"></i> ACCURATE BOOKKEEPING</span>
-            <span><i class="fas fa-chart-line"></i> FINANCIAL REPORTING</span>
-            <span><i class="fas fa-money-check-alt"></i> PAYROLL MANAGEMENT</span>
-            <span><i class="fas fa-laptop"></i> QUICKBOOKS SETUP</span>
-            <span><i class="fas fa-chart-bar"></i> BUDGETING & FORECASTING</span>
-            <span><i class="fas fa-shield-alt"></i> AUDITING SERVICES</span>
-            <span><i class="fas fa-handshake"></i> FINANCIAL CONSULTANCY</span>
-        </div>
-    </div>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Our Professional Services</h1>
-            <div class="typing-container">
-                <span class="typed-text" id="typedText"></span>
-                <span class="cursor" id="cursor"></span>
+    <!-- Nav -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md transition-shadow duration-300">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-lg text-navy-900 tracking-tight">Smart<span class="text-amber-500">Accountants</span></a>
+            <div class="hidden sm:flex items-center gap-6 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-navy-800 transition">Home</a>
+                <a href="about.html" class="hover:text-navy-800 transition">About</a>
+                <a href="services.html" class="font-semibold text-navy-900">Services</a>
+                <a href="projects.html" class="hover:text-navy-800 transition">Results</a>
+                <a href="team.html" class="hover:text-navy-800 transition">Team</a>
+                <a href="contact.html" class="hover:text-navy-800 transition">Contact</a>
             </div>
-            <p>Comprehensive accounting solutions tailored to your business needs</p>
+            <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20need%20help%20with%20my%20business%20accounting" target="_blank"
+               class="bg-wa hover:bg-wa-dark text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-md">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-12 px-4 sm:pt-32">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="animate-fade-slide-up inline-flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-wide border border-amber-100">
+                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+                CLEAR PRICING • NO HIDDEN FEES
+            </div>
+            <h1 class="animate-fade-slide-up stagger-1 text-3xl sm:text-4xl font-extrabold text-navy-900 mb-5 leading-tight tracking-tight">
+                Simple Pricing. <span class="text-amber-500">Real Results.</span>
+            </h1>
+            <p class="animate-fade-slide-up stagger-2 text-lg text-slate-600 leading-relaxed">
+                Start with Rescue. Upgrade when you're ready. No long-term contracts, no surprises.
+            </p>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section">
-        <!-- Floating Elements -->
-        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; bottom: 20%; right: 10%;"></div>
-        <div class="floating-element" style="width: 80px; height: 80px; top: 40%; right: 15%;"></div>
+    <!-- Pricing Cards -->
+    <section class="px-4 pb-16">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-6 items-start">
 
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Accounting Services</h2>
-                <p>We offer a wide range of professional accounting and financial services to help your business thrive
-                </p>
+                <!-- Rescue -->
+                <div class="animate-fade-slide-up stagger-1 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">Smart Rescue</h3>
+                    <p class="text-sm text-slate-500 mb-4">One-time cleanup</p>
+                    <div class="text-4xl font-extrabold text-navy-900 mb-1">KSh 2,500</div>
+                    <p class="text-xs text-slate-400 mb-6">One-time fee • 48-hour turnaround</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">File missing KRA returns</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Organize 3 months of receipts</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">30 days WhatsApp support</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Know your real profit</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Penalty protection guarantee</span></li>
+                    </ul>
+                    <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20want%20the%20Smart%20Rescue%20package" target="_blank"
+                       class="block text-center bg-navy-900 hover:bg-navy-800 text-white py-3 rounded-xl font-bold transition hover:-translate-y-0.5">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Growth (Featured) -->
+                <div class="animate-fade-slide-up stagger-2 bg-white rounded-2xl border-2 border-amber-400 p-6 shadow-lg relative animate-float">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">MOST POPULAR</div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">Smart Growth</h3>
+                    <p class="text-sm text-slate-500 mb-4">Monthly management</p>
+                    <div class="text-4xl font-extrabold text-navy-900 mb-1">KSh 5,000</div>
+                    <p class="text-xs text-slate-400 mb-6">per month • Cancel anytime</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Everything in Rescue</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Monthly KRA filing (VAT/PAYE)</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Weekly profit reports via WhatsApp</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">NHIF / NSSF / PAYE handled</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Penalty protection guarantee</span></li>
+                    </ul>
+                    <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20tell%20me%20more%20about%20Smart%20Growth" target="_blank"
+                       class="block text-center bg-amber-500 hover:bg-amber-400 text-white py-3 rounded-xl font-bold transition hover:-translate-y-0.5 shadow-md">
+                        Chat to Upgrade
+                    </a>
+                </div>
+
+                <!-- Scale -->
+                <div class="animate-fade-slide-up stagger-3 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-navy-900 mb-1">Smart Scale</h3>
+                    <p class="text-sm text-slate-500 mb-4">For growing teams</p>
+                    <div class="text-4xl font-extrabold text-navy-900 mb-1">KSh 12,000</div>
+                    <p class="text-xs text-slate-400 mb-6">per month • Dedicated manager</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Everything in Growth</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Quarterly strategy calls</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Cash flow forecasting</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Dedicated account manager</span></li>
+                        <li class="flex items-start gap-2.5"><svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-600">Board presentation support</span></li>
+                    </ul>
+                    <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20want%20to%20discuss%20Smart%20Scale" target="_blank"
+                       class="block text-center border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white py-3 rounded-xl font-bold transition">
+                        Talk to Sephat
+                    </a>
+                </div>
             </div>
 
-            <!-- Service Filter -->
-            <div class="services-filter">
-                <button class="filter-btn active" data-filter="all">All Services</button>
-                <button class="filter-btn" data-filter="compliance">Compliance</button>
-                <button class="filter-btn" data-filter="reporting">Reporting</button>
-                <button class="filter-btn" data-filter="operations">Operations</button>
-                <button class="filter-btn" data-filter="systems">Systems</button>
-                <button class="filter-btn" data-filter="advisory">Advisory</button>
+            <!-- Custom -->
+            <div class="reveal mt-10 bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+                <p class="text-blue-800 font-semibold mb-1">Need something custom?</p>
+                <p class="text-blue-700 text-sm mb-3">Businesses with 20+ employees or complex multi-entity structures.</p>
+                <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20need%20a%20custom%20package%20for%20my%20business" target="_blank"
+                   class="text-blue-700 font-bold underline hover:text-blue-900 transition">
+                    Discuss Custom Pricing →
+                </a>
             </div>
+        </div>
+    </section>
 
-            <!-- Services Grid -->
-            <div class="services-grid">
-                <!-- Service 1: Bookkeeping -->
-                <div class="service-card" data-category="operations">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Bookkeeping Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-book"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Bookkeeping</h3>
-                        <p>Accurate recording and maintenance of financial transactions for smooth operations.</p>
+    <!-- Comparison Table -->
+    <section class="py-16 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-navy-900 mb-10">What's Included</h2>
+            <div class="reveal overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-navy-900 text-white">
+                            <th class="text-left py-4 px-5 font-semibold">Feature</th>
+                            <th class="text-center py-4 px-4 font-semibold">Rescue</th>
+                            <th class="text-center py-4 px-4 font-semibold text-amber-400">Growth</th>
+                            <th class="text-center py-4 px-4 font-semibold">Scale</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-600">
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">KRA Return Filing</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-amber-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">Receipt Organization</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-amber-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">WhatsApp Support</td><td class="text-center py-3.5 px-4 text-slate-500">30 days</td><td class="text-center py-3.5 px-4 text-amber-500 font-bold">Unlimited</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">Priority</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">Weekly Profit Reports</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-amber-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">NHIF / NSSF / PAYE</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-amber-500 font-bold">✓</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">Quarterly Strategy Calls</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="border-b border-slate-100 hover:bg-slate-50 transition"><td class="py-3.5 px-5">Cash Flow Forecasting</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                        <tr class="hover:bg-slate-50 transition"><td class="py-3.5 px-5">Dedicated Manager</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-slate-300">—</td><td class="text-center py-3.5 px-4 text-green-500 font-bold">✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-                        <div class="service-details" id="details1">
-                            <ul>
-                                <li>Daily transaction recording</li>
-                                <li>Accounts payable/receivable management</li>
-                                <li>Expense tracking and categorization</li>
-                                <li>General ledger maintenance</li>
-                                <li>Monthly closing procedures</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details1">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+    <!-- How It Works -->
+    <section class="py-16 px-4 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-navy-900 mb-10">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="reveal text-center p-6">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">1</div>
+                    <h3 class="font-bold text-navy-900 mb-2">Check Your Score</h3>
+                    <p class="text-sm text-slate-500">Take the 60-second Smart Score on our homepage. We'll recommend the right package.</p>
                 </div>
-
-                <!-- Service 2: Payroll Management -->
-                <div class="service-card" data-category="operations">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Payroll Management Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-money-check-alt"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Payroll Management</h3>
-                        <p>Processing employee salaries, preparing payslips, and managing statutory deductions.</p>
-
-                        <div class="service-details" id="details2">
-                            <ul>
-                                <li>Employee salary processing</li>
-                                <li>PAYE, NHIF, NSSF deductions</li>
-                                <li>Payslip preparation and distribution</li>
-                                <li>Statutory returns filing</li>
-                                <li>Payroll reconciliation</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details2">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+                <div class="reveal text-center p-6">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">2</div>
+                    <h3 class="font-bold text-navy-900 mb-2">Chat with Sephat</h3>
+                    <p class="text-sm text-slate-500">WhatsApp us your messy data — M-Pesa screenshots, receipts, anything. We sort it out.</p>
                 </div>
-
-                <!-- Service 3: Tax Computation & Filing -->
-                <div class="service-card" data-category="compliance">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Tax Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Tax Computation & Filing</h3>
-                        <p>VAT, Income Tax, PAYE, Withholding Tax, Annual Returns ensuring full compliance.</p>
-
-                        <div class="service-details" id="details3">
-                            <ul>
-                                <li>VAT calculation and filing</li>
-                                <li>Income tax computation</li>
-                                <li>PAYE processing</li>
-                                <li>Withholding tax management</li>
-                                <li>Annual tax returns preparation</li>
-                                <li>Tax planning and advisory</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details3">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Service 4: Financial Reporting -->
-                <div class="service-card" data-category="reporting">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Financial Reporting Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Financial Reporting</h3>
-                        <p>Balance Sheet, Profit & Loss, Cash Flow Statement, and Management Accounts.</p>
-
-                        <div class="service-details" id="details4">
-                            <ul>
-                                <li>Balance Sheet preparation</li>
-                                <li>Profit & Loss Statement</li>
-                                <li>Cash Flow Statement</li>
-                                <li>Management accounts</li>
-                                <li>Financial performance analysis</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details4">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Service 5: QuickBooks Setup & Training -->
-                <div class="service-card" data-category="systems">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="QuickBooks Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>QuickBooks Setup & Training</h3>
-                        <p>Installation, setup of QuickBooks Desktop/Online and staff training.</p>
-
-                        <div class="service-details" id="details5">
-                            <ul>
-                                <li>QuickBooks installation and setup</li>
-                                <li>Chart of accounts creation</li>
-                                <li>Products, inventory, and payroll setup</li>
-                                <li>Staff training and support</li>
-                                <li>Ongoing system maintenance</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details5">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Service 6: Budgeting & Forecasting -->
-                <div class="service-card" data-category="advisory">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                            alt="Budgeting Services">
-                        <div class="service-icon-overlay">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Budgeting & Forecasting</h3>
-                        <p>Helping businesses plan effectively by preparing budgets and financial projections.</p>
-
-                        <div class="service-details" id="details6">
-                            <ul>
-                                <li>Annual budget preparation</li>
-                                <li>Financial forecasting</li>
-                                <li>Cash flow projections</li>
-                                <li>Budget variance analysis</li>
-                                <li>Financial planning advisory</li>
-                            </ul>
-                        </div>
-
-                        <button class="toggle-details" data-target="details6">
-                            View Details <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
+                <div class="reveal text-center p-6">
+                    <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">3</div>
+                    <h3 class="font-bold text-navy-900 mb-2">Get Results</h3>
+                    <p class="text-sm text-slate-500">KRA compliance fixed. Profit reports every week. Sleep easy knowing your books are clean.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Service Categories -->
-    <section class="service-categories">
-        <div class="container">
-            <h2>Service Categories</h2>
-
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h4>Compliance Services</h4>
-                    <p>Tax filing, statutory returns, regulatory compliance to ensure your business meets all legal
-                        requirements.</p>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h4>Financial Reporting</h4>
-                    <p>Comprehensive financial statements, management accounts, and performance analysis for informed
-                        decisions.</p>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h4>Operations Management</h4>
-                    <p>Efficient bookkeeping, payroll processing, and accounts reconciliation for smooth business
-                        operations.</p>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h4>Systems & Technology</h4>
-                    <p>Modern accounting software setup, training, and implementation to streamline your financial
-                        processes.</p>
-                </div>
+    <!-- CTA -->
+    <section class="py-16 px-4 bg-navy-900 text-white text-center">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4">Not Sure Which Package?</h2>
+            <p class="text-slate-300 mb-8">Take the 60-second Smart Score. We'll tell you exactly which package fits your business — and why.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#assessment" class="bg-amber-500 hover:bg-amber-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition hover:-translate-y-0.5 shadow-lg">
+                    Check My Score →
+                </a>
+                <a href="https://wa.me/254748836208?text=Hi%20Sephat,%20I%20need%20help%20choosing%20the%20right%20package" target="_blank"
+                   class="border-2 border-white text-white hover:bg-white hover:text-navy-900 px-8 py-4 rounded-xl font-bold text-lg transition">
+                    Ask Sephat
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Need Professional Accounting Services?</h2>
-            <p>Contact us today for a free consultation and let our expert team help streamline your financial
-                operations for better business performance.</p>
-            <a href="contact.html" class="cta-button">Get Free Consultation</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/logo/logo.jpg" alt="Smart Accountants Logo">
-                    <h3>Smart<span>Accountants</span></h3>
-                    <p>For Real Accounting Solutions</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1D2kgJ9E31/" target="_blank" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/marksephat?igsh=NzdlMWQwejB1Mnhy" target="_blank"
-                            aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:smartcountings@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:0748836208" aria-label="Phone">
-                            <i class="fas fa-phone"></i>
-                        </a>
+    <footer class="bg-navy-900 text-slate-400 py-10 px-4 text-sm border-t border-slate-800">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="font-bold text-lg text-white mb-2">Smart<span class="text-amber-500">Accountants</span></div>
+                    <p class="text-slate-500 text-xs leading-relaxed">Professional Accounting, Tax Solutions & Financial Consultancy for Businesses Across Kenya.</p>
+                </div>
+                <div>
+                    <div class="font-semibold text-white mb-3">Quick Links</div>
+                    <div class="space-y-2">
+                        <a href="index.html" class="block hover:text-amber-400 transition">Home</a>
+                        <a href="about.html" class="block hover:text-amber-400 transition">About</a>
+                        <a href="services.html" class="block hover:text-amber-400 transition">Services</a>
+                        <a href="projects.html" class="block hover:text-amber-400 transition">Results</a>
+                        <a href="team.html" class="block hover:text-amber-400 transition">Team</a>
+                        <a href="contact.html" class="block hover:text-amber-400 transition">Contact</a>
                     </div>
                 </div>
-
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-services">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="services.html">Bookkeeping</a></li>
-                        <li><a href="services.html">Tax Filing</a></li>
-                        <li><a href="services.html">Financial Reporting</a></li>
-                        <li><a href="services.html">Payroll Management</a></li>
-                        <li><a href="services.html">QuickBooks Setup</a></li>
-                        <li><a href="services.html">Financial Analysis</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone"></i> 0748 836 208</p>
-                    <p><i class="fas fa-envelope"></i> smartcountings@gmail.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM-5PM</p>
-                    <p><i class="fas fa-money-bill-wave"></i> PayBill: 714777</p>
-                    <p><i class="fas fa-credit-card"></i> Account: 0708 305 767</p>
+                <div>
+                    <div class="font-semibold text-white mb-3">Contact</div>
+                    <div class="space-y-2 text-slate-500">
+                        <p>📞 0748 836 208</p>
+                        <p>✉️ smartcountings@gmail.com</p>
+                        <p>📍 Nairobi, Kenya</p>
+                        <p>🕐 Mon–Fri: 8AM–5PM</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="copyright">
-                <p>&copy; 2026 Smart Accountants. All Rights Reserved. | Professional Accounting Solutions</p>
+            <div class="border-t border-slate-800 pt-6 text-center text-xs text-slate-600">
+                © 2026 Smart Accountants. All Rights Reserved. | KRA Registered Tax Agent
             </div>
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            const typedText = document.getElementById('typedText');
-            const cursor = document.getElementById('cursor');
-            const marqueeContent = document.querySelector('.marquee-content');
-
-            // Mobile Menu Toggle
-            menuToggle.addEventListener('click', function () {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                if (icon.classList.contains('fa-bars')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            // Close menu when clicking on a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function () {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
-
-            // Typing Effect
-            const texts = [
-                "Professional Accounting Solutions",
-                "Tax Compliance & Filing Services",
-                "Accurate Bookkeeping Services",
-                "Payroll Management Solutions",
-                "Financial Reporting & Analysis",
-                "QuickBooks Setup & Training"
-            ];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-
-            function typeEffect() {
-                const currentText = texts[textIndex];
-
-                if (!isDeleting && charIndex < currentText.length) {
-                    typedText.textContent += currentText.charAt(charIndex);
-                    charIndex++;
-                    typingSpeed = 100;
-                } else if (isDeleting && charIndex > 0) {
-                    typedText.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                }
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    typingSpeed = 1500; // Pause at end
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typingSpeed = 500; // Pause before typing next
-                }
-
-                setTimeout(typeEffect, typingSpeed);
-            }
-
-            // Start typing effect after a delay
-            setTimeout(typeEffect, 1000);
-
-            // Cursor blink animation
-            function blinkCursor() {
-                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                setTimeout(blinkCursor, 500);
-            }
-            blinkCursor();
-
-            // Marquee hover effect
-            marqueeContent.addEventListener('mouseenter', () => {
-                marqueeContent.style.animationPlayState = 'paused';
-            });
-
-            marqueeContent.addEventListener('mouseleave', () => {
-                marqueeContent.style.animationPlayState = 'running';
-            });
-
-            // Service Details Toggle
-            document.querySelectorAll('.toggle-details').forEach(button => {
-                button.addEventListener('click', function () {
-                    const targetId = this.getAttribute('data-target');
-                    const detailsDiv = document.getElementById(targetId);
-                    const icon = this.querySelector('i');
-
-                    // Toggle active class on details div
-                    detailsDiv.classList.toggle('active');
-
-                    // Toggle active class on button
-                    this.classList.toggle('active');
-
-                    // Change button text
-                    if (detailsDiv.classList.contains('active')) {
-                        this.innerHTML = 'Hide Details <i class="fas fa-chevron-up"></i>';
-                    } else {
-                        this.innerHTML = 'View Details <i class="fas fa-chevron-down"></i>';
-                    }
-                });
-            });
-
-            // Service Filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const serviceCards = document.querySelectorAll('.service-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterValue = this.getAttribute('data-filter');
-
-                    // Filter service cards with animation
-                    serviceCards.forEach(card => {
-                        if (filterValue === 'all') {
-                            card.style.display = 'flex';
-                            card.style.animation = 'fadeInUp 0.5s ease-out';
-                        } else {
-                            const cardCategory = card.getAttribute('data-category');
-                            if (cardCategory === filterValue) {
-                                card.style.display = 'flex';
-                                card.style.animation = 'fadeInUp 0.5s ease-out';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        }
-                    });
-                });
-            });
-
-            // Scroll animation for elements
-            function animateOnScroll() {
-                const elements = document.querySelectorAll('.service-card, .category-card');
-
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.2;
-
-                    if (elementPosition < screenPosition) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Initial animation check
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
-
-            // Add hover sound effect (optional)
-            const buttons = document.querySelectorAll('.toggle-details, .filter-btn, .cta-button, .social-links a');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    button.style.transform = 'scale(1.05)';
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    if (!button.classList.contains('active')) {
-                        button.style.transform = 'scale(1)';
-                    }
-                });
-            });
-
-            // Add loading animation
-            window.addEventListener('load', () => {
-                document.body.style.opacity = '1';
-                document.body.style.transition = 'opacity 0.5s ease';
-
-                // Animate cards on load
-                const cards = document.querySelectorAll('.service-card, .category-card');
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, index * 100);
-                });
-            });
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 50);
         });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
-
 </html>
